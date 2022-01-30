@@ -7,8 +7,8 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: #130f40;
-  background-image: linear-gradient(315deg, #130f40 0%, #000000 74%);
+  background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%); 
+
 `;
 
 export default PageContainer;
