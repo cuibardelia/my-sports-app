@@ -2,7 +2,7 @@
   "name": "my-sports-app",
   "version": "1.0.0",
   "description": "App designed to improve one's lifestyle in terms of fitness.",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/.bin/webpack serve",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-webpack-plugin": "^3.1.1",
     "gh": "^2.8.9",
     "react": "^17.0.2",

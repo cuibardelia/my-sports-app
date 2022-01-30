@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from '../Component/Button.css.js';
+import Button from '../Component/Button.css';
 import PageContainer from '../Component/PageContainer.css';
 
-export default function About() {
+const About: React.FC = () => {
   return (
     <PageContainer>
       <main>
@@ -22,3 +22,4 @@ export default function About() {
     </PageContainer>
   );
 }
+export default About;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import PageContainer from '../Component/PageContainer.css';
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <PageContainer>
       <main>
@@ -14,4 +14,6 @@ export default function Home() {
       </nav>
     </PageContainer>
   );
-}
+};
+
+export default Home;

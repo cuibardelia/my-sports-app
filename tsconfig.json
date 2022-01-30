@@ -4,5 +4,7 @@
     "jsx": "react",
     "target": "ES6",
     "allowJs": true,
+    "module": "AMD",
+    "moduleResolution": "node",
   }
 }
