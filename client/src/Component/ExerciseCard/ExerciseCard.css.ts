@@ -12,6 +12,12 @@ export const CardContainer = styled.div`
     background: #DAD299;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, rgba(176, 218, 185, 0.5), rgba(218, 210, 153, 0.5));  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, rgba(176, 218, 185, 0.5), rgba(218, 210, 153, 0.5)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  &:hover {
+    width: 220px;
+    height: 220px;
+  }
+
 `;
 
 export const CardInner = styled.div`
