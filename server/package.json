@@ -4,13 +4,19 @@
   "description": "backend for my-sports-app",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "server": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Delia Cuibar",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.1",
     "express": "^4.17.3",
-    "nodemon": "^2.0.15"
+    "mongoose": "^6.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
