@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // TODO: better regex
 // select - whenever we query a user, do we want the pass too?
@@ -43,6 +44,15 @@ UserSkeem.pre("save", async function(next) {
 
 UserSkeem.methods.checkPassword = async function(pwd) {
     return await bcrypt.compare(pwd, this.password);
+};
+
+UserSkeem.methods.getSignedToken = function(pwd) {
+    // hehe, generated secret via 'cypto' with randomBytes
+    //FIXME: process?
+
+    return jwt.sign({id: this._id}, '1a52bef869afc7ac710a23102f27fa7580f9fd980c2709f73ce6838f35fe99354bba19', {
+        expiresIn: '10min'
+    });
 };
 
 const User = mongoose.model("User", UserSkeem);

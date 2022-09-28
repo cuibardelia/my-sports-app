@@ -10,10 +10,7 @@ exports.register = async (request, response, next) => {
             username, email, password
         })
 
-        response.status(201).json({
-            success: true,
-            user
-        });
+        sendToken(user, 201, response);
     } catch (error) {
       next(error);
     }
@@ -40,10 +37,8 @@ exports.login = async (request, response, next) => {
             return next(new ErrorResponse("Invalid password"), 404);
         }
 
-        response.status(200).json({
-            success: true,
-            token: "test-token",
-        });
+        sendToken(user, 200, response);
+
 
     } catch (error) {
         next(error);
@@ -58,3 +53,8 @@ exports.forgotPassword = (request, response, next) => {
 exports.resetPassword = (request, response, next) => {
     response.send('Reset route')
 };
+
+const sendToken = (user, statusCode, response) => {
+    const token = user.getSignedToken();
+    response.status(statusCode).json({success: true, token})
+}

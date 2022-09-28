@@ -3,6 +3,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
+
 // Connect to Mongo
 connectDB();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // redirect to routes
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/private', require('./routes/private'));
 
 // Error Handler - last in the middleware
 app.use(errorHandler);
@@ -24,7 +26,6 @@ const server = app.listen(PORT, () => {
     console.log(`Server running, right on port ${PORT}`)
 })
 
-// TODO: replace with single quotes
 //FIXME: process?
 process.on("unhandledRejection", (err, promise) => {
     console.log(`⚠ Error occurred: ${err}`);
