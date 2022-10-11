@@ -1,4 +1,3 @@
-import * as React from "react";
 import PageContainer from "../Component/PageContainer.css";
 import ExerciseCard from "../Component/ExerciseCard/ExerciseCard";
 import styled from 'styled-components';
