@@ -1,3 +1,6 @@
+require('dotenv').config({path: "./config/.env"});
+
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -11,11 +14,11 @@ const UserSkeem = new mongoose.Schema({
     },
     lastName: {
         type: String,
-        required: [true, "Please add a username"]
+        required: false,
     },
     firstName: {
         type: String,
-        required: [true, "Please add a username"]
+        required: false,
     },
     email: {
         type: String,
@@ -54,13 +57,21 @@ UserSkeem.methods.checkPassword = async function(pwd) {
     return await bcrypt.compare(pwd, this.password);
 };
 
-UserSkeem.methods.getSignedToken = function(pwd) {
-    // hehe, generated secret via 'cypto' with randomBytes
-    //FIXME: process?
-
-    return jwt.sign({id: this._id}, '1a52bef869afc7ac710a23102f27fa7580f9fd980c2709f73ce6838f35fe99354bba19', {
+UserSkeem.methods.getSignedToken = function() {
+    // fun fact, generated secret via 'cypto' with randomBytes
+    return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
         expiresIn: '10min'
     });
+};
+
+UserSkeem.methods.getResetPassToken = function() {
+    const resetToken = crypto.randomBytes(20).toString("hex");
+    // TODO: doc
+    this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+    // makes sure it expires in 10 minutes;
+    this.resetPasswordExpire = Date.now() + 10 * (60 * 1000);
+
+   return resetToken;
 };
 
 const User = mongoose.model("User", UserSkeem);

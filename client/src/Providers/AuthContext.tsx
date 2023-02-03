@@ -32,9 +32,10 @@ export const AuthContextProvider: React.FunctionComponent<{
 	const [token, setToken, removeToken] = useLocalStorageState(tokenStorageKey);
 	const [user, setUser, removeUser] = useLocalStorageState(userStorageKey);
 
+	// TODO: error boundary
 	function login(data: IAuthData) {
 		setToken(data.accessToken);
-		setUser(data.user);
+		// setUser(data.user);
 	}
 
 	function logout() {

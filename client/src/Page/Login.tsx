@@ -48,6 +48,7 @@ const Login: React.FC = () => {
 			}
 			login(data);
 		}
+		// TODO: form error handling
 	return (
 		<FormProvider {...methods}>
 			<div className="w-7/12 m-auto">

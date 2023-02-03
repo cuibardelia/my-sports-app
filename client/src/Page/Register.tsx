@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { object, ref, string } from 'yup';
 import { useAuthContext } from '../Providers/AuthContext';
 import { Input } from '../Component/Login/Input';
+import styled from 'styled-components';
 
 
 type FormData = {
@@ -13,6 +14,28 @@ type FormData = {
 	fName: string;
 	lName: string;
 };
+
+// TODO: rem
+const Card = styled.div`
+  padding: 20%;
+  border-radius: 5%;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+`;
+
+const AuthCard = styled(Card)`
+  display: grid;
+  
+  form {
+	grid-column: 2;
+  }
+`;
+
+const Picture = styled.div`
+  grid-column: 1;
+  height: 100%;
+  background-image: url("assets/ball-squats.png");
+  background-size: contain;
+`;
 
 const registerValidationSchema = object({
 	email: string()
@@ -64,20 +87,23 @@ export function Register() {
 
 	return (
 		<FormProvider {...methods}>
-			<div className="w-7/12 m-auto">
-				<form onSubmit={methods.handleSubmit(onSubmit)}>
-					<Input name="email" type="email" labelText="Email" />
-					<Input name="password" type="password" labelText="Password" />
-					<Input
-						name="password_check"
-						type="password"
-						labelText="Retype Password"
-					/>
-					<Input name="fName" type="text" labelText="First Name" />
-					<Input name="lName" type="text" labelText="Last Name" />
+			<div>
+				<AuthCard isSplit>
+					<Picture />
+					<form onSubmit={methods.handleSubmit(onSubmit)}>
+						<Input name="fName" type="text" labelText="First Name" />
+						<Input name="lName" type="text" labelText="Last Name" />
+						<Input name="email" type="email" labelText="Email" />
+						<Input name="password" type="password" labelText="Password" />
+						<Input
+							name="password_check"
+							type="password"
+							labelText="Retype Password"
+						/>
 
-					<button className="bg-purple-800">Register</button>
-				</form>
+						<button className="bg-purple-800">Register</button>
+					</form>
+				</AuthCard>
 			</div>
 		</FormProvider>
 	);

@@ -1,6 +1,11 @@
+require('dotenv').config({path: "./config/.env"});
+
+const crypto = require('crypto');
 const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
+const sendEmail = require('../utils/sendEmail');
 
+// TODO: linting and IDE settings
 exports.register = async (request, response, next) => {
     // response.send('Register route')
     const {username, email, password} = request.body;
@@ -46,15 +51,79 @@ exports.login = async (request, response, next) => {
 
 };
 
-exports.forgotPassword = (request, response, next) => {
-    response.send('Forgot route')
+exports.forgotPassword = async (request, response, next) => {
+    const { email } = request.body;
+
+    try{
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return next(new ErrorResponse("Unable to find email"), 404);
+        }
+
+        const resetToken = user.getResetPassToken();
+        // save the reset pass token field to the db
+        await user.save();
+        const resetUrl = `http://localhost:8088/passwordreset/${resetToken}`;
+        const message = `
+            <h1> You have requested a new password </h1>
+            <p> Here's your link to reet your pass </p>
+            <a href=${resetUrl} clicktracking='off'>${resetUrl}</a>
+        `
+
+        try {
+            await sendEmail({
+                to: user.email,
+                subject: "Looks like you forgot your password",
+                text: message,
+            });
+
+            response.status(200).json({success: true, data: "Yeehaaw! Email successfully sent"});
+        } catch (error) {
+            user.resetPasswordToken = undefined;
+            user.resetPassworExpored = undefined;
+
+            await user.save();
+            return next(new ErrorResponse("Cannot send email, God knows why", 500));
+        }
+
+    } catch (error) {
+        next(error);
+    }
+
 };
 
-exports.resetPassword = (request, response, next) => {
-    response.send('Reset route')
+exports.resetPassword = async (request, response, next) => {
+    const ResetPwdToken = crypto.createHash("sha256").update(request.params.resetToken).digest('hex');
+    try {
+        const usr = await User.findOne({
+            resetPasswordToken: ResetPwdToken,
+            // query in db
+            resetPasswordExpire: { $gt: Date.now()}
+        });
+
+        if(!usr) {
+          return next(new ErrorResponse("OoOps! Invalid reset token", 400))
+        }
+
+        usr.password = request.body.password;
+        // we don't want the user to keep same token again
+        usr.resetPasswordToken = undefined;
+        usr.resetPasswordExpire = undefined;
+
+        await usr.save();
+
+        response.status(201).json({
+            success: true,
+            data: "Password reset successful"
+
+        })
+    } catch (e) {
+        next(e);
+    }
 };
 
 const sendToken = (user, statusCode, response) => {
-    const token = user.getSignedToken();
-    response.status(statusCode).json({success: true, token})
+    const accessToken = user.getSignedToken();
+    response.status(statusCode).json({success: true, accessToken})
 }

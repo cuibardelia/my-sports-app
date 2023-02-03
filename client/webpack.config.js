@@ -9,6 +9,7 @@ module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   resolve: {
     alias: {
@@ -22,14 +23,18 @@ module.exports = {
         test: /\.(jsx?|js)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+        loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            configFile: path.resolve('babel.config.json'),
+            plugins: [require.resolve('react-refresh/babel')],
           },
-        },
+        }
       },
       { test: /\.tsx?$/, loader: 'ts-loader' },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

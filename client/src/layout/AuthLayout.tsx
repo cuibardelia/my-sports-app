@@ -5,7 +5,7 @@ import { AuthContainer } from './AuthLayout.css';
 export const AuthLayout: React.FunctionComponent<{}> = () => {
 	return (
 		<AuthContainer>
-			<LogoContainer />
+			{/*<LogoContainer />*/}
 			<Outlet />
 		</AuthContainer>
 	);

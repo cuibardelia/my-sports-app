@@ -9,8 +9,7 @@ import { AuthContextProvider } from './Providers/AuthContext';
 import { Register } from './Page/Register';
 import { AuthLayout } from './layout/AuthLayout';
 
-// TODO: add reset
-// TODO persist routes
+// TODO: add css reset
 
 const App: React.FC = () => (
     <AuthContextProvider>
