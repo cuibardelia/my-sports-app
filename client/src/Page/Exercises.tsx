@@ -1,5 +1,5 @@
-import PageContainer from "../Component/PageContainer.css";
-import ExerciseCard from "../Component/ExerciseCard/ExerciseCard";
+import PageContainer from "../components/PageContainer.css";
+import ExerciseCard from "../components/ExerciseCard/ExerciseCard";
 import styled from 'styled-components';
 
 

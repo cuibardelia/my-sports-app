@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { object, ref, string } from 'yup';
 import { useAuthContext } from '../Providers/AuthContext';
-import { Input } from '../Component/Login/Input';
+import { Input } from '../components/Login/Input';
 import styled from 'styled-components';
 
 
@@ -62,7 +62,7 @@ const registerValidationSchema = object({
 		.min(2, 'The last name should be at least 2 characters long.'),
 }).required();
 
-export function Register() {
+const Register: React.FC = () => {
 	const methods = useForm<FormData>({
 		resolver: yupResolver(registerValidationSchema),
 	});
@@ -75,7 +75,7 @@ export function Register() {
 		const data = await fetch('http://localhost:5000/api/auth/register', {
 			method: 'POST',
 			headers: {
-				'Content-type': 'application/json',
+				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(payload),
 		}).then((res) => res.json());
@@ -85,6 +85,7 @@ export function Register() {
 		navigate('/');
 	}
 
+	// TODO: ALready have an account - login
 	return (
 		<FormProvider {...methods}>
 			<div>
@@ -108,3 +109,5 @@ export function Register() {
 		</FormProvider>
 	);
 }
+
+export default Register;

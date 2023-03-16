@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { LogoContainer } from '../Component/Navbar/Navbar.css';
+import { LogoContainer } from '../components/Navbar/Navbar.css';
 import { AuthContainer } from './AuthLayout.css';
 
 export const AuthLayout: React.FunctionComponent<{}> = () => {

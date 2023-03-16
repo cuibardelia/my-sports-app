@@ -1,4 +1,4 @@
-import PageContainer from "../Component/PageContainer.css";
+import PageContainer from "../components/PageContainer.css";
 
 const NotFound: React.FC = () => {
     return (

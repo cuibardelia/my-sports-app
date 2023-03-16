@@ -64,10 +64,10 @@ exports.forgotPassword = async (request, response, next) => {
         const resetToken = user.getResetPassToken();
         // save the reset pass token field to the db
         await user.save();
-        const resetUrl = `http://localhost:8088/passwordreset/${resetToken}`;
+        const resetUrl = `http://localhost:8080/passwordreset/${resetToken}`;
         const message = `
             <h1> You have requested a new password </h1>
-            <p> Here's your link to reet your pass </p>
+            <p> Here's your link to reset your password </p>
             <a href=${resetUrl} clicktracking='off'>${resetUrl}</a>
         `
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import Button from '../Component/Button.css';
-import PageContainer from '../Component/PageContainer.css';
+import Button from '../components/Button.css';
+import PageContainer from '../components/PageContainer.css';
 
 const About: React.FC = () => {
   return (

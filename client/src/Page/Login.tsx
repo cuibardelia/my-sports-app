@@ -2,7 +2,7 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { object, string } from 'yup';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { Input } from '../Component/Login/Input';
+import { Input } from '../components/Login/Input';
 import { IAuthData, useAuthContext } from '../Providers/AuthContext';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -27,7 +27,7 @@ const Login: React.FC = () => {
 
 		if (user) {
 			const state = location.state as { from: string } | undefined;
-			const destination = state?.from ?? '/dashboard';
+			const destination = state?.from ?? '/about';
 			return <Navigate to={destination} />;
 		}
 
@@ -42,7 +42,7 @@ const Login: React.FC = () => {
 			}).then((res) => res.json());
 
 			if (typeof data !== 'object') {
-				// TODO: modal for server error
+				// TODO: modal for server error + add proper message for user
 				setServerError(data);
 				return;
 			}
@@ -53,13 +53,15 @@ const Login: React.FC = () => {
 		<FormProvider {...methods}>
 			<div className="w-7/12 m-auto">
 				<form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
-					<Input name="email" type="email" labelText="QEmail" />
+					<Input name="email" type="email" labelText="Email" />
 					<Input name="password" type="password" labelText="Password" />
-					<div className={"text-right mb-6"}>Already got an account? <Link to={"/register"}>Register here</Link></div>
+					<div className={"text-right mb-6"}>Don't have an account? <Link to={"/register"}>Register here</Link></div>
+					<div className={"text-right mb-6"}><Link to={"/forgotpassword"}>Forgot password?</Link></div>
 					<button className="bg-purple-800">Sign In</button>
 				</form>
 			</div>
 		</FormProvider>
 	);
-}
+};
+
 export default Login;

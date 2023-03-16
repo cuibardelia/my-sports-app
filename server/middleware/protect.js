@@ -7,7 +7,6 @@ const ErrorResponse = require('../utils/errorResponse');
 exports.protect = async (request, response, next) => {
     let token;
 
-    // TODO: cors
     if(request.headers.authorization && request.headers.authorization.startsWith("Bearer")) {
         token = request.headers.authorization.split(" ")[1];
     }
