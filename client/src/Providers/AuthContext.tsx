@@ -1,6 +1,9 @@
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { createContext, useContext } from 'react';
 
+// FIXME: proxy issues
+// FIXME: linting & IDE
+// TODO: error boundary
 
 const tokenStorageKey = 'token';
 const userStorageKey = 'user';
@@ -13,8 +16,9 @@ export interface IAuthData {
 interface IUser {
 	email: string;
 	password?: string;
-	firstName: string;
+	username: string;
 	lastName: string;
+	firstName: string;
 }
 
 interface IAuthContext {
@@ -32,10 +36,10 @@ export const AuthContextProvider: React.FunctionComponent<{
 	const [token, setToken, removeToken] = useLocalStorageState(tokenStorageKey);
 	const [user, setUser, removeUser] = useLocalStorageState(userStorageKey);
 
-	// TODO: error boundary
 	function login(data: IAuthData) {
+		debugger;
 		setToken(data.accessToken);
-		// setUser(data.user);
+		setUser(data.user);
 	}
 
 	function logout() {

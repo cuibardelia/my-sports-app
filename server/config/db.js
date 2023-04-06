@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const connectDB = async() => {
-    // TODO: use env
-    await mongoose.connect("mongodb://localhost:27017/users", {
+    await mongoose.connect(process.env.MONGO_URI, {
         // useFindAndModify: true,
         // considered false?
     });

@@ -2,10 +2,11 @@ import { object, ref, string } from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useState } from 'react';
-import { IAuthData, useAuthContext } from '../Providers/AuthContext';
+import { IAuthData, useAuthContext } from '../../Providers/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
-import { Input } from '../components/Login/Input';
+import { Input } from '../Login/Input';
 import { useParams } from 'react-router';
+import { AuthCard } from '../Login/Form.css';
 
 
 const ResetPassword: React.FC = () => {
@@ -29,17 +30,16 @@ const ResetPassword: React.FC = () => {
 
 	if (user) {
 		const state = location.state as { from: string } | undefined;
-		const destination = state?.from ?? '/about';
+		const destination = state?.from ?? '/dashboard';
 		return <Navigate to={destination} />;
 	}
 
-	// TODO: env for variables
 	// FIXME: type
 	async function handleSubmit(formData) {
 
 
 		console.log('here', formData.password, JSON.stringify(formData.password));
-		const data: IAuthData = await fetch(`http://localhost:5000/api/auth/reset-password/${resetToken}`, {
+		const data: IAuthData = await fetch(`${process.env.RESET_PWD_API}/${resetToken}`, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json',
@@ -56,20 +56,20 @@ const ResetPassword: React.FC = () => {
 	}
 
 	// TODO: form error handling
-	// TODO: view pwd
+	// TODO: view pwd options
 	return (
 		<FormProvider {...methods}>
-			<div className="w-7/12 m-auto">
-				<form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
-					<Input name="password" type="password" labelText="Password" />
-					<Input
-						name="password_check"
-						type="password"
-						labelText="Retype Password"
-					/>
-					<button className="bg-purple-800">Submit</button>
-				</form>
-			</div>
+				<AuthCard>
+					<form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
+						<Input name="password" type="password" labelText="Password" />
+						<Input
+							name="password_check"
+							type="password"
+							labelText="Retype Password"
+						/>
+						<button>Submit</button>
+					</form>
+				</AuthCard>
 		</FormProvider>
 	);
 };

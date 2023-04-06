@@ -1,4 +1,5 @@
 import { useFormContext } from 'react-hook-form';
+import { FormInput, Label } from './Form.css';
 
 
 type InputTypes =
@@ -25,14 +26,12 @@ export const Input = ({
     register,
   } = useFormContext();
 
-  //TODO: remove tw
-
   return (
       <div>
-        <label className="text-sm" htmlFor={name}>
+        <Label htmlFor={name}>
           {labelText}
-        </label>
-        <input
+        </Label>
+        <FormInput
           type={type}
           id={name}
           {...register(name)}

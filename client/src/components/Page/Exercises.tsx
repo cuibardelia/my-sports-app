@@ -1,9 +1,9 @@
-import PageContainer from "../components/PageContainer.css";
-import ExerciseCard from "../components/ExerciseCard/ExerciseCard";
+import PageContainer from "../PageContainer.css";
+import ExerciseCard from "../ExerciseCard/ExerciseCard";
 import styled from 'styled-components';
 
 
-// TODO: type
+// TODO: type & myfitpal DB
 const exercises = [
     {
         name: "squats",

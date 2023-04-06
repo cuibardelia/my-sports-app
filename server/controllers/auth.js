@@ -5,14 +5,14 @@ const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 
-// TODO: linting and IDE settings
 exports.register = async (request, response, next) => {
     // response.send('Register route')
-    const {username, email, password} = request.body;
+    const {username, lastName, firstName, email, password} = request.body;
 
+    // FIXME: check for unique email and username or simplify schema
     try {
         const user = await User.create({
-            username, email, password
+            username, lastName, firstName, email, password
         })
 
         sendToken(user, 201, response);
@@ -64,7 +64,7 @@ exports.forgotPassword = async (request, response, next) => {
         const resetToken = user.getResetPassToken();
         // save the reset pass token field to the db
         await user.save();
-        const resetUrl = `http://localhost:8080/passwordreset/${resetToken}`;
+        const resetUrl = `${process.env.RESET_PW_CLIENT_URL}/${resetToken}`;
         const message = `
             <h1> You have requested a new password </h1>
             <p> Here's your link to reset your password </p>
@@ -125,5 +125,5 @@ exports.resetPassword = async (request, response, next) => {
 
 const sendToken = (user, statusCode, response) => {
     const accessToken = user.getSignedToken();
-    response.status(statusCode).json({success: true, accessToken})
+    response.status(statusCode).json({success: true, accessToken, user})
 }

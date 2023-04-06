@@ -7,6 +7,9 @@ export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  z-index: 3;
+  padding-top: 30px;
+  font-size: 13px;
   
   ul {
     list-style-type: none;
@@ -24,14 +27,6 @@ export const NavContainer = styled.nav`
       &:hover {
         color: #9b82ed;
       }
-`;
-export const LogoContainer = styled.div`
-  width: 150px;
-  height: 150px;
-  margin: 10px 30px;
-  background-image: url("assets/avo-cardio.png");
-  background-size: contain;
-  border-radius: 4px;
 `;
 
 export const MenuItem = styled.li`

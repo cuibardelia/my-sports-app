@@ -2,9 +2,11 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { object, string } from 'yup';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import { Input } from '../components/Login/Input';
-import { IAuthData, useAuthContext } from '../Providers/AuthContext';
+import { Input } from '../Login/Input';
+import { IAuthData, useAuthContext } from '../../Providers/AuthContext';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AuthCard, BottomLinks, Button } from '../Login/Form.css';
+import { AuthPaths } from '../Navbar/Navbar';
 
 
 const Login: React.FC = () => {
@@ -27,13 +29,12 @@ const Login: React.FC = () => {
 
 		if (user) {
 			const state = location.state as { from: string } | undefined;
-			const destination = state?.from ?? '/about';
+			const destination = state?.from ?? '/dashboard';
 			return <Navigate to={destination} />;
 		}
 
-		// TODO: env for variables + update schema
 		async function handleSubmit(formData: FormData) {
-			const data: IAuthData = await fetch('http://localhost:5000/api/auth/login', {
+			const data: IAuthData = await fetch(process.env.LOGIN_API, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -51,15 +52,17 @@ const Login: React.FC = () => {
 		// TODO: form error handling
 	return (
 		<FormProvider {...methods}>
-			<div className="w-7/12 m-auto">
+			<AuthCard>
 				<form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
 					<Input name="email" type="email" labelText="Email" />
 					<Input name="password" type="password" labelText="Password" />
-					<div className={"text-right mb-6"}>Don't have an account? <Link to={"/register"}>Register here</Link></div>
-					<div className={"text-right mb-6"}><Link to={"/forgotpassword"}>Forgot password?</Link></div>
-					<button className="bg-purple-800">Sign In</button>
+					<Button>Sign In</Button>
+					<BottomLinks>
+						<div>Don't have an account? <Link to={AuthPaths.REGISTER}>Register here</Link></div>
+						<div><Link to={AuthPaths.FORGOT}>Forgot password?</Link></div>
+					</BottomLinks>
 				</form>
-			</div>
+			</AuthCard>
 		</FormProvider>
 	);
 };

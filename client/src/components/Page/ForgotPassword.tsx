@@ -1,10 +1,12 @@
-import { object, ref, string } from 'yup';
+import { object, string } from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useState } from 'react';
-import { IAuthData, useAuthContext } from '../Providers/AuthContext';
+import { IAuthData, useAuthContext } from '../../Providers/AuthContext';
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import { Input } from '../components/Login/Input';
+import { Input } from '../Login/Input';
+import { AuthCard, BottomLinks, Button } from '../Login/Form.css';
+import { AuthPaths } from '../Navbar/Navbar';
 
 const ForgotPassword: React.FC = () => {
 		const forgotPasswordValidationSchema = object({
@@ -23,14 +25,12 @@ const ForgotPassword: React.FC = () => {
 
 		if (user) {
 			const state = location.state as { from: string } | undefined;
-			const destination = state?.from ?? '/about';
+			const destination = state?.from ?? '/dashboard';
 			return <Navigate to={destination} />;
 		}
 
-		// TODO: env for variables
 		async function handleSubmit(formData: FormData) {
-			console.log('here', formData);
-			const data: IAuthData = await fetch('http://localhost:5000/api/auth/forgot-password', {
+			const data: IAuthData = await fetch(process.env.FORGOT_PWD_API, {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -49,12 +49,15 @@ const ForgotPassword: React.FC = () => {
 		// TODO: form error handling
 		return (
 			<FormProvider {...methods}>
-				<div className="w-7/12 m-auto">
+				<AuthCard>
 					<form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
 						<Input name="email" type="email" labelText="Email" />
-						<button className="bg-purple-800">Submit</button>
+						<Button>Submit</Button>
+						<BottomLinks>
+							<div>Got lost? <Link to={AuthPaths.LOGIN}>Go back to Login</Link></div>
+						</BottomLinks>
 					</form>
-				</div>
+				</AuthCard>
 			</FormProvider>
 		);
 	};

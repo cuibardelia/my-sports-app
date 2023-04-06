@@ -1,4 +1,4 @@
-import PageContainer from '../components/PageContainer.css';
+import PageContainer from '../PageContainer.css';
 
 const Home: React.FC = () => {
   return (

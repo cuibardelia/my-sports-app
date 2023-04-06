@@ -1,47 +1,65 @@
 import { Link } from 'react-router-dom';
-import {LogoContainer, MenuItem, NavContainer } from './Navbar.css';
+import {MenuItem, NavContainer } from './Navbar.css';
+import { useAuthContext } from '../../Providers/AuthContext';
+import { SidePaths } from '../Sidebar/Sidebar';
 
-enum Paths {
-    HOME = "/",
-    EXERCISES = "/exercises",
-    TRAINERS = "/trainers",
-    ABOUT = "/about"
+type AppPaths = TopPaths | SidePaths | AuthPaths;
+
+export enum AuthPaths {
+    LOGIN = "/",
+    REGISTER = "/register",
+    FORGOT = "/forgotpassword",
+    RESET = "/passwordreset",
 }
 
-// TODO: type
-const menuOptions = [
+enum TopPaths {
+    DASHBOARD = "/dashboard",
+    TRAINERS = "/trainers",
+    SETTINGS = "/settings"
+}
+
+export type Menu = {
+   name: string;
+   path: AppPaths;
+}
+
+const topMenuOptions: Menu[] = [
     {
-        name: "Home",
-        path: Paths.HOME
-    },
-    {
-        name: "Exercises",
-        path: Paths.EXERCISES
+        name: "Dashboard",
+        path: TopPaths.DASHBOARD
     },
     {
         name: "Trainers",
-        path: Paths.TRAINERS
+        path: TopPaths.TRAINERS
     },
     {
-        name: "About",
-        path: Paths.ABOUT
+        name: "Settings",
+        path: TopPaths.SETTINGS
     },
 ]
 
 const Navbar: React.FC = () => {
     // const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const { logout } = useAuthContext();
 
+
+    // TODO: tabindex for accessibility
     return (
         <NavContainer>
-            <LogoContainer/>
             <ul>
-                {menuOptions.map((item, i) => {
+                {topMenuOptions.map((item) => {
                     return (
                         <Link to={item.path} key={`menu-${item.name}`}>
                             <MenuItem>{item.name}</MenuItem>
                         </Link>
                     );
                 })}
+                <Link
+                    to={AuthPaths.LOGIN}
+                    onClick={logout}
+                >
+                    <MenuItem>Logout</MenuItem>
+                </Link>
             </ul>
         </NavContainer>
     );
