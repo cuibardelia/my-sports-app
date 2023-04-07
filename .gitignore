@@ -6,4 +6,3 @@ dist/
 .cache
 .idea
 .pb
-.env
