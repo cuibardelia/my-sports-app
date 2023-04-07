@@ -3,8 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
 
 require('dotenv').config();
+
+const isProd = process.env.NODE_ENV === 'production';
 
 const getEnvVar = (key) => {
   if (!process.env[key]) {
@@ -15,7 +19,7 @@ const getEnvVar = (key) => {
   return process.env[key];
 };
 
-module.exports = {
+const config = {
   mode: 'development',
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
@@ -37,7 +41,6 @@ module.exports = {
         loader: 'babel-loader',
           options: {
             configFile: path.resolve('babel.config.json'),
-            plugins: [require.resolve('react-refresh/babel')],
           },
         }
       },
@@ -69,3 +72,7 @@ module.exports = {
     }),
   ],
 };
+
+if (!isProd) config.plugins.unshift(new ReactRefreshPlugin());
+
+module.exports = config;
