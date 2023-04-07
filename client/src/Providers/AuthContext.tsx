@@ -37,7 +37,6 @@ export const AuthContextProvider: React.FunctionComponent<{
 	const [user, setUser, removeUser] = useLocalStorageState(userStorageKey);
 
 	function login(data: IAuthData) {
-		debugger;
 		setToken(data.accessToken);
 		setUser(data.user);
 	}

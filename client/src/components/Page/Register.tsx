@@ -45,7 +45,6 @@ const Register: React.FC = () => {
 
 	async function onSubmit(formData: FormData) {
 		const { password_check, ...payload } = formData;
-		debugger;
 		const data = await fetch(process.env.REGISTER_API, {
 			method: 'POST',
 			headers: {

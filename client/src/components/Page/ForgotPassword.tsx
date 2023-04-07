@@ -43,7 +43,8 @@ const ForgotPassword: React.FC = () => {
 				setServerError(data);
 				return;
 			}
-			// TODO: success message
+			// TODO: modal for success
+
 		}
 
 		// TODO: form error handling

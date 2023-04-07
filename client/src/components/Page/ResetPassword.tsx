@@ -6,7 +6,7 @@ import { IAuthData, useAuthContext } from '../../Providers/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 import { Input } from '../Login/Input';
 import { useParams } from 'react-router';
-import { AuthCard } from '../Login/Form.css';
+import { AuthCard, Button } from '../Login/Form.css';
 
 
 const ResetPassword: React.FC = () => {
@@ -37,8 +37,6 @@ const ResetPassword: React.FC = () => {
 	// FIXME: type
 	async function handleSubmit(formData) {
 
-
-		console.log('here', formData.password, JSON.stringify(formData.password));
 		const data: IAuthData = await fetch(`${process.env.RESET_PWD_API}/${resetToken}`, {
 			method: 'PUT',
 			headers: {
@@ -52,10 +50,10 @@ const ResetPassword: React.FC = () => {
 			setServerError(data);
 			return;
 		}
-		// TODO: success message
+		// TODO: modal for success + redirect
 	}
 
-	// TODO: form error handling
+	// TODO: form error handling, seems like pwd check doesn't work
 	// TODO: view pwd options
 	return (
 		<FormProvider {...methods}>
@@ -67,7 +65,7 @@ const ResetPassword: React.FC = () => {
 							type="password"
 							labelText="Retype Password"
 						/>
-						<button>Submit</button>
+						<Button>Submit</Button>
 					</form>
 				</AuthCard>
 		</FormProvider>
