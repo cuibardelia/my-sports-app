@@ -6,9 +6,9 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/webpack serve",
-    "build": "./node_modules/.bin/webpack",
-    "lint": "./node_modules/.bin/eslint --fix --ext .js,.jsx ./src"
+    "dev": "node_modules/.bin/webpack serve",
+    "build": "node_modules/.bin/webpack",
+    "lint": "node_modules/.bin/eslint --fix --ext .js,.jsx ../src"
   },
   "author": "",
   "license": "ISC",

@@ -1,8 +1,8 @@
-server/node_modules/
+node_modules/
+dist/
 *.iml
 .npmrc
 .history
 .cache
 .idea
-.env
 .pb

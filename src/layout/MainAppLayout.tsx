@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { AuthContainer } from './AuthLayout.css';
 import Navbar from '../components/Navbar/Navbar';
 import Sidebar from '../components/Sidebar/Sidebar';
+import { Footer } from '../components/Extras.css';
 
 export const MainAppLayout: React.FunctionComponent<{}> = () => {
 	const location = useLocation();
@@ -12,6 +13,7 @@ export const MainAppLayout: React.FunctionComponent<{}> = () => {
 			<Navbar />
 			{showSidebar && (<Sidebar />)}
 			<Outlet />
+			<Footer>WIP</Footer>
 		</AuthContainer>
 	);
 };

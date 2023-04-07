@@ -40,6 +40,7 @@ const Register: React.FC = () => {
 	});
 
 	// TODO: Remove autocomplete?
+	// TODO: input letter by letter
 	const { login } = useAuthContext();
 	const navigate = useNavigate();
 
@@ -53,7 +54,6 @@ const Register: React.FC = () => {
 			body: JSON.stringify(payload),
 		}).then((res) => res.json());
 
-		// const { token, user } = data;
 		login(data);
 		navigate('/');
 	}
