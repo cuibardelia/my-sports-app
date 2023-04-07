@@ -7,9 +7,6 @@ H
 client/babel.config.json,4/e/4efca06416671ec1651972b71eff232d1e8aa37e
 H
 server/package-lock.json,d/0/d015b61d94ec074e22132931840237a6e110b623
-:
-
-.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
 C
 client/.eslintrc.js,f/d/fdf5b3917e455a96a82adb346d5d38060c2d5774
 S

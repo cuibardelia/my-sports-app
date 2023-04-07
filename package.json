@@ -4,6 +4,9 @@
   "description": "App designed to improve one's lifestyle in terms of fitness.",
   "proxy": "http://localhost:5000",
   "main": "index.ts",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node_modules/.bin/webpack serve",
