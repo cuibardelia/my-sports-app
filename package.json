@@ -5,7 +5,8 @@
   "proxy": "http://localhost:5000",
   "main": "index.ts",
   "engines": {
-    "node": "16.x"
+    "node": "16.14.2",
+    "npm": "6.9.0"
   },
   "scripts": {
     "start": "node_modules/.bin/webpack serve",
