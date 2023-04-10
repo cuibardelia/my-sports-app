@@ -1,3 +1,4 @@
+import * as React from 'react';
 import PageContainer from '../PageContainer.css';
 
 const Settings: React.FC = () => {

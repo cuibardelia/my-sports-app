@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { createContext, useContext } from 'react';
 

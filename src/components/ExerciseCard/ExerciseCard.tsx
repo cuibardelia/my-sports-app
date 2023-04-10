@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { CardContainer, CardInner, Snap } from "./ExerciseCard.css";
 
 type CardExercisePropType = {

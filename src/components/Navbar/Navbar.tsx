@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import {MenuItem, NavContainer } from './Navbar.css';
 import { useAuthContext } from '../../Providers/AuthContext';

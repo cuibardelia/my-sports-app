@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Outlet } from 'react-router-dom';
 import { LogoContainer } from '../components/Sidebar/Sidebar.css';
 import { AuthContainer } from './AuthLayout.css';

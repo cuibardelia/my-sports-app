@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { object, string } from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';

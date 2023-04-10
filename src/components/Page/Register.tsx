@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,7 +7,6 @@ import { useAuthContext } from '../../Providers/AuthContext';
 import { Input } from '../Login/Input';
 import { AuthCard, BottomLinks, Button } from '../Login/Form.css';
 import { AuthPaths } from '../Navbar/Navbar';
-
 
 type FormData = {
 	email: string;

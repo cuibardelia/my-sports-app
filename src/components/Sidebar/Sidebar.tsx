@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import {Greeting, LogoContainer, MenuItem, SideContainer, SideMenuContainer } from './Sidebar.css';
 import { useAuthContext } from '../../Providers/AuthContext';

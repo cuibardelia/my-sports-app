@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AuthContainer } from './AuthLayout.css';
 import Navbar from '../components/Navbar/Navbar';
