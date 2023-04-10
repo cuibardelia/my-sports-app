@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { CardContainer, CardInner, Snap } from "./ExerciseCard.css";
+import { CardContainer, CardInner, Snap } from './ExerciseCard.css';
 
 type CardExercisePropType = {
-    name: string;
-    path: string;
+  name: string;
+  path: string;
 };
 
-const ExerciseCard: React.FC<CardExercisePropType> = ({name='', path=''}) => {
-    return (
-        <CardContainer>
-            <CardInner>
-                <Snap path={path} />
-            </CardInner>
-        </CardContainer>
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const ExerciseCard: React.FC<CardExercisePropType> = ({ name = '', path = '' }) => (
+  <CardContainer>
+    <CardInner>
+      <Snap path={path} />
+    </CardInner>
+  </CardContainer>
 
-    );
-}
+);
 
 export default ExerciseCard;

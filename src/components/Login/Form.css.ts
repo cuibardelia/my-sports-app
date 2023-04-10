@@ -22,7 +22,7 @@ export const FormInput = styled.input`
   border-radius: 4px;
   background-color: #f8f8f8;
   font-size: 16px;
-`
+`;
 
 export const Button = styled.button`
   background-color: #4CAF50;
@@ -37,7 +37,7 @@ export const Button = styled.button`
   &:hover {
     background-color: #45a049;
   }
-`
+`;
 // TODO: must create a common components file
 const Card = styled.div` 
   width: max-content;
@@ -52,13 +52,12 @@ export const AuthCard = styled(Card)`
 export const BottomLinks = styled.div`
   margin-top: 20px;
   font-size: 14px;
-  color: #30424D;
-  
+  color: #30424D; 
   div {
-    flex-basis: 45%;
+	flex-basis: 45%;
 	margin-bottom: 20px;
   }
   a {
     color: #4CAF50;
   }
-`
+`;

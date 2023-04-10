@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
     'airbnb',
     'airbnb-typescript',
   ],
@@ -22,6 +22,13 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    'import/prefer-default-export': 'off',
+    "quotes": ["error", "single"],
+    "@typescript-eslint/naming-convention": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": "warn",
+    "react/jsx-no-constructed-context-values": "warn",
+    "no-tabs": "warn"
   },
 };

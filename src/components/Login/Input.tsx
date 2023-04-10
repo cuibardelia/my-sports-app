@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { FormInput, Label } from './Form.css';
-
 
 type InputTypes =
   | 'text'
@@ -12,7 +12,7 @@ type InputTypes =
   | 'color'
   | 'date';
 
-export const Input = ({
+export function Input({
   name,
   labelText,
   type = 'text',
@@ -20,28 +20,28 @@ export const Input = ({
   name: string;
   labelText: string;
   type: InputTypes;
-}) => {
+}) {
   const {
     formState: { errors },
     register,
   } = useFormContext();
 
   return (
-      <div>
-        <Label htmlFor={name}>
-          {labelText}
-        </Label>
-        <FormInput
-          type={type}
-          id={name}
-          {...register(name)}
-        />
-        {errors?.[name] && (
-          <span>
-            {/*{errors[name]?.message}*/}
-            {'FIXME'}
-          </span>
-        )}
-      </div>
+    <div>
+      <Label htmlFor={name}>
+        {labelText}
+      </Label>
+      <FormInput
+        type={type}
+        id={name}
+        {...register(name)}
+      />
+      {errors?.[name] && (
+      <span>
+        {/* {errors[name]?.message} */}
+        FIXME
+      </span>
+      )}
+    </div>
   );
 }

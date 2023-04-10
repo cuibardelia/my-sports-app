@@ -30,7 +30,7 @@ export const CardInner = styled.div`
     border: 6px solid #3d4978;
 `;
 
-export const Snap = styled.div<{ path: string}>`
+export const Snap = styled.div<{ path: string }>`
   width: 80%;
   height: 80%;
   background-image: url(${(props) => props.path});

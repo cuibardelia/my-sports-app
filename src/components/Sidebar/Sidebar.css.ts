@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const SideContainer = styled.nav`
   width: 250px;
   height: 100%;
@@ -27,11 +26,12 @@ export const SideContainer = styled.nav`
 
       padding: 10px 15px;
       border-bottom: 1px solid #ddd;
+
       &:hover {
         color: #9b82ed;
       }
-	  
-	  &:last-child {
+
+      &:last-child {
         border-bottom: none;
       }
     }
@@ -40,7 +40,7 @@ export const SideContainer = styled.nav`
 export const MenuItem = styled.li`
     padding: 5px 10px;
   font-size: 22px;
-`
+`;
 
 export const LogoContainer = styled.div`
   width: 150px;
@@ -61,9 +61,8 @@ export const Greeting = styled.div`
   margin: 30px 20px 30px 20px;
   font-weight: bold;
 
-`
-
-export const SideMenuContainer = styled.div`
-  	margin: 30px 10px 30px 10px;
 `;
 
+export const SideMenuContainer = styled.div`
+  margin: 30px 10px 30px 10px;
+`;

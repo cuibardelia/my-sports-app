@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const NavContainer = styled.nav`
   position: fixed;
   top: 0;
@@ -32,4 +31,4 @@ export const NavContainer = styled.nav`
 export const MenuItem = styled.li`
     padding: 5px 10px;
     display: inline;
-`
+`;

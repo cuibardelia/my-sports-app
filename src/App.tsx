@@ -15,34 +15,34 @@ import ForgotPassword from './components/Page/ForgotPassword';
 import ResetPassword from './components/Page/ResetPassword';
 import PrivateRoute from './HOC/PrivateRoute';
 import Settings from './components/Page/Settings';
-import { AuthPaths } from './components/Navbar/Navbar';
+import { AuthPaths } from './Types';
 
 // TODO: NOT FOUND DESIGN
 const App: React.FC = () => (
-    <AuthContextProvider>
-        <GlobalStyles />
-        <Router>
-            <div className="App">
-                <Routes>
-                    <Route  path={AuthPaths.LOGIN} element={<AuthLayout />}>
-                        <Route index element={<Login />} />
-                        <Route path={AuthPaths.REGISTER} element={<Register />} />
-                        <Route path={AuthPaths.FORGOT} element={<ForgotPassword />} />
-                        <Route path={`${AuthPaths.RESET}/:resetToken`} element={<ResetPassword />} />
-                    </Route>
-                    <Route element={<PrivateRoute />}>
-                        <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/exercises" element={<Exercises />} />
-                        <Route path="/trainers" element={<Trainers />} />
-                        <Route path="/buddies" element={<Buddies />} />
-                        <Route path="/historic" element={<Historic />} />
-                        <Route path="/settings" element={<Settings />} />
-                    </Route>
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
-         </div>
-        </Router>
-    </AuthContextProvider>
-  );
+  <AuthContextProvider>
+    <GlobalStyles />
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path={AuthPaths.LOGIN} element={<AuthLayout />}>
+            <Route index element={<Login />} />
+            <Route path={AuthPaths.REGISTER} element={<Register />} />
+            <Route path={AuthPaths.FORGOT} element={<ForgotPassword />} />
+            <Route path={`${AuthPaths.RESET}/:resetToken`} element={<ResetPassword />} />
+          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/exercises" element={<Exercises />} />
+            <Route path="/trainers" element={<Trainers />} />
+            <Route path="/buddies" element={<Buddies />} />
+            <Route path="/historic" element={<Historic />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </Router>
+  </AuthContextProvider>
+);
 
 export default App;
