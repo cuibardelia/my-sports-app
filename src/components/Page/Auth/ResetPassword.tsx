@@ -4,11 +4,11 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useParams } from 'react-router';
-import { IAuthData, useAuthContext } from '../../Providers/AuthContext';
-import { Input } from '../Login/Input';
-import { AuthCard, Button } from '../Login/Form.css';
+import { IAuthData, useAuthContext } from '../../../Providers/AuthContext';
+import { Input } from '../../Login/Input';
+import { AuthCard, Button } from '../../Login/Form.css';
+import { FormDataType } from '../../../Types';
 
 const ResetPassword: React.FC = () => {
   const forgotPasswordValidationSchema = object({
@@ -20,7 +20,7 @@ const ResetPassword: React.FC = () => {
       .oneOf([ref('password')], 'The passwords don\'t match'),
   }).required();
 
-  const methods = useForm<FormData>({
+  const methods = useForm<FormDataType>({
     resolver: yupResolver(forgotPasswordValidationSchema),
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -4,25 +4,26 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useState } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
-import { IAuthData, useAuthContext } from '../../Providers/AuthContext';
-import { Input } from '../Login/Input';
-import { AuthCard, BottomLinks, Button } from '../Login/Form.css';
-import { AuthPaths } from '../../Types';
+import { IAuthData, useAuthContext } from '../../../Providers/AuthContext';
+import { Input } from '../../Login/Input';
+import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
+import { AuthPaths, FormDataType, UserType } from '../../../Types';
+import { getAuthHeaders } from '../../../helpers/fnUser';
 
-const ForgotPassword: React.FC = () => {
+const ForgotPassword: React.FC<{ userType: UserType }> = ({ userType }) => {
   const forgotPasswordValidationSchema = object({
     email: string()
       .required('Please enter an email address.')
       .email('Your email address does not seem valid.'),
   }).required();
 
-  const methods = useForm<FormData>({
+  const methods = useForm<FormDataType>({
     resolver: yupResolver(forgotPasswordValidationSchema),
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverError, setServerError] = useState('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { login, user } = useAuthContext();
+  const { user } = useAuthContext();
 
   const location = useLocation();
 
@@ -32,12 +33,10 @@ const ForgotPassword: React.FC = () => {
     return <Navigate to={destination} />;
   }
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(formData: FormDataType) {
     const data: IAuthData = await fetch(process.env.FORGOT_PWD_API, {
       method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
+      headers: getAuthHeaders(userType),
       body: JSON.stringify(formData),
     }).then((res) => res.json());
 
