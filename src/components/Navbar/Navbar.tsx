@@ -1,48 +1,50 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MenuItem, NavContainer } from './Navbar.css';
 import { useAuthContext } from '../../Providers/AuthContext';
-import { AppPaths, AuthPaths, TopPaths } from '../../Types';
-
-export type Menu = {
-  name: string;
-  path: AppPaths;
-};
-
-const topMenuOptions: Menu[] = [
-  {
-    name: 'Dashboard',
-    path: TopPaths.DASHBOARD,
-  },
-  {
-    name: 'Trainers',
-    path: TopPaths.TRAINERS,
-  },
-  {
-    name: 'Settings',
-    path: TopPaths.SETTINGS,
-  },
-];
+import { getMenu } from '../../helpers/fnUser';
+import { MenuOptions } from '../../Types';
 
 const Navbar: React.FC = () => {
   // const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const { logout } = useAuthContext();
+  const navigate = useNavigate();
+
+  const { logout, user } = useAuthContext();
+  const { TopPaths } = getMenu(user.userType);
+  // FIXME
+  // const hasLogOut = hasLogout(user.userType);
+  const hasLogOut = true;
+
+  if (!TopPaths && !hasLogOut) {
+    return null;
+  }
+
+  const menu = Object.entries?.[TopPaths]?.map(([key, value]) => ({
+    path: value,
+    name: MenuOptions[key],
+  }));
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
 
   // TODO: tabindex for accessibility
   return (
     <NavContainer>
       <ul>
-        {topMenuOptions.map((item) => (
+        {menu?.map((item) => (
           <Link to={item.path} key={`menu-${item.name}`}>
             <MenuItem>{item.name}</MenuItem>
           </Link>
         ))}
-        <Link
-          to={AuthPaths.LOGIN}
-          onClick={logout}
+        { hasLogOut && (
+        <MenuItem
+          onClick={handleLogout}
         >
-          <MenuItem>Logout</MenuItem>
-        </Link>
+          Logout
+        </MenuItem>
+        )}
       </ul>
     </NavContainer>
   );

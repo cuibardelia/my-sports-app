@@ -4,7 +4,7 @@ import PageContainer from '../PageContainer.css';
 const Settings: React.FC = () => (
   <PageContainer>
     <main>
-      Here, the user will be able to pick an avatar, choose weight, goal weight, height etc
+      Here, the client will be able to pick an avatar, choose weight, goal weight, height etc
     </main>
   </PageContainer>
 );

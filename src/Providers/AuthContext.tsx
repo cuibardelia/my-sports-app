@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createContext, useContext } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
+import { IUser } from '../Types';
 
 // FIXME: proxy issues
 // FIXME: linting & IDE
@@ -14,21 +15,12 @@ export interface IAuthData {
   user: IUser;
 }
 
-interface IUser {
-  email: string;
-  password?: string;
-  username: string;
-  lastName: string;
-  firstName: string;
-}
-
 interface IAuthContext {
   token: string;
   user: IUser;
   login: (data: IAuthData) => void;
   logout: () => void;
 }
-
 export const AuthContext = createContext<IAuthContext | null>(null);
 
 export const AuthContextProvider: React.FunctionComponent<{

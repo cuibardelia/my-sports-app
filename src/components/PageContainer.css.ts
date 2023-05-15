@@ -5,8 +5,7 @@ const PageContainer = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: center;
-
+	padding-left: 250px;
 `;
 
 export default PageContainer;

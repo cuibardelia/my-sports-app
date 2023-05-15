@@ -2,6 +2,12 @@ import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { FormInput, Label } from './Form.css';
 
+export type FieldType = {
+  name: string;
+  labelText: string;
+  type: InputTypes;
+};
+
 type InputTypes =
   | 'text'
   | 'email'
@@ -16,11 +22,7 @@ export function Input({
   name,
   labelText,
   type = 'text',
-}: {
-  name: string;
-  labelText: string;
-  type: InputTypes;
-}) {
+}: FieldType) {
   const {
     formState: { errors },
     register,

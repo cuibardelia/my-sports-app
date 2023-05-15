@@ -3,40 +3,68 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthContextProvider } from './Providers/AuthContext';
 import { AuthLayout } from './layout/AuthLayout';
 import { GlobalStyles } from './Providers/GlobalStyles.css';
-import Dashboard from './components/Page/Dashboard';
-import Exercises from './components/Page/Exercises';
-import Trainers from './components/Page/Trainers';
+import Dashboard from './components/Page/Common/Dashboard';
+import Exercises from './components/Page/Common/Exercises';
 import NotFound from './components/Page/NotFound';
-import Historic from './components/Page/Historic';
-import Buddies from './components/Page/Buddies';
-import Login from './components/Page/Login';
-import Register from './components/Page/Register';
-import ForgotPassword from './components/Page/ForgotPassword';
-import ResetPassword from './components/Page/ResetPassword';
+import Historic from './components/Page/Client/Historic';
+import Buddies from './components/Page/Client/Buddies';
+import Login from './components/Page/Auth/Login';
+import Register from './components/Page/Auth/Register';
+import ForgotPassword from './components/Page/Auth/ForgotPassword';
+import ResetPassword from './components/Page/Auth/ResetPassword';
 import PrivateRoute from './HOC/PrivateRoute';
 import Settings from './components/Page/Settings';
-import { AuthPaths } from './Types';
+import {
+  AuthPaths, ConnectionPaths, FeaturePaths, UserPaths, UserType,
+} from './Types';
+import AdminDashboard from './components/Page/Admin/AdminDashboard';
+import TrainerDashboard from './components/Page/Trainers/TrainerDashboard';
+import TrainerClients from './components/Page/Trainers/TrainerClients';
+// import InviteTrainer from './components/Page/Trainers/InviteTrainer';
+// import TrainerClasses from './components/Page/Trainers/TrainerSessions';
+import AdminTrainers from './components/Page/Admin/AdminTrainers';
+import AdminClients from './components/Page/Admin/AdminClients';
+import Landing from './components/Page/Landing';
+import TrainerSessions from './components/Page/Trainers/TrainerSessions';
 
-// TODO: NOT FOUND DESIGN
+// TODO: ERROR PAGE DESIGN
 const App: React.FC = () => (
   <AuthContextProvider>
     <GlobalStyles />
     <Router>
       <div className="App">
         <Routes>
-          <Route path={AuthPaths.LOGIN} element={<AuthLayout />}>
-            <Route index element={<Login />} />
-            <Route path={AuthPaths.REGISTER} element={<Register />} />
-            <Route path={AuthPaths.FORGOT} element={<ForgotPassword />} />
+          <Route path="/" element={<Landing />} />
+          <Route path={AuthPaths.AUTH} element={<AuthLayout />}>
+            <Route path={UserPaths.CLIENT} element={<Login userType={UserType.CLIENT} />} />
+            <Route path={UserPaths.TRAINER} element={<Login userType={UserType.TRAINER} />} />
+            <Route path={UserPaths.ADMIN} element={<Login userType={UserType.ADMIN} />} />
+            <Route path={`${UserPaths.CLIENT}/${AuthPaths.REGISTER}`} element={<Register userType={UserType.CLIENT} />} />
+            <Route path={`${UserPaths.TRAINER}/${AuthPaths.REGISTER}`} element={<Register userType={UserType.TRAINER} />} />
+            <Route path={`${UserPaths.CLIENT}/${AuthPaths.FORGOT}`} element={<ForgotPassword userType={UserType.CLIENT} />} />
+            <Route path={`${UserPaths.TRAINER}/${AuthPaths.FORGOT}`} element={<ForgotPassword userType={UserType.TRAINER} />} />
             <Route path={`${AuthPaths.RESET}/:resetToken`} element={<ResetPassword />} />
           </Route>
-          <Route element={<PrivateRoute />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/exercises" element={<Exercises />} />
-            <Route path="/trainers" element={<Trainers />} />
-            <Route path="/buddies" element={<Buddies />} />
-            <Route path="/historic" element={<Historic />} />
-            <Route path="/settings" element={<Settings />} />
+          {/* <Route path={AuthPaths.INVITE_TRAINER} element={<InviteTrainer />} /> */}
+          <Route path="/client" element={<PrivateRoute userType="client" />}>
+            <Route path={FeaturePaths.DASHBOARD} element={<Dashboard />} />
+            <Route path={FeaturePaths.EXERCISES} element={<Exercises />} />
+            <Route path={ConnectionPaths.BUDDIES} element={<Buddies />} />
+            <Route path={ConnectionPaths.TRAINERS} element={<Buddies />} />
+            <Route path={FeaturePaths.HISTORIC} element={<Historic />} />
+            <Route path={FeaturePaths.SETTINGS} element={<Settings />} />
+          </Route>
+          <Route path="/trainer" element={<PrivateRoute userType="trainer" />}>
+            <Route path={FeaturePaths.DASHBOARD} element={<TrainerDashboard />} />
+            <Route path={ConnectionPaths.CLIENTS} element={<TrainerClients />} />
+            <Route path={FeaturePaths.SESSIONS} element={<TrainerSessions />} />
+            {/* <Route path="/trainer-settings" element={<TrainerSettings />} /> */}
+          </Route>
+          <Route path="/admin" element={<PrivateRoute userType="admin" />}>
+            <Route path={FeaturePaths.DASHBOARD} element={<AdminDashboard />} />
+            <Route path={ConnectionPaths.TRAINERS} element={<AdminTrainers />} />
+            <Route path={ConnectionPaths.CLIENTS} element={<AdminClients />} />
+            {/* <Route path="/admin-settings" element={<AdminSettings />} /> */}
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -30,10 +30,28 @@ export const CardInner = styled.div`
     border: 6px solid #3d4978;
 `;
 
-export const Snap = styled.div<{ path: string }>`
-  width: 80%;
-  height: 80%;
-  background-image: url(${(props) => props.path});
-  background-size: contain;
+export const Snap = styled.img`
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 8px;
+`;
 
+export const StyledCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    transform: scale(1.2);
+    background-color: #f1f1f1;
+  }
 `;

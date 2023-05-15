@@ -1,10 +1,11 @@
+/* eslint-disable */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 require('dotenv').config();
 
@@ -24,7 +25,7 @@ const config = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    publicPath: '/',
   },
   resolve: {
     alias: {
@@ -38,11 +39,11 @@ const config = {
         test: /\.(jsx?|js)$/,
         exclude: /node_modules/,
         use: {
-        loader: 'babel-loader',
+          loader: 'babel-loader',
           options: {
             configFile: path.resolve('babel.config.json'),
           },
-        }
+        },
       },
       { test: /\.tsx?$/, loader: 'ts-loader' },
     ],
@@ -56,11 +57,11 @@ const config = {
     }),
     new ESLintPlugin({}),
     new CopyWebpackPlugin(
-        {
-          patterns: [
-            { from: 'src/assets', to: 'assets' },
-          ],
-        }
+      {
+        patterns: [
+          { from: 'src/assets', to: 'assets' },
+        ],
+      },
     ),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify({
@@ -70,6 +71,7 @@ const config = {
         RESET_PWD_API: getEnvVar('RESET_PWD_API'),
       }),
     }),
+    // new BundleAnalyzerPlugin(),
   ],
 };
 

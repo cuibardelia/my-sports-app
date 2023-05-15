@@ -3,41 +3,34 @@ import { Link } from 'react-router-dom';
 import {
   Greeting, LogoContainer, MenuItem, SideContainer, SideMenuContainer,
 } from './Sidebar.css';
-import { useAuthContext } from '../../Providers/AuthContext';
-import { Menu } from '../Navbar/Navbar';
-import { SidePaths } from '../../Types';
-
-const sideMenuOptions: Menu[] = [
-  {
-    name: 'Dashboard',
-    path: SidePaths.DASHBOARD,
-  },
-  {
-    name: 'My Buddies',
-    path: SidePaths.BUDDIES,
-  },
-  {
-    name: 'My Exercises',
-    path: SidePaths.EXERCISES,
-  },
-  {
-    name: 'My Past Achievements',
-    path: SidePaths.HISTORIC,
-  },
-];
+import {
+  useAuthContext,
+} from '../../Providers/AuthContext';
+import { getMenu, getUserName } from '../../helpers/fnUser';
+import { MenuOptions } from '../../Types';
 
 const Navbar: React.FC = () => {
-  // const [currentIndex, setCurrentIndex] = useState<number>(0);
   const { user } = useAuthContext();
+
+  const { SidePaths } = getMenu(user.userType);
+
+  if (!SidePaths) {
+    return null;
+  }
+
+  const menu = Object.entries(SidePaths).map(([key, value]) => ({
+    path: value,
+    name: MenuOptions[key],
+  }));
 
   return (
     <SideContainer>
       <LogoContainer />
-      <Greeting>{`Hey there ${user.username}`}</Greeting>
+      <Greeting>{`Hey there, ${getUserName(user)?.toUpperCase()}`}</Greeting>
       <SideMenuContainer>
         <ul>
-          {sideMenuOptions.map((item) => (
-            <Link to={item.path} key={`menu-${item.name}`}>
+          {menu.map((item) => (
+            <Link to={item.path} key={`menu-${item.path}-${item.name}`}>
               <MenuItem>{item.name}</MenuItem>
             </Link>
           ))}

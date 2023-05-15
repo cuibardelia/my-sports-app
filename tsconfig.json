@@ -6,5 +6,6 @@
     "allowJs": true,
     "module": "AMD",
     "moduleResolution": "node",
+    "esModuleInterop": true
   }
 }
