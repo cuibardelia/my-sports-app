@@ -42,6 +42,7 @@ export const MenuItem = styled.li`
   font-size: 22px;
 `;
 
+// FIXME: webpack paths to assets
 export const LogoContainer = styled.div`
   width: 150px;
   height: 150px;

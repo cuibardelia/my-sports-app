@@ -142,7 +142,7 @@ const mapPics = (exercises: any) => {
 const options = {
   headers: {
     'content-type': 'application/octet-stream',
-    'X-RapidAPI-Key': '',
+    'X-RapidAPI-Key': process.env.RAPID_API,
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
   },
 };

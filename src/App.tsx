@@ -22,8 +22,7 @@ import TrainerDashboard from './components/Page/Trainers/TrainerDashboard';
 import TrainerClients from './components/Page/Trainers/TrainerClients';
 // import InviteTrainer from './components/Page/Trainers/InviteTrainer';
 // import TrainerClasses from './components/Page/Trainers/TrainerSessions';
-import AdminTrainers from './components/Page/Admin/AdminTrainers';
-import AdminClients from './components/Page/Admin/AdminClients';
+import AdminUsers from './components/Page/Admin/AdminUsers';
 import Landing from './components/Page/Landing';
 import TrainerSessions from './components/Page/Trainers/TrainerSessions';
 
@@ -62,8 +61,8 @@ const App: React.FC = () => (
           </Route>
           <Route path="/admin" element={<PrivateRoute userType="admin" />}>
             <Route path={FeaturePaths.DASHBOARD} element={<AdminDashboard />} />
-            <Route path={ConnectionPaths.TRAINERS} element={<AdminTrainers />} />
-            <Route path={ConnectionPaths.CLIENTS} element={<AdminClients />} />
+            <Route path={ConnectionPaths.TRAINERS} element={<AdminUsers userType={UserType.TRAINER} />} />
+            <Route path={ConnectionPaths.CLIENTS} element={<AdminUsers userType={UserType.CLIENT} />} />
             {/* <Route path="/admin-settings" element={<AdminSettings />} /> */}
           </Route>
           <Route path="*" element={<NotFound />} />

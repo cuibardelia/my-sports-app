@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
     return null;
   }
 
-  const menu = Object.entries?.[TopPaths]?.map(([key, value]) => ({
+  const menu = Object.entries(TopPaths)?.map(([key, value]) => ({
     path: value,
     name: MenuOptions[key],
   }));

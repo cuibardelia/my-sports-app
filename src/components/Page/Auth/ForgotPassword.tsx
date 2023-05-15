@@ -8,7 +8,7 @@ import { IAuthData, useAuthContext } from '../../../Providers/AuthContext';
 import { Input } from '../../Login/Input';
 import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
 import { AuthPaths, FormDataType, UserType } from '../../../Types';
-import { getAuthHeaders } from '../../../helpers/fnUser';
+import { getAuthHeaders } from '../../../helpers/fnRequest';
 
 const ForgotPassword: React.FC<{ userType: UserType }> = ({ userType }) => {
   const forgotPasswordValidationSchema = object({
@@ -34,6 +34,7 @@ const ForgotPassword: React.FC<{ userType: UserType }> = ({ userType }) => {
   }
 
   async function handleSubmit(formData: FormDataType) {
+    // TODO: axios
     const data: IAuthData = await fetch(process.env.FORGOT_PWD_API, {
       method: 'POST',
       headers: getAuthHeaders(userType),

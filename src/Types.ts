@@ -44,7 +44,7 @@ export const MenuOptions: MenuOptionsType = {
 
 // TODO: backend
 export const AdminMenu = {
-  SidePaths: {
+  TopPaths: {
     DASHBOARD: 'dashboard',
     CLIENTS: 'clients',
     TRAINERS: 'trainers',
@@ -153,7 +153,7 @@ export interface IClient extends ICommonUser {
   goalWeight: number;
 }
 
-type Specialties = 'HIIT' | 'Pilates' | 'Body Pump' | 'Zumba' | 'Circuit Training' | 'TRX' | 'Body Combat' | 'Core' | 'Rebounder';
+export type Specialties = 'HIIT' | 'Pilates' | 'Body Pump' | 'Zumba' | 'Circuit Training' | 'TRX' | 'Body Combat' | 'Core' | 'Rebounder';
 
 export interface ITrainer extends ICommonUser {
   dateOfBirth: string;

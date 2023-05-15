@@ -10,7 +10,8 @@ import { Input } from '../../Login/Input';
 import { IAuthData, useAuthContext } from '../../../Providers/AuthContext';
 import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
 import { AuthPaths, FormDataType, UserType } from '../../../Types';
-import { getAuthHeaders, getDefaultRoute } from '../../../helpers/fnUser';
+import { getDefaultRoute } from '../../../helpers/fnUser';
+import { getAuthHeaders } from '../../../helpers/fnRequest';
 
 const Login: React.FC<{ userType: UserType }> = ({ userType }) => {
   const loginValidationSchema = object({

@@ -3,7 +3,6 @@ import { createContext, useContext } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { IUser } from '../Types';
 
-// FIXME: proxy issues
 // FIXME: linting & IDE
 // TODO: error boundary
 

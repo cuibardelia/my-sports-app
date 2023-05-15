@@ -69,6 +69,8 @@ const config = {
         REGISTER_API: getEnvVar('REGISTER_API'),
         FORGOT_PWD_API: getEnvVar('FORGOT_PWD_API'),
         RESET_PWD_API: getEnvVar('RESET_PWD_API'),
+        GET_TRAINERS_API: getEnvVar('GET_TRAINERS_API'),
+        GET_CLIENTS_API: getEnvVar('GET_CLIENTS_API'),
       }),
     }),
     // new BundleAnalyzerPlugin(),

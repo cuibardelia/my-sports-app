@@ -8,7 +8,8 @@ import { Input } from '../../Login/Input';
 import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
 import { AuthPaths, FormDataType, UserType } from '../../../Types';
 import { getRegisterFields, getUserSchema } from '../../../helpers/fnForm';
-import { getAuthHeaders, getDefaultRoute } from '../../../helpers/fnUser';
+import { getDefaultRoute } from '../../../helpers/fnUser';
+import { getAuthHeaders } from '../../../helpers/fnRequest';
 
 const Register: React.FC<{ userType: UserType }> = ({ userType }) => {
   const methods = useForm<FormDataType>({
@@ -24,6 +25,7 @@ const Register: React.FC<{ userType: UserType }> = ({ userType }) => {
     const { passwordCheck, ...payload } = formData;
     const url = `${process.env.REGISTER_API}/${userType}`;
 
+    // TODO: axios
     const data = await fetch(url, {
       method: 'POST',
       headers: getAuthHeaders(userType),

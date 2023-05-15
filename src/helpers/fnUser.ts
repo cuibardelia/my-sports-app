@@ -3,22 +3,6 @@ import {
   FeaturePaths, IClient, ITrainer, IUser, TrainerMenu, UserType,
 } from '../Types';
 
-type AuthHeader = {
-  'Content-type': string;
-  'X-User-Type': UserType;
-};
-
-export const cType = {
-  'Content-type': 'application/json',
-};
-
-export const getAuthHeaders = (userType: UserType): AuthHeader => (
-  {
-    ...cType,
-    'X-User-Type': userType,
-  }
-);
-
 export const getUserName = (user: IUser): string => {
   if (!user) {
     return '';
@@ -39,7 +23,7 @@ export const getDefaultRoute = (userType: UserType): string => `/${userType}/${F
 
 // FIXME
 type MenuType = {
-  SidePaths,
+  SidePaths?,
   TopPaths?,
 };
 
