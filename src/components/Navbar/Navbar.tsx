@@ -19,10 +19,13 @@ const Navbar: React.FC = () => {
     return null;
   }
 
-  const menu = Object.entries(TopPaths)?.map(([key, value]) => ({
-    path: value,
-    name: MenuOptions[key],
-  }));
+  let menu = [];
+  if (TopPaths) {
+    menu = Object.entries(TopPaths)?.map(([key, value]) => ({
+      path: value,
+      name: MenuOptions[key],
+    }));
+  }
 
   const handleLogout = () => {
     logout();

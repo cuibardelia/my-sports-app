@@ -1,175 +1,57 @@
 import * as React from 'react';
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { Button, ButtonGroup } from '@mui/material';
+import { green, purple } from '@mui/material/colors';
 import PageContainer from '../../PageContainer.css';
-import ExerciseCard from '../../ExerciseCard/ExerciseCard';
-import { example } from '../../ExerciseCard/exercise-data';
-
-const imageDataList: ImageData[] = [
-  { Abs: 'assets/planks.png' },
-  { Legs: 'assets/squats.png' },
-  { Chest: 'assets/pull-ups.png' },
-  { Back: 'assets/kettle.png' },
-];
-
-interface ImageData {
-  [key: string]: string;
-}
-
-const exerciseList = [
-  'abductors',
-  'abs',
-  'adductors',
-  'biceps',
-  'calves',
-  'cardiovascular system',
-  'delts',
-  'forearms',
-  'glutes',
-  'hamstrings',
-  'lats',
-  'levator scapulae',
-  'pectorals',
-  'quads',
-  'serratus anterior',
-  'spine',
-  'traps',
-  'triceps',
-  'upper back',
-];
-
-const imageList: ImageData[] = [
-  { abductors: 'assets/planks.png' },
-  { abs: 'assets/squats.png' },
-  { biceps: 'assets/pull-ups.png' },
-  { glutes: 'assets/kettle.png' },
-];
-
-const pathToNameMapper: Record<string, string> = {};
-
-imageDataList.forEach((imageData) => {
-  const key = Object.keys(imageData)[0];
-  pathToNameMapper[imageData[key]] = key;
-});
-
-// TODO: type & myfitpal DB
-// const exercises = [
-//   {
-//     name: 'squats',
-//     repetitions: 15,
-//     pic: 'assets/squats.png',
-//   },
-//   {
-//     name: 'kettle',
-//     repetitions: 10,
-//     pic: 'assets/kettle.png',
-//   },
-//   {
-//     name: 'planks',
-//     repetitions: 3,
-//     pic: 'assets/planks.png',
-//   },
-//   {
-//     name: 'pull ups',
-//     repetitions: 15,
-//     pic: 'assets/pull-ups.png',
-//   },
-//   {
-//     name: 'ball squats',
-//     repetitions: 15,
-//     pic: 'assets/ball-squats.png',
-//   },
-//   {
-//     name: 'kettle',
-//     repetitions: 10,
-//     pic: 'assets/kettle.png',
-//   },
-//   {
-//     name: 'planks',
-//     repetitions: 3,
-//     pic: 'assets/planks.png',
-//   },
-//   {
-//     name: 'pull ups',
-//     repetitions: 15,
-//     pic: 'assets/pull-ups.png',
-//   },
-// ];
-
-const getPic = (e: any): string => {
-  if (!e) {
-    return '';
-  }
-  imageDataList.forEach((id) => {
-    Object.keys(id).forEach((key) => {
-      if (key === e.category?.name) {
-        console.log(`Found image: ${key}: ${id[key]}`);
-        return id[key];
-      }
-    });
-
-    return '';
-  });
-
-  // return pic;
-};
-
-const ListContainer = styled.main`
-  margin: 300px 0 300px 100px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
-`;
+import ExerciseGrid from '../../Grid/ExerciseGrid';
+import { exerciseOptions, SelectedOption, useExercisesContext } from '../../../Providers/ExercisesContext';
+import ExerciseModal from './ExerciseModal';
+import { useAuthContext } from '../../../Providers/AuthContext';
 
 // https://api-ninjas.com/api/exercises if this one is ok we could asses muscle -> png
 // https://wger.de/api/v2/exerciseinfo/ same here!!
 
-const mapPics = (exercises: any) => {
-  exercises.forEach((e) => {
-    const { name } = e.category;
-
-    imageDataList.forEach((id) => {
-      for (const key in id) {
-        console.log(`${key}: ${id[key]}`);
-        if (key === name) {
-          e.pic = id[key];
-        }
-      }
-    });
-  });
-};
-
-const options = {
-  headers: {
-    'content-type': 'application/octet-stream',
-    'X-RapidAPI-Key': process.env.RAPID_API,
-    'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
-  },
-};
-
 const Exercises: React.FC = () => {
-  const [exercises, setExercises] = useState([]);
+  const {
+    setSelectedOption, activeOption, items, openExercise,
+  } = useExercisesContext();
+  const { user } = useAuthContext();
 
-  // TODO: Pagination
+  // TODO: Token reset on client side
+  const handleClick = (option) => {
+    setSelectedOption(option);
+  };
+
   useEffect(() => {
-    // axios.get('https://exercisedb.p.rapidapi.com/exercises/target/abs', options)
-    //   .then((response) => {
-    //     console.log('HEREE', response);
-    //     setExercises(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-    setExercises(example);
-  }, []);
+    if (activeOption === SelectedOption.FAV) {
+      setSelectedOption(SelectedOption.LOAD);
+      // TODO: this is obnoxious
+      setTimeout(() => {
+        setSelectedOption(SelectedOption.FAV);
+      }, 1000);
+    }
+  }, [user]);
 
   return (
     <PageContainer>
-      <ListContainer>
-        {/* eslint-disable-next-line max-len */}
-        {exercises?.map((exercise, index) => (<ExerciseCard key={`${exercise?.name}-${index}`} e={exercise} name={exercise?.name} path={exercise.gifUrl} />))}
-      </ListContainer>
+      <ButtonGroup variant="contained" aria-label="button group">
+        {exerciseOptions.map((option) => (
+          <Button
+            key={option}
+            onClick={() => handleClick(option)}
+            sx={{
+              backgroundColor: activeOption === option ? purple[300] : green[300],
+              '&:hover': {
+                backgroundColor: green[400],
+              },
+            }}
+          >
+            {option}
+          </Button>
+        ))}
+      </ButtonGroup>
+      <ExerciseModal exercise={openExercise} />
+      <ExerciseGrid items={items} />
     </PageContainer>
   );
 };

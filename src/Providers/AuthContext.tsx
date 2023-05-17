@@ -19,6 +19,7 @@ interface IAuthContext {
   user: IUser;
   login: (data: IAuthData) => void;
   logout: () => void;
+  resetUser: (data: IUser) => void;
 }
 export const AuthContext = createContext<IAuthContext | null>(null);
 
@@ -28,19 +29,23 @@ export const AuthContextProvider: React.FunctionComponent<{
   const [token, setToken, removeToken] = useLocalStorageState(tokenStorageKey);
   const [user, setUser, removeUser] = useLocalStorageState(userStorageKey);
 
-  function login(data: IAuthData) {
+  const login = (data: IAuthData) => {
     setToken(data.accessToken);
     setUser(data.user);
-  }
+  };
 
-  function logout() {
+  const logout = () => {
     removeToken();
     removeUser();
-  }
+  };
+
+  const resetUser = (data: IUser) => {
+    setUser(data);
+  };
 
   return (
     <AuthContext.Provider value={{
-      token, user, login, logout,
+      token, user, login, logout, resetUser,
     }}
     >
       {children}
@@ -48,7 +53,7 @@ export const AuthContextProvider: React.FunctionComponent<{
   );
 };
 
-export function useAuthContext() {
+export const useAuthContext = () => {
   const value = useContext(AuthContext);
 
   if (value === null) {
@@ -56,4 +61,4 @@ export function useAuthContext() {
   }
 
   return value;
-}
+};

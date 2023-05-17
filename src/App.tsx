@@ -25,50 +25,55 @@ import TrainerClients from './components/Page/Trainers/TrainerClients';
 import AdminUsers from './components/Page/Admin/AdminUsers';
 import Landing from './components/Page/Landing';
 import TrainerSessions from './components/Page/Trainers/TrainerSessions';
+import { ExercisesProvider } from './Providers/ExercisesContext';
 
 // TODO: ERROR PAGE DESIGN
+// TODO: Remove /client for auth, make index
 const App: React.FC = () => (
   <AuthContextProvider>
-    <GlobalStyles />
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path={AuthPaths.AUTH} element={<AuthLayout />}>
-            <Route path={UserPaths.CLIENT} element={<Login userType={UserType.CLIENT} />} />
-            <Route path={UserPaths.TRAINER} element={<Login userType={UserType.TRAINER} />} />
-            <Route path={UserPaths.ADMIN} element={<Login userType={UserType.ADMIN} />} />
-            <Route path={`${UserPaths.CLIENT}/${AuthPaths.REGISTER}`} element={<Register userType={UserType.CLIENT} />} />
-            <Route path={`${UserPaths.TRAINER}/${AuthPaths.REGISTER}`} element={<Register userType={UserType.TRAINER} />} />
-            <Route path={`${UserPaths.CLIENT}/${AuthPaths.FORGOT}`} element={<ForgotPassword userType={UserType.CLIENT} />} />
-            <Route path={`${UserPaths.TRAINER}/${AuthPaths.FORGOT}`} element={<ForgotPassword userType={UserType.TRAINER} />} />
-            <Route path={`${AuthPaths.RESET}/:resetToken`} element={<ResetPassword />} />
-          </Route>
-          {/* <Route path={AuthPaths.INVITE_TRAINER} element={<InviteTrainer />} /> */}
-          <Route path="/client" element={<PrivateRoute userType="client" />}>
-            <Route path={FeaturePaths.DASHBOARD} element={<Dashboard />} />
-            <Route path={FeaturePaths.EXERCISES} element={<Exercises />} />
-            <Route path={ConnectionPaths.BUDDIES} element={<Buddies />} />
-            <Route path={ConnectionPaths.TRAINERS} element={<Buddies />} />
-            <Route path={FeaturePaths.HISTORIC} element={<Historic />} />
-            <Route path={FeaturePaths.SETTINGS} element={<Settings />} />
-          </Route>
-          <Route path="/trainer" element={<PrivateRoute userType="trainer" />}>
-            <Route path={FeaturePaths.DASHBOARD} element={<TrainerDashboard />} />
-            <Route path={ConnectionPaths.CLIENTS} element={<TrainerClients />} />
-            <Route path={FeaturePaths.SESSIONS} element={<TrainerSessions />} />
-            {/* <Route path="/trainer-settings" element={<TrainerSettings />} /> */}
-          </Route>
-          <Route path="/admin" element={<PrivateRoute userType="admin" />}>
-            <Route path={FeaturePaths.DASHBOARD} element={<AdminDashboard />} />
-            <Route path={ConnectionPaths.TRAINERS} element={<AdminUsers userType={UserType.TRAINER} />} />
-            <Route path={ConnectionPaths.CLIENTS} element={<AdminUsers userType={UserType.CLIENT} />} />
-            {/* <Route path="/admin-settings" element={<AdminSettings />} /> */}
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
-    </Router>
+    <ExercisesProvider>
+      <GlobalStyles />
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path={AuthPaths.AUTH} element={<AuthLayout />}>
+              <Route path={UserPaths.CLIENT} element={<Login userType={UserType.CLIENT} />} />
+              <Route path={UserPaths.TRAINER} element={<Login userType={UserType.TRAINER} />} />
+              <Route path={UserPaths.ADMIN} element={<Login userType={UserType.ADMIN} />} />
+              <Route path={`${UserPaths.CLIENT}/${AuthPaths.REGISTER}`} element={<Register userType={UserType.CLIENT} />} />
+              <Route path={`${UserPaths.TRAINER}/${AuthPaths.REGISTER}`} element={<Register userType={UserType.TRAINER} />} />
+              <Route path={`${UserPaths.CLIENT}/${AuthPaths.FORGOT}`} element={<ForgotPassword userType={UserType.CLIENT} />} />
+              <Route path={`${UserPaths.TRAINER}/${AuthPaths.FORGOT}`} element={<ForgotPassword userType={UserType.TRAINER} />} />
+              <Route path={`${AuthPaths.RESET}/:resetToken`} element={<ResetPassword />} />
+            </Route>
+            {/* <Route path={AuthPaths.INVITE_TRAINER} element={<InviteTrainer />} /> */}
+            <Route path="/client" element={<PrivateRoute userType="client" />}>
+              <Route path={FeaturePaths.DASHBOARD} element={<Dashboard />} />
+              <Route path={FeaturePaths.EXERCISES} element={<Exercises />} />
+              <Route path={ConnectionPaths.BUDDIES} element={<Buddies />} />
+              <Route path={ConnectionPaths.TRAINERS} element={<Buddies />} />
+              <Route path={FeaturePaths.HISTORIC} element={<Historic />} />
+              <Route path={FeaturePaths.SETTINGS} element={<Settings />} />
+            </Route>
+            <Route path="/trainer" element={<PrivateRoute userType="trainer" />}>
+              <Route path={FeaturePaths.DASHBOARD} element={<TrainerDashboard />} />
+              <Route path={ConnectionPaths.CLIENTS} element={<TrainerClients />} />
+              <Route path={FeaturePaths.EXERCISES} element={<Exercises />} />
+              <Route path={FeaturePaths.SESSIONS} element={<TrainerSessions />} />
+              {/* <Route path="/trainer-settings" element={<TrainerSettings />} /> */}
+            </Route>
+            <Route path="/admin" element={<PrivateRoute userType="admin" />}>
+              <Route path={FeaturePaths.DASHBOARD} element={<AdminDashboard />} />
+              <Route path={ConnectionPaths.TRAINERS} element={<AdminUsers userType={UserType.TRAINER} />} />
+              <Route path={ConnectionPaths.CLIENTS} element={<AdminUsers userType={UserType.CLIENT} />} />
+              {/* <Route path="/admin-settings" element={<AdminSettings />} /> */}
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </Router>
+    </ExercisesProvider>
   </AuthContextProvider>
 );
 

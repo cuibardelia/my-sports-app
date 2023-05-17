@@ -1,38 +1,23 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+
 import PageContainer from '../../PageContainer.css';
-import { useAuthContext } from '../../../Providers/AuthContext';
 import { UserTable } from '../../Tables/UserTable';
 import { UserType } from '../../../Types';
-import {
-  getFormattedUser, getProtectedHeaders, getUserAPI, UserFormattedInfo,
-} from '../../../helpers/fnRequest';
+import { AdminProvider } from '../../../Providers/AdminContext';
+import UserModal from './UserModal';
+import DeleteModal from './DeleteModal';
+import PicModal from './PicModal';
 
-const AdminUsers: React.FC<{ userType: UserType }> = ({ userType }) => {
-  const { token } = useAuthContext();
-  const [users, setUsers] = useState<UserFormattedInfo[]>([]);
-
-  const options = {
-    headers: getProtectedHeaders(token),
-  };
-
-  useEffect(() => {
-    axios.get(getUserAPI(userType), options)
-      .then((response) => {
-        setUsers(getFormattedUser(response.data.users, userType));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [userType]);
-
-  return (
-    <PageContainer>
+const AdminUsers: React.FC<{ userType: UserType }> = ({ userType }) => (
+  <PageContainer>
+    <AdminProvider userType={userType}>
       <main>
-        <UserTable users={users} />
+        <UserTable />
+        <UserModal />
+        <DeleteModal />
+        <PicModal />
       </main>
-    </PageContainer>
-  );
-};
+    </AdminProvider>
+  </PageContainer>
+);
 export default AdminUsers;

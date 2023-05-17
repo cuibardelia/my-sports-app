@@ -18,11 +18,11 @@ type InputTypes =
   | 'color'
   | 'date';
 
-export function Input({
+export const Input = ({
   name,
   labelText,
   type = 'text',
-}: FieldType) {
+}: FieldType) => {
   const {
     formState: { errors },
     register,
@@ -46,4 +46,4 @@ export function Input({
       )}
     </div>
   );
-}
+};

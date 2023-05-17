@@ -47,7 +47,7 @@ export const LogoContainer = styled.div`
   width: 150px;
   height: 150px;
   margin: 10px 30px 30px 30px;
-  background-image: url("assets/avo-cardio.png");
+  background-image: url("/assets/avo-cardio.png");
   background-size: contain;
   border-radius: 4px;
 

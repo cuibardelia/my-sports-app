@@ -138,7 +138,8 @@ export interface IAdmin extends ICredentials {
   userType: UserType;
 }
 
-interface ICommonUser {
+// shared between Client and Trainer
+export interface ICommonUser {
   lastName: string;
   firstName: string;
   favoriteExercises: string[];
@@ -153,12 +154,12 @@ export interface IClient extends ICommonUser {
   goalWeight: number;
 }
 
-export type Specialties = 'HIIT' | 'Pilates' | 'Body Pump' | 'Zumba' | 'Circuit Training' | 'TRX' | 'Body Combat' | 'Core' | 'Rebounder';
+export const specialtiesList = ['HIIT', 'Pilates', 'Body Pump', 'Zumba', 'Circuit Training', 'TRX', 'Body Combat', 'Core', 'Rebounder'];
 
 export interface ITrainer extends ICommonUser {
   dateOfBirth: string;
   bio: number;
-  specialties: Specialties[];
+  specialties: typeof specialtiesList;
 }
 
 export type IUser = ICommonUser | IClient | ITrainer | IAdmin;
@@ -187,3 +188,24 @@ export type TrainerFormData = {
 };
 
 export type FormDataType = TrainerFormData | ClientFormData;
+
+/*
+========================
+	    EXERCISES
+========================
+*/
+
+export type TargetArea = {
+  name: string;
+  url: string;
+  type: string;
+};
+
+export type Exercise = {
+  name: string;
+  gifUrl: string;
+  id: string;
+  bodyPart: string;
+  equipment: string;
+  _id: string;
+};

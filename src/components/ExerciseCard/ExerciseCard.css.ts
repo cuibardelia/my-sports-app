@@ -21,13 +21,13 @@ export const CardContainer = styled.div`
 `;
 
 export const CardInner = styled.div`
-    width: 80%;
-    height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-    border-radius: ${radius}px;
-    border: 6px solid #3d4978;
+	width: 80%;
+	height: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: ${radius}px;
+	border: 6px solid #3d4978;
 `;
 
 export const Snap = styled.img`
@@ -38,12 +38,8 @@ export const Snap = styled.img`
 `;
 
 export const StyledCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  width: 200px;
+  width: 70%;
+  height: 70%;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   background-color: white;

@@ -3,13 +3,10 @@ import {
 } from '@mui/material';
 import * as React from 'react';
 import { UserRow } from './UserRow';
-import { UserFormattedInfo } from '../../helpers/fnRequest';
+import { useAdminContext } from '../../Providers/AdminContext';
 
-interface UserTableProps {
-  users: UserFormattedInfo[];
-}
-
-export const UserTable: React.FC<UserTableProps> = ({ users }) => {
+export const UserTable: React.FC = () => {
+  const { users } = useAdminContext();
   if (!users) {
     return <div>NO Data</div>;
   }

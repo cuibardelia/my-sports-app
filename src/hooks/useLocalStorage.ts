@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 
-function updateStorage(key, value) {
+const updateStorage = (key, value) => {
   if (window?.localStorage) {
     window.localStorage.setItem(key, JSON.stringify(value));
   }
-}
+};
 
-function retrieveFromStorage(key) {
+const retrieveFromStorage = (key) => {
   if (window?.localStorage) {
     const val = window.localStorage.getItem(key);
 
@@ -17,9 +17,9 @@ function retrieveFromStorage(key) {
   }
 
   return null;
-}
+};
 
-export function useLocalStorageState(key) {
+export const useLocalStorageState = (key) => {
   const [state, setState] = useState(() => {
     const val = retrieveFromStorage(key);
 
@@ -65,4 +65,4 @@ export function useLocalStorageState(key) {
   }, [key]);
 
   return [state, handleStateUpdate, removeState];
-}
+};
