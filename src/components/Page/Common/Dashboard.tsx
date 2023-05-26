@@ -7,6 +7,8 @@ import ActiveZoneChart from '../../Chart/ActiveZoneChart';
 import DailyGoalChart from '../../Chart/DailyGoalChart';
 import Dropdown from '../../Dropdown/Dropdown';
 import { optionMappingKeys, OptionMappingKeys } from '../../../Types';
+import UserCard from '../Client/UserCard';
+import { useAuthContext } from '../../../Providers/AuthContext';
 
 // Daily activity
 // https://dev.fitbit.com/build/reference/web-api/activity/get-daily-activity-summary/
@@ -18,7 +20,7 @@ const ChartArea = styled.main`
 
 const Dashboard: React.FC = () => {
   const [selectedChart, setSelectedChart] = useState<OptionMappingKeys>('dailyStats');
-
+  const { user } = useAuthContext();
   const handleOptionChange = (option: OptionMappingKeys) => {
     setSelectedChart(option);
   };
@@ -27,6 +29,7 @@ const Dashboard: React.FC = () => {
   // TODO: some cheering message
 
     <PageContainer>
+      <UserCard user={user} />
       <Dropdown options={optionMappingKeys} selectedOption="dailyStats" onOptionChange={handleOptionChange} />
       <ChartArea>
         {(() => {

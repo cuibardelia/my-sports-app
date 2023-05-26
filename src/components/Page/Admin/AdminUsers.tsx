@@ -6,16 +6,20 @@ import { UserType } from '../../../Types';
 import { AdminProvider } from '../../../Providers/AdminContext';
 import UserModal from './UserModal';
 import DeleteModal from './DeleteModal';
-import PicModal from './PicModal';
+import PicSuccessModal from '../../Modal/PicSuccessModal';
+import TrainerPicModal from '../../Modal/TrainerPicModal';
+import AdminErrorModal from '../../Modal/AdminErrorModal';
 
 const AdminUsers: React.FC<{ userType: UserType }> = ({ userType }) => (
   <PageContainer>
     <AdminProvider userType={userType}>
       <main>
-        <UserTable />
+        <UserTable userType={userType} />
         <UserModal />
         <DeleteModal />
-        <PicModal />
+        <TrainerPicModal />
+        <PicSuccessModal />
+        <AdminErrorModal />
       </main>
     </AdminProvider>
   </PageContainer>

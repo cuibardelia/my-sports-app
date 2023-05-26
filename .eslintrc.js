@@ -25,6 +25,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     "react/require-default-props": 'off',
     "no-case-declarations": 'off',
+    "no-underscore-dangle": 'off',
     "quotes": ["error", "single"],
     "@typescript-eslint/naming-convention": "off",
     "react/function-component-definition": "off",

@@ -9,11 +9,11 @@
   },
   "scripts": {
     "start": "node dist/main.js",
-    "dev": "node_modules/.bin/webpack serve",
-    "build": "node_modules/.bin/webpack",
-    "lint": "node_modules/.bin/eslint 'src/**/*.{js,jsx,ts,tsx}'"
+    "dev": "webpack serve",
+    "build": "webpack",
+    "lint": "eslint src --fix"
   },
-  "author": "",
+  "author": "Delia Cuibar",
   "license": "ISC",
   "dependencies": {
     "@emotion/react": "^11.11.0",

@@ -5,7 +5,7 @@ import { green, purple } from '@mui/material/colors';
 import PageContainer from '../../PageContainer.css';
 import ExerciseGrid from '../../Grid/ExerciseGrid';
 import { exerciseOptions, SelectedOption, useExercisesContext } from '../../../Providers/ExercisesContext';
-import ExerciseModal from './ExerciseModal';
+import FavExerciseModal from '../../Modal/FavExerciseModal';
 import { useAuthContext } from '../../../Providers/AuthContext';
 
 // https://api-ninjas.com/api/exercises if this one is ok we could asses muscle -> png
@@ -34,24 +34,26 @@ const Exercises: React.FC = () => {
 
   return (
     <PageContainer>
-      <ButtonGroup variant="contained" aria-label="button group">
-        {exerciseOptions.map((option) => (
-          <Button
-            key={option}
-            onClick={() => handleClick(option)}
-            sx={{
-              backgroundColor: activeOption === option ? purple[300] : green[300],
-              '&:hover': {
-                backgroundColor: green[400],
-              },
-            }}
-          >
-            {option}
-          </Button>
-        ))}
-      </ButtonGroup>
-      <ExerciseModal exercise={openExercise} />
-      <ExerciseGrid items={items} />
+      <>
+        <ButtonGroup variant="contained" aria-label="button group">
+          {exerciseOptions.map((option) => (
+            <Button
+              key={option}
+              onClick={() => handleClick(option)}
+              sx={{
+                backgroundColor: activeOption === option ? purple[300] : green[300],
+                '&:hover': {
+                  backgroundColor: green[400],
+                },
+              }}
+            >
+              {option}
+            </Button>
+          ))}
+        </ButtonGroup>
+        <FavExerciseModal exercise={openExercise} />
+        <ExerciseGrid items={items} />
+      </>
     </PageContainer>
   );
 };

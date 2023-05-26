@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useAuthContext } from '../Providers/AuthContext';
 import { MainAppLayout } from '../layout/MainAppLayout';
 import { UserType } from '../Types';
-import { getDefaultRoute } from '../helpers/fnUser';
+import { getDefaultRoute } from '../helpers/fnPaths';
 
 function PrivateRoute({ userType }) {
   const { token, user } = useAuthContext();

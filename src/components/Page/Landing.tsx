@@ -47,11 +47,10 @@ const Description = styled.p`
 
 const Landing = () => (
   <Parallax bgImage="assets/landing.jpg" bgImageAlt="My Fit Bud" strength={300}>
-    {/* <div style={{ height: '100vh' }} /> */}
     <SectionContainer>
       <LeftSection>
-        <Title>Welcome to Gym React</Title>
-        <Description>Your fitness journey starts here!</Description>
+        <Title>Welcome to FitBud</Title>
+        <Description>Your fitness in our community journey starts here!</Description>
       </LeftSection>
       <RightSection>
         <Title>About Us</Title>

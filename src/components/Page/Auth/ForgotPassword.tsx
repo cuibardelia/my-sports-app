@@ -7,8 +7,9 @@ import { Link, Navigate, useLocation } from 'react-router-dom';
 import { IAuthData, useAuthContext } from '../../../Providers/AuthContext';
 import { Input } from '../../Login/Input';
 import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
-import { AuthPaths, FormDataType, UserType } from '../../../Types';
+import { FormDataType, UserType } from '../../../Types';
 import { getAuthHeaders } from '../../../helpers/fnRequest';
+import { AuthPaths } from '../../../helpers/fnPaths';
 
 const ForgotPassword: React.FC<{ userType: UserType }> = ({ userType }) => {
   const forgotPasswordValidationSchema = object({
@@ -35,7 +36,7 @@ const ForgotPassword: React.FC<{ userType: UserType }> = ({ userType }) => {
 
   async function handleSubmit(formData: FormDataType) {
     // TODO: axios
-    const data: IAuthData = await fetch(process.env.FORGOT_PWD_API, {
+    const data: IAuthData = await fetch(`${process.env.AUTH_API}/forgot-password`, {
       method: 'POST',
       headers: getAuthHeaders(userType),
       body: JSON.stringify(formData),

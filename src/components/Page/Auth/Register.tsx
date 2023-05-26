@@ -6,10 +6,10 @@ import { useState } from 'react';
 import { useAuthContext } from '../../../Providers/AuthContext';
 import { Input } from '../../Login/Input';
 import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
-import { AuthPaths, FormDataType, UserType } from '../../../Types';
+import { FormDataType, UserType } from '../../../Types';
 import { getRegisterFields, getUserSchema } from '../../../helpers/fnForm';
-import { getDefaultRoute } from '../../../helpers/fnUser';
 import { getAuthHeaders } from '../../../helpers/fnRequest';
+import { AuthPaths, getDefaultRoute } from '../../../helpers/fnPaths';
 
 const Register: React.FC<{ userType: UserType }> = ({ userType }) => {
   const methods = useForm<FormDataType>({
@@ -17,13 +17,12 @@ const Register: React.FC<{ userType: UserType }> = ({ userType }) => {
   });
   const [serverError, setServerError] = useState('');
 
-  // TODO: input letter by letter
   const { login } = useAuthContext();
   const navigate = useNavigate();
 
   async function onSubmit(formData: FormDataType) {
     const { passwordCheck, ...payload } = formData;
-    const url = `${process.env.REGISTER_API}/${userType}`;
+    const url = `${process.env.AUTH_API}/register/${userType}`;
 
     // TODO: axios
     const data = await fetch(url, {

@@ -3,14 +3,17 @@ import {
   Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
 } from '@mui/material';
 import axios from 'axios';
+import { useState } from 'react';
 import { getProtectedHeaders } from '../../../helpers/fnRequest';
 import { useAdminContext } from '../../../Providers/AdminContext';
 import { useAuthContext } from '../../../Providers/AuthContext';
 
 const DeleteModal: React.FC = () => {
-  const { userForDeletion, resetUsers, setUserForDeletion } = useAdminContext();
+  const {
+    userForDeletion, resetUsers, setUserForDeletion, setErrorMessage,
+  } = useAdminContext();
   const { token } = useAuthContext();
-  const [deletionStatus, setDeletionStatus] = React.useState('');
+  const [deletionStatus, setDeletionStatus] = useState('');
 
   const handleClose = () => {
     setUserForDeletion(null);
@@ -23,17 +26,16 @@ const DeleteModal: React.FC = () => {
       userType: userForDeletion.userType,
     };
     axios
-      .delete('http://localhost:5000/api/admin/delete-user', {
+      .delete(`${process.env.ADMIN_API}/delete-user`, {
         headers: getProtectedHeaders(token),
         data: body,
       })
       .then(() => {
-        console.log('Successfully Deleted');
         resetUsers();
         setDeletionStatus('User deleted successfully');
       })
       .catch((error) => {
-        console.log(error);
+        setErrorMessage(error);
       });
   };
 

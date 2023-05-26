@@ -2,18 +2,21 @@ import * as React from 'react';
 import {
   createContext, useContext, useEffect, useState,
 } from 'react';
-import axios from 'axios';
 import { useAuthContext } from './AuthContext';
 import { Exercise, TargetArea } from '../Types';
 import {
-  getFavExercisesApi, getFormattedTargets, getProtectedHeaders, rapidOptions,
+  getFavExercisesApi, getFormattedTargets,
 } from '../helpers/fnRequest';
 import { abs } from '../components/ExerciseCard/abs-example';
+import { getRapidAPI, useProtectedCallback } from '../hooks/useProtectedCall';
 
 export interface IExerciseGrid {
   items: TargetArea[] | Exercise[];
+  allowsMultiplePick?: boolean;
+  setSelectedExercise?: (e:Exercise) => void;
 }
 
+// TODO: special cant be seen by those who don't have the speciality
 export enum SelectedOption {
   CAT = 'Categories',
   FAV = 'Favorites',
@@ -41,31 +44,25 @@ export const ExercisesProvider: React.FunctionComponent<{
   const [activeOption, setActiveOption] = useState<string>(exerciseOptions[0]);
   const [items, setItems] = useState<TargetArea[] | Exercise[]>([]);
   const [openExercise, setOpenExercise] = useState<Exercise>(null);
+  const { user } = useAuthContext();
 
-  const { user, token } = useAuthContext();
+  const callFavAPI = useProtectedCallback(getFavExercisesApi(user?.userType), 'data', setItems);
+  const fetchTargetList = getRapidAPI('targetList', (data) => {
+    const formattedTargets = getFormattedTargets(data);
+    setItems(formattedTargets);
+  });
+  const fetchAllFromCategory = getRapidAPI(`target/${encodeURI(activeOption)}`, setItems);
 
-  // TODO: check on other pages not to request data
+  // TODO: Redux
   useEffect(() => {
     switch (activeOption) {
       case SelectedOption.CAT:
         // FIXME: REMOVE WHEN SHOWCASING (will add mock data in the meantime, as we pay per request)
-        // axios.get(`${process.env.EXERCISES_API}/targetList`, rapidOptions)
-        //   .then((response) => {
-        //     setItems(getFormattedTargets(response.data));
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+        // fetchTargetList();
         setItems(getFormattedTargets(targetCategories));
         break;
       case SelectedOption.FAV:
-        axios.get(getFavExercisesApi(user.userType), { headers: getProtectedHeaders(token) })
-          .then((response) => {
-            setItems(response.data?.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        callFavAPI();
         break;
       case SelectedOption.SPEC:
         setItems(getFormattedTargets(specialCategories));
@@ -76,13 +73,7 @@ export const ExercisesProvider: React.FunctionComponent<{
         break;
       default:
         // FIXME: REMOVE WHEN SHOWCASING (will add mock data in the meantime, as we pay per request)
-        // axios.get(`${process.env.EXERCISES_API}/target/${encodeURI(selectedTarget)}`, rapidOptions)
-        //   .then((response) => {
-        //     setItems(response.data);
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+        // fetchAllFromCategory();
         // @ts-ignore
         setItems(abs);
     }

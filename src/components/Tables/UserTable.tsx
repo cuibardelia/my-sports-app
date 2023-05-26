@@ -4,9 +4,16 @@ import {
 import * as React from 'react';
 import { UserRow } from './UserRow';
 import { useAdminContext } from '../../Providers/AdminContext';
+import { UserType } from '../../Types';
 
-export const UserTable: React.FC = () => {
+interface IUserTable {
+  userType: UserType;
+}
+
+export const UserTable: React.FC<IUserTable> = ({ userType }) => {
   const { users } = useAdminContext();
+  const extraOption = userType === UserType.CLIENT ? 'Username' : 'Specialties';
+
   if (!users) {
     return <div>NO Data</div>;
   }
@@ -18,7 +25,7 @@ export const UserTable: React.FC = () => {
             <TableCell>Avatar</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Email</TableCell>
-            <TableCell>Specialties</TableCell>
+            <TableCell>{extraOption}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

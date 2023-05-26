@@ -6,12 +6,11 @@ import {
 import {
   useAuthContext,
 } from '../../Providers/AuthContext';
-import { getMenu, getUserName } from '../../helpers/fnUser';
-import { MenuOptions } from '../../Types';
+import { getUserName } from '../../helpers/fnUser';
+import { getMenu, MenuOptions } from '../../helpers/fnPaths';
 
 const Navbar: React.FC = () => {
   const { user } = useAuthContext();
-
   const { SidePaths } = getMenu(user.userType);
 
   if (!SidePaths) {

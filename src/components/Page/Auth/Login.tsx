@@ -9,9 +9,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '../../Login/Input';
 import { IAuthData, useAuthContext } from '../../../Providers/AuthContext';
 import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
-import { AuthPaths, FormDataType, UserType } from '../../../Types';
-import { getDefaultRoute } from '../../../helpers/fnUser';
+import { FormDataType, UserType } from '../../../Types';
 import { getAuthHeaders } from '../../../helpers/fnRequest';
+import { AuthPaths, getDefaultRoute } from '../../../helpers/fnPaths';
 
 const Login: React.FC<{ userType: UserType }> = ({ userType }) => {
   const loginValidationSchema = object({
@@ -40,7 +40,7 @@ const Login: React.FC<{ userType: UserType }> = ({ userType }) => {
   }
 
   async function handleSubmit(formData: FormDataType) {
-    const data: IAuthData = await fetch(process.env.LOGIN_API, {
+    const data: IAuthData = await fetch(`${process.env.AUTH_API}/login`, {
       method: 'POST',
       headers: getAuthHeaders(userType),
       body: JSON.stringify(formData),

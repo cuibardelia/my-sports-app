@@ -1,113 +1,10 @@
 /*
-====================
-	    MENU
-====================
-*/
-
-export type Menu = {
-  name: string;
-  path: AppPaths;
-};
-
-export enum SidePaths {
-  DASHBOARD = 'dashboard',
-  BUDDIES = 'buddies',
-  // HISTORIC = 'historic',
-  EXERCISES = 'exercises',
-  CLIENTS = 'clients',
-  TRAINERS = 'trainers',
-}
-
-export enum TopPaths {
-  DASHBOARD = 'dashboard',
-  TRAINERS = 'trainers',
-  SETTINGS = 'settings',
-}
-
-type MenuPaths = SidePaths | TopPaths;
-export type AppPaths = MenuPaths | AuthPaths;
-
-type MenuOptionsType = {
-  [key in keyof typeof SidePaths]: string;
-} & {
-  [key in keyof typeof TopPaths]: string;
-};
-
-export const MenuOptions: MenuOptionsType = {
-  DASHBOARD: 'Dashboard',
-  BUDDIES: 'My Buddies',
-  EXERCISES: 'Exercises',
-  CLIENTS: 'Clients',
-  TRAINERS: 'Trainers',
-  SETTINGS: 'Settings',
-};
-
-// TODO: backend
-export const AdminMenu = {
-  TopPaths: {
-    DASHBOARD: 'dashboard',
-    CLIENTS: 'clients',
-    TRAINERS: 'trainers',
-  },
-};
-
-export const TrainerMenu = {
-  SidePaths: {
-    DASHBOARD: 'dashboard',
-    CLIENTS: 'clients',
-    EXERCISES: 'exercises',
-    SESSIONS: 'sessions',
-  },
-};
-
-export const ClientMenu = {
-  SidePaths: {
-    DASHBOARD: 'dashboard',
-    TRAINERS: 'trainers',
-    EXERCISES: 'exercises',
-    // MY_TRAINERS: 'my-trainers',
-    SESSIONS: 'sessions',
-  },
-  TopPaths: {
-    SETTINGS: 'settings',
-  },
-};
-
-export enum UserPaths {
-  CLIENT = 'client',
-  TRAINER = 'trainer',
-  ADMIN = 'admin',
-}
-
-export enum AuthPaths {
-  AUTH = 'auth',
-  LOGIN = 'login',
-  REGISTER = 'register',
-  FORGOT = 'forgotpassword',
-  RESET = 'passwordreset',
-  INVITE = 'invite',
-}
-
-export enum FeaturePaths {
-  DASHBOARD = 'dashboard',
-  EXERCISES = 'exercises',
-  HISTORIC = 'historic',
-  SESSIONS = 'sessions',
-  SETTINGS = 'settings',
-}
-
-export enum ConnectionPaths {
-  BUDDIES = 'buddies',
-  TRAINERS = 'trainers',
-  CLIENTS = 'clients',
-}
-
-/*
 ========================
 	    DROPDOWN
 ========================
 */
 export const OptionMapping = {
+  profile: 'Me',
   dailyStats: 'Daily Goals',
   stepStats: 'Your Steps',
   activeZoneStats: 'AZM',
@@ -137,23 +34,29 @@ interface ICredentials {
 export interface IAdmin extends ICredentials {
   userType: UserType;
 }
-
+// TODO: cleanup TrainerInfo & ITrainer
 // shared between Client and Trainer
 export interface ICommonUser {
+  _id: string;
   lastName: string;
   firstName: string;
   favoriteExercises: string[];
   // TODO: update type
   sessions: any[];
   userType: UserType;
+  picUrl: string;
+  email: string;
 }
 
 export interface IClient extends ICommonUser {
   username: string;
   currentWeight: number;
   goalWeight: number;
+  height: number;
+  favoriteTrainers: string[]
 }
 
+// TODO: add trainers for SPECIAL EXERCISES - HEALTH
 export const specialtiesList = ['HIIT', 'Pilates', 'Body Pump', 'Zumba', 'Circuit Training', 'TRX', 'Body Combat', 'Core', 'Rebounder'];
 
 export interface ITrainer extends ICommonUser {

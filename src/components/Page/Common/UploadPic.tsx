@@ -4,6 +4,7 @@ import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 import { Box, Card, Typography } from '@mui/material';
 import { useAuthContext } from '../../../Providers/AuthContext';
+import { getUploadApi } from '../../../helpers/fnRequest';
 
 interface PicProps {
   onUploadComplete: (url: string) => void;
@@ -11,7 +12,7 @@ interface PicProps {
 
 const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
-  const { token } = useAuthContext();
+  const { token, user } = useAuthContext();
 
   const handleDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -19,7 +20,7 @@ const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post(process.env.UPLOAD_API, formData, {
+      const response = await axios.post(getUploadApi(user.userType), formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -30,9 +31,9 @@ const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
 
       setUploadedImageUrl(imageUrl);
       onUploadComplete(imageUrl);
-      console.log('Image uploaded successfully:', imageUrl);
+      console.log('Image is on the cloud now', imageUrl);
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error('Error on upload:', error);
     }
   }, [onUploadComplete]);
 
@@ -40,7 +41,7 @@ const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
 
   // TODO: upload icon from mui
   return (
-    <div className="cloudinary-upload">
+    <div>
       <Card {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
         <input {...getInputProps()} />
         <Box p={3} textAlign="center">

@@ -61,7 +61,7 @@ const UserModal: React.FC = () => {
     };
 
     axios
-      .post('http://localhost:5000/api/admin/update-trainer', body, {
+      .put(`${process.env.ADMIN_API}/update-trainer`, body, {
         headers: getProtectedHeaders(token),
       })
       .then(() => {

@@ -39,7 +39,7 @@ const ResetPassword: React.FC = () => {
 
   // FIXME: type
   async function handleSubmit(formData) {
-    const data: IAuthData = await fetch(`${process.env.RESET_PWD_API}/${resetToken}`, {
+    const data: IAuthData = await fetch(`${process.env.AUTH_API}/reset-password/${resetToken}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',

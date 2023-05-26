@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MenuItem, NavContainer } from './Navbar.css';
 import { useAuthContext } from '../../Providers/AuthContext';
-import { getMenu } from '../../helpers/fnUser';
-import { MenuOptions } from '../../Types';
+import { getMenu, MenuOptions } from '../../helpers/fnPaths';
 
 const Navbar: React.FC = () => {
   // const [currentIndex, setCurrentIndex] = useState<number>(0);

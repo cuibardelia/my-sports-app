@@ -1,6 +1,5 @@
 import {
-  AdminMenu, ClientMenu,
-  FeaturePaths, IClient, ITrainer, IUser, TrainerMenu, UserType,
+  IClient, ITrainer, IUser, UserType,
 } from '../Types';
 
 export const getUserName = (user: IUser): string => {
@@ -18,24 +17,3 @@ export const getUserName = (user: IUser): string => {
       return 'admin';
   }
 };
-
-export const getDefaultRoute = (userType: UserType): string => `/${userType}/${FeaturePaths.DASHBOARD}`;
-
-// FIXME
-type MenuType = {
-  SidePaths?,
-  TopPaths?,
-};
-
-export const getMenu = (userType: UserType): MenuType => {
-  switch (userType) {
-    case UserType.CLIENT:
-      return ClientMenu;
-    case UserType.TRAINER:
-      return TrainerMenu;
-    default:
-      return AdminMenu;
-  }
-};
-
-export const hasLogout = (userType: UserType): boolean => [UserType.ADMIN, UserType.TRAINER].includes(userType);

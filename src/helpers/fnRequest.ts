@@ -8,7 +8,7 @@ import {
 =========================
 */
 // TODO: reuse, replace
-export const getUserAPI = (userType: UserType): string => (userType === UserType.CLIENT ? process.env.GET_CLIENTS_API : process.env.GET_TRAINERS_API);
+export const getUserAPI = (userType: UserType): string => (process.env.GET_USERS_API.replace('REPLACE', userType));
 
 // FIXME: Sessions type
 type CommonInfo = {
@@ -41,12 +41,13 @@ const getFormattedClient = (data: any) => ({
   username: data.username,
 });
 
+export const getFullName = (user: any) => `${user.firstName} ${user.lastName}`;
+
 const getFormattedCommonValues = (data: any): CommonInfo => ({
-  // eslint-disable-next-line no-underscore-dangle
   id: data._id,
   bio: data.bio,
   picUrl: data.picUrl || '',
-  name: `${data.firstName} ${data.lastName}`,
+  name: getFullName(data),
   email: data.email,
   userType: data.userType,
 });
@@ -87,6 +88,11 @@ export const getAuthHeaders = (userType: UserType): AuthHeader => (
   }
 );
 
+export const buddyAPIMapping = {
+  All: `${process.env.CLIENT_API}/all-trainers`,
+  'My Personal Trainers': `${process.env.CLIENT_API}/get-personal-trainers`,
+};
+
 /*
 =========================
 	   PROTECTED
@@ -109,9 +115,9 @@ export const getProtectedHeaders = (token: string): ProtectedHeader => (
 );
 
 /*
-=========================
-	    RAPID API
-=========================
+==============================
+	    EXERCISES API
+==============================
 */
 export const getFavExercisesApi = (userType: UserType): string => (process.env.FAV_EXERCISES_API.replace('REPLACE', userType));
 
@@ -136,3 +142,36 @@ export const getFormattedTargets = (apiAreas: string[]): TargetArea[] => apiArea
   url: `/assets/targets/${formatTargetPicName(t)}.png`,
   type: 'category',
 }));
+
+/*
+==============================
+	    UPLOAD
+==============================
+*/
+export const getUploadApi = (userType: UserType): string => (process.env.UPLOAD_API.replace('REPLACE', userType));
+
+export const getFormattedDate = (date): string => `${date.toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: '2-digit',
+})}: ${date.toLocaleTimeString('en-GB', {
+  hour: '2-digit',
+  minute: '2-digit',
+})}`;
+
+export const getHours = (date): string => (
+  `${date.toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })}`
+);
+
+export const getDate = (date): string => (
+  `${date.toLocaleTimeString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+  })}`
+);
+
+export const getEquipment = (equipment: string[]): string => (
+  equipment?.join(', ') || 'None'
+);

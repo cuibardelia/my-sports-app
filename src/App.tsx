@@ -15,17 +15,21 @@ import ResetPassword from './components/Page/Auth/ResetPassword';
 import PrivateRoute from './HOC/PrivateRoute';
 import Settings from './components/Page/Settings';
 import {
-  AuthPaths, ConnectionPaths, FeaturePaths, UserPaths, UserType,
+  UserType,
 } from './Types';
 import AdminDashboard from './components/Page/Admin/AdminDashboard';
 import TrainerDashboard from './components/Page/Trainers/TrainerDashboard';
-import TrainerClients from './components/Page/Trainers/TrainerClients';
 // import InviteTrainer from './components/Page/Trainers/InviteTrainer';
-// import TrainerClasses from './components/Page/Trainers/TrainerSessions';
 import AdminUsers from './components/Page/Admin/AdminUsers';
 import Landing from './components/Page/Landing';
 import TrainerSessions from './components/Page/Trainers/TrainerSessions';
 import { ExercisesProvider } from './Providers/ExercisesContext';
+import TrainerBuddies from './components/Page/Trainers/TrainerBuddies';
+import NextAppointments from './components/Appointments/NextAppointments';
+import CreateSession from './components/Page/Trainers/CreateSession';
+import {
+  AuthPaths, ConnectionPaths, FeaturePaths, UserPaths,
+} from './helpers/fnPaths';
 
 // TODO: ERROR PAGE DESIGN
 // TODO: Remove /client for auth, make index
@@ -58,9 +62,11 @@ const App: React.FC = () => (
             </Route>
             <Route path="/trainer" element={<PrivateRoute userType="trainer" />}>
               <Route path={FeaturePaths.DASHBOARD} element={<TrainerDashboard />} />
-              <Route path={ConnectionPaths.CLIENTS} element={<TrainerClients />} />
+              <Route path={ConnectionPaths.CLIENTS} element={<TrainerBuddies />} />
               <Route path={FeaturePaths.EXERCISES} element={<Exercises />} />
               <Route path={FeaturePaths.SESSIONS} element={<TrainerSessions />} />
+              <Route path={`${FeaturePaths.SESSIONS}/${FeaturePaths.NEW_SESSION}`} element={<CreateSession />} />
+              <Route path={FeaturePaths.APPOINTMENTS} element={<NextAppointments />} />
               {/* <Route path="/trainer-settings" element={<TrainerSettings />} /> */}
             </Route>
             <Route path="/admin" element={<PrivateRoute userType="admin" />}>

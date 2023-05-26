@@ -4,7 +4,7 @@ import {
 import * as React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { purple, lightGreen } from '@mui/material/colors';
+import { lightGreen, purple } from '@mui/material/colors';
 import { ClientInfo, TrainerInfo, UserFormattedInfo } from '../../helpers/fnRequest';
 import { UserType } from '../../Types';
 import { useAdminContext } from '../../Providers/AdminContext';
@@ -24,6 +24,7 @@ const HoverAvatar = styled(Avatar)`
 export const UserRow: React.FC<UserRowProps> = ({ user }) => {
   const { setSelectedUser, setUserForDeletion, setUserForPicInspection } = useAdminContext();
   const extraOption = user.userType === UserType.CLIENT ? (user as ClientInfo).username : (user as TrainerInfo).specialties;
+  const isClient = user.userType === UserType.CLIENT;
 
   const onEditClick = () => {
     setSelectedUser(user as TrainerInfo);
@@ -34,8 +35,14 @@ export const UserRow: React.FC<UserRowProps> = ({ user }) => {
   };
 
   const onAvatarClick = () => {
-    setUserForPicInspection(user as TrainerInfo);
+    if (!isClient) {
+      setUserForPicInspection(user as TrainerInfo);
+    }
   };
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <TableRow>
@@ -48,9 +55,11 @@ export const UserRow: React.FC<UserRowProps> = ({ user }) => {
       <TableCell>{user.email}</TableCell>
       <TableCell>{extraOption}</TableCell>
       <TableCell>
+        { !isClient && (
         <IconButton onClick={onEditClick}>
           <EditIcon />
         </IconButton>
+        )}
         <IconButton onClick={onDeleteClick}>
           <DeleteIcon />
         </IconButton>
