@@ -1,9 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  // TODO: store font locally
-  
-  @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&display=swap');
   /* Box sizing rules */
   *,
   *::before,

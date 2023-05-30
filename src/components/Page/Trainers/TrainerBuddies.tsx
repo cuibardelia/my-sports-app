@@ -5,11 +5,11 @@ import {
 import { styled } from '@mui/system';
 import { deepPurple, green } from '@mui/material/colors';
 import { useState } from 'react';
-import PageContainer from '../../PageContainer.css';
-import { IClient } from '../../../Types';
 import UserModal from './UserModal';
 import { useProtectedCall } from '../../../hooks/useProtectedCall';
-import NoData from '../../NotFound/NoData';
+import { IClient } from '../../types/User';
+import { PageContainer } from '../../PageContainer.css';
+import NoData from '../../Empty/NoData';
 
 const BuddyAvatar = styled(Avatar)(() => ({
   width: '100%',
@@ -37,7 +37,7 @@ const TrainerBuddies: React.FC = () => {
   };
 
   if (!data?.length) {
-    return <NoData message="No buddies yet" />;
+    return <NoData message="No clients yet" />;
   }
 
   // TODO: pagination

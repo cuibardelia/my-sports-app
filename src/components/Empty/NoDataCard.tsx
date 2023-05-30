@@ -1,11 +1,11 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import * as React from 'react';
 
-interface INoData {
+interface INoDataCard {
   message: string;
 }
 
-const NoData: React.FC<INoData> = ({ message = '' }) => (
+const NoDataCard: React.FC<INoDataCard> = ({ message = '' }) => (
   <Card>
     <CardContent>
       <Typography variant="h5" component="div">
@@ -18,4 +18,4 @@ const NoData: React.FC<INoData> = ({ message = '' }) => (
   </Card>
 );
 
-export default NoData;
+export default NoDataCard;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
-import PageContainer from '../../PageContainer.css';
+import { PageContainer } from '../../PageContainer.css';
 import StepsChart from '../../Chart/StepsChart';
 import ActiveZoneChart from '../../Chart/ActiveZoneChart';
 import DailyGoalChart from '../../Chart/DailyGoalChart';
@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-  // TODO: some cheering message
+  // TODO: some cheering message- GREAT, only more 5 kilos to go!
 
     <PageContainer>
       <UserCard user={user} />

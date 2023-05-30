@@ -10,7 +10,7 @@ import {
 import { useExercisesContext } from '../../Providers/ExercisesContext';
 import { useAuthContext } from '../../Providers/AuthContext';
 import { isAmongFavorites } from '../../helpers/fnFeatures';
-import { Exercise } from '../../Types';
+import { Exercise } from '../types/Exercise';
 
 type CardExercisePropType = {
   // FIXME: type

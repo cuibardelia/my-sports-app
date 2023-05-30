@@ -6,12 +6,15 @@ import {
 interface IActionConfirmedModal {
   open: boolean;
   onClose: () => void;
+  title: string;
   message: string;
 }
 
-const ConfirmActionModal: React.FC<IActionConfirmedModal> = ({ open, onClose, message }) => (
+const ConfirmActionModal: React.FC<IActionConfirmedModal> = ({
+  open, onClose, title, message,
+}) => (
   <Dialog open={open} onClose={onClose}>
-    <DialogTitle>Settings Updated</DialogTitle>
+    <DialogTitle>{title}</DialogTitle>
     <DialogContent>
       <DialogContentText>{message}</DialogContentText>
     </DialogContent>

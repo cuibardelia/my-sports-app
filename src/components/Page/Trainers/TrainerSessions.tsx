@@ -1,14 +1,15 @@
 import * as React from 'react';
 import {
-  Button, Card, CardContent, Container, Typography,
+  Card, CardContent, Typography,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import PageContainer from '../../PageContainer.css';
+import { Container } from '@mui/system';
 import SessionExerciseModal from '../../Modal/SessionExerciseModal';
 import SessionModal from '../../Modal/SessionModal';
 import { useProtectedCall } from '../../../hooks/useProtectedCall';
-import NoData from '../../NotFound/NoData';
+import DefaultButton from '../../Button/DefaultButton';
+import { PageContainer } from '../../PageContainer.css';
+import NoData from '../../Empty/NoData';
 
 const TrainerSessions: React.FC = () => {
   const [session, setSession] = useState(null);
@@ -32,7 +33,7 @@ const TrainerSessions: React.FC = () => {
   };
 
   if (!data?.length) {
-    return <NoData message="No sessions yet" />;
+    return <NoData message="No sessions yet" buttonText="Create New Session" link="new-session" />;
   }
 
   return (
@@ -42,7 +43,6 @@ const TrainerSessions: React.FC = () => {
           All your sessions
         </Typography>
         <div>
-          {/* Replace the following code with the logic to map and render the session cards */}
           {data?.map((s) => (
             <Card key={s._id} variant="outlined" onClick={() => onCardClick(s)}>
               <CardContent>
@@ -53,16 +53,10 @@ const TrainerSessions: React.FC = () => {
           <SessionModal session={session} handleClose={handleDetailClose} handleExercises={handleExercises} />
           <SessionExerciseModal exercises={exercises} handleClose={handleExerciseClose} />
         </div>
-        <Button
-          component={Link}
-          to="new-session"
-          variant="contained"
-          color="primary"
-          size="large"
-          sx={{ mt: 4, mx: 'auto', display: 'block' }}
-        >
-          Create New Session
-        </Button>
+        <DefaultButton
+          link="new-session"
+          text="Create New Session"
+        />
       </Container>
     </PageContainer>
   );

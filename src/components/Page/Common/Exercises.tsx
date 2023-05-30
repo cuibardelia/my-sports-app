@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { Button, ButtonGroup } from '@mui/material';
-import { green, purple } from '@mui/material/colors';
-import PageContainer from '../../PageContainer.css';
+import {
+  Tab, Tabs,
+} from '@mui/material';
+import { PageContainer } from '../../PageContainer.css';
 import ExerciseGrid from '../../Grid/ExerciseGrid';
 import { exerciseOptions, SelectedOption, useExercisesContext } from '../../../Providers/ExercisesContext';
 import FavExerciseModal from '../../Modal/FavExerciseModal';
 import { useAuthContext } from '../../../Providers/AuthContext';
-
-// https://api-ninjas.com/api/exercises if this one is ok we could asses muscle -> png
-// https://wger.de/api/v2/exerciseinfo/ same here!!
+import theme from '../../../theme';
 
 const Exercises: React.FC = () => {
   const {
@@ -35,22 +34,18 @@ const Exercises: React.FC = () => {
   return (
     <PageContainer>
       <>
-        <ButtonGroup variant="contained" aria-label="button group">
+        <Tabs value={activeOption} aria-label="exercises groups">
           {exerciseOptions.map((option) => (
-            <Button
+            <Tab
               key={option}
               onClick={() => handleClick(option)}
-              sx={{
-                backgroundColor: activeOption === option ? purple[300] : green[300],
-                '&:hover': {
-                  backgroundColor: green[400],
-                },
+              label={option}
+              style={{
+                color: activeOption === option ? theme.palette.primary.main : theme.palette.primary.dark,
               }}
-            >
-              {option}
-            </Button>
+            />
           ))}
-        </ButtonGroup>
+        </Tabs>
         <FavExerciseModal exercise={openExercise} />
         <ExerciseGrid items={items} />
       </>

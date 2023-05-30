@@ -1,29 +1,6 @@
-import { UserType } from '../Types';
+import { UserType } from '../components/types/User';
 
-export enum SidePaths {
-  DASHBOARD = 'dashboard',
-  BUDDIES = 'buddies',
-  // HISTORIC = 'historic',
-  EXERCISES = 'exercises',
-  CLIENTS = 'clients',
-  TRAINERS = 'trainers',
-  APPOINTMENTS = 'appointments',
-  SESSIONS = 'sessions',
-}
-
-export enum TopPaths {
-  DASHBOARD = 'dashboard',
-  TRAINERS = 'trainers',
-  SETTINGS = 'settings',
-}
-
-type MenuOptionsType = {
-  [key in keyof typeof SidePaths]: string;
-} & {
-  [key in keyof typeof TopPaths]: string;
-};
-
-export const MenuOptions: MenuOptionsType = {
+export const MenuOptions = {
   DASHBOARD: 'Dashboard',
   BUDDIES: 'My TrainerBuddies',
   EXERCISES: 'Exercises',
@@ -34,35 +11,11 @@ export const MenuOptions: MenuOptionsType = {
   SESSIONS: 'Sessions',
 };
 
-export const AdminMenu = {
-  TopPaths: {
-    DASHBOARD: 'dashboard',
-    CLIENTS: 'clients',
-    TRAINERS: 'trainers',
-  },
-};
+export const AdminMenu = [MenuOptions.DASHBOARD, MenuOptions.TRAINERS, MenuOptions.CLIENTS];
 
-export const TrainerMenu = {
-  SidePaths: {
-    DASHBOARD: 'dashboard',
-    CLIENTS: 'clients',
-    EXERCISES: 'exercises',
-    SESSIONS: 'sessions',
-    APPOINTMENTS: 'appointments',
-  },
-};
+export const TrainerMenu = [MenuOptions.DASHBOARD, MenuOptions.CLIENTS, MenuOptions.EXERCISES, MenuOptions.SESSIONS, MenuOptions.APPOINTMENTS];
 
-export const ClientMenu = {
-  SidePaths: {
-    DASHBOARD: 'dashboard',
-    TRAINERS: 'trainers',
-    EXERCISES: 'exercises',
-    SESSIONS: 'sessions',
-  },
-  TopPaths: {
-    SETTINGS: 'settings',
-  },
-};
+export const ClientMenu = [MenuOptions.DASHBOARD, MenuOptions.TRAINERS, MenuOptions.EXERCISES, MenuOptions.APPOINTMENTS];
 
 export enum UserPaths {
   CLIENT = 'client',
@@ -95,22 +48,23 @@ export enum ConnectionPaths {
   TRAINERS = 'trainers',
   CLIENTS = 'clients',
 }
+export type SidePaths = FeaturePaths | ConnectionPaths;
 
-// FIXME
-type MenuType = {
-  SidePaths?,
-  TopPaths?,
-};
-
-export const getMenu = (userType: UserType): MenuType => {
+export const getSideMenu = (userType: UserType) => {
   if (userType === UserType.CLIENT) {
     return ClientMenu;
-  } if (userType === UserType.TRAINER) {
+  }
+
+  if (userType === UserType.TRAINER) {
     return TrainerMenu;
   }
-  return AdminMenu;
 };
 
 export const getDefaultRoute = (userType: UserType): string => `/${userType}/${FeaturePaths.DASHBOARD}`;
 
-export const hasLogout = (userType: UserType): boolean => [UserType.ADMIN, UserType.TRAINER].includes(userType);
+const getObjectKeyByValue = (obj, value) => Object.keys(obj).find((key) => obj[key] === value);
+
+export const getMenu = (list) => list.map((item) => ({
+  path: FeaturePaths[getObjectKeyByValue(MenuOptions, item)] || ConnectionPaths[getObjectKeyByValue(MenuOptions, item)],
+  name: item,
+}));

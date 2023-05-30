@@ -1,11 +1,7 @@
 import * as React from 'react';
-import PageContainer from '../PageContainer.css';
+import WrongPage from '../Empty/WrongPage';
 
 const NoRights: React.FC = () => (
-  <PageContainer>
-    <main>
-      You&apos;re not allowed here, sorry!
-    </main>
-  </PageContainer>
+  <WrongPage message="You&apos;re not allowed here, sorry!" buttonMessage="Go Home" />
 );
 export default NoRights;

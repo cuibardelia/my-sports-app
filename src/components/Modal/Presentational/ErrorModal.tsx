@@ -7,6 +7,6 @@ interface IErrorModal {
 }
 
 const ErrorModal: React.FC<IErrorModal> = ({ error, handleClose }) => (
-  <ConfirmActionModal open={!!error} message={error} onClose={handleClose} />
+  <ConfirmActionModal open={!!error} message={error} onClose={handleClose} title="Oops!" />
 );
 export default ErrorModal;

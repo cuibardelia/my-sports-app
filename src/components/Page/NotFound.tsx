@@ -1,11 +1,8 @@
-import * as React from 'react';
-import PageContainer from '../PageContainer.css';
+import React from 'react';
+import WrongPage from '../Empty/WrongPage';
 
 const NotFound: React.FC = () => (
-  <PageContainer>
-    <main>
-      Don&#34t know where you got this URL, but it ain&#34t right
-    </main>
-  </PageContainer>
+  <WrongPage message="Ooops! This is not a correct URL" buttonMessage="Go Home" />
 );
+
 export default NotFound;

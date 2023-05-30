@@ -1,42 +1,70 @@
 import * as React from 'react';
+import {
+  Drawer, List, ListItem, ListItemIcon, ListItemText, styled, Typography,
+} from '@mui/material';
+
+import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../../Providers/AuthContext';
 import {
-  Greeting, LogoContainer, MenuItem, SideContainer, SideMenuContainer,
-} from './Sidebar.css';
-import {
-  useAuthContext,
-} from '../../Providers/AuthContext';
+  getMenu, getSideMenu,
+} from '../../helpers/fnPaths';
 import { getUserName } from '../../helpers/fnUser';
-import { getMenu, MenuOptions } from '../../helpers/fnPaths';
+import IconPicker from '../Icons/IconPicker';
+import { LogoContainer } from './Sidebar.css';
+import { StyledIconButton } from '../Icons/Icons.css';
 
-const Navbar: React.FC = () => {
+const drawerWidth = 240;
+
+const Root = styled('div')({
+  display: 'flex',
+});
+
+const StyledDrawer = styled(Drawer)(({ theme }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  '& .MuiDrawer-paper': {
+    width: drawerWidth,
+  },
+}));
+
+// TODO
+const Toolbar = styled('div')(({ theme }) => theme.mixins.toolbar);
+
+const Sidebar = () => {
   const { user } = useAuthContext();
-  const { SidePaths } = getMenu(user.userType);
+  const theme = useTheme();
+  const list = getSideMenu(user.userType);
 
-  if (!SidePaths) {
+  if (!list) {
     return null;
   }
 
-  const menu = Object.entries(SidePaths).map(([key, value]) => ({
-    path: value,
-    name: MenuOptions[key],
-  }));
+  const menu = getMenu(list);
 
   return (
-    <SideContainer>
-      <LogoContainer />
-      <Greeting>{`Hey there, ${getUserName(user)?.toUpperCase()}`}</Greeting>
-      <SideMenuContainer>
-        <ul>
+    <Root>
+      <StyledDrawer variant="permanent" anchor="left">
+        <Toolbar />
+        <LogoContainer />
+        <Typography variant="h6" align="center" gutterBottom style={{ color: theme.palette.primary.main }}>
+          {`Hey there, ${getUserName(user)?.toUpperCase()}`}
+        </Typography>
+        <List>
           {menu.map((item) => (
-            <Link to={item.path} key={`menu-${item.path}-${item.name}`}>
-              <MenuItem>{item.name}</MenuItem>
-            </Link>
+            <ListItem button component={Link} to={item.path} key={`menu-${item.path}-${item.name}`}>
+              <ListItemIcon>
+                <StyledIconButton>
+                  <IconPicker path={item.path} />
+                </StyledIconButton>
+              </ListItemIcon>
+              <ListItemText primary={item.name} />
+            </ListItem>
           ))}
-        </ul>
-      </SideMenuContainer>
-    </SideContainer>
+        </List>
+      </StyledDrawer>
+    </Root>
   );
 };
 
-export default Navbar;
+export default Sidebar;

@@ -11,7 +11,7 @@ const PicSuccessModal = () => {
   const message = 'Picture successfully saved';
 
   return (
-    <ConfirmActionModal open={successfullySaved} onClose={handleClose} message={message} />
+    <ConfirmActionModal open={successfullySaved} onClose={handleClose} message={message} title="Picture Updated" />
   );
 };
 export default PicSuccessModal;

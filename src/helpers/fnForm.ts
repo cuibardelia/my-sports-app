@@ -1,8 +1,8 @@
 import {
   date, object, ref, string,
 } from 'yup';
-import { FieldType } from '../components/Login/Input';
-import { UserType } from '../Types';
+import { FieldType } from '../components/Form/Input';
+import { UserType } from '../components/types/User';
 
 const emailField: FieldType = {
   name: 'email',
@@ -34,28 +34,37 @@ const nameFields: FieldType[] = [
   },
 ];
 
+const additionalFields: FieldType[] = [
+  {
+    name: 'phone',
+    type: 'tel',
+    labelText: 'Mobile number',
+  },
+  {
+    name: 'gender',
+    type: 'text',
+    labelText: 'Gender',
+  },
+];
+const commonRegistrationFields: FieldType[] = [
+  ...nameFields,
+  emailField,
+  passwordField,
+  recheckPasswordField,
+  ...additionalFields,
+];
+
 export const clientInputs: FieldType[] = [
   {
     name: 'username',
     type: 'text',
     labelText: 'Username',
   },
-  ...nameFields,
-  emailField,
-  passwordField,
-  recheckPasswordField,
+  ...commonRegistrationFields,
 ];
 
 export const trainerInputs: FieldType[] = [
-  emailField,
-  ...nameFields,
-  {
-    name: 'phone',
-    type: 'tel',
-    labelText: 'Mobile number',
-  },
-  passwordField,
-  recheckPasswordField,
+  ...commonRegistrationFields,
   {
     name: 'dateOfBirth',
     type: 'date',
@@ -64,63 +73,73 @@ export const trainerInputs: FieldType[] = [
   // TODO: dropdown, enum
   // TODO: correct birthday calendar
   // FIXME: date conversion
-  {
-    name: 'gender',
-    type: 'text',
-    labelText: 'Gender',
-  },
 ];
 
 export const getRegisterFields = (userType: UserType): FieldType[] => (
   userType === UserType.CLIENT ? clientInputs : trainerInputs
 );
 
-export const clientRegisterValidationSchema = object({
-  email: string()
-    .required('Please enter an email address.')
-    .email('Your email address does not seem valid.'),
-  password: string()
-    .required('Please enter a password')
-    .min(6, 'Your password should be at least 6 characters long.'),
-  passwordCheck: string()
-    .required('Please retype the password.')
-    .oneOf([ref('password')], 'The passwords don\'t match'),
+/*
+=====================
+	    YUP
+=====================
+*/
+
+const emailMessage = 'Please enter an email address!';
+const emailValidationMessage = 'Your email address does not seem valid.';
+const passwordMessage = 'Please enter a password!';
+const passwordValidationMessage = 'Your password should be at least 6 characters long.';
+const passwordRecheckMessage = 'Please retype the password!';
+const passwordRecheckValidationMessage = 'The passwords don\'t match';
+
+const commonFieldsSchema = object({
   firstName: string()
     .required('Please enter your first name.')
     .min(2, 'The first name should be at least 2 characters long.'),
   lastName: string()
     .required('Please enter your last name')
     .min(2, 'The last name should be at least 2 characters long.'),
+  email: string()
+    .required(emailMessage)
+    .email(emailValidationMessage),
+  password: string()
+    .required(passwordMessage)
+    .min(6, passwordValidationMessage),
+  passwordCheck: string()
+    .required(passwordRecheckMessage)
+    .oneOf([ref('password')], passwordRecheckValidationMessage),
+  phone: string()
+    .required('Please enter your mobile number')
+    .min(6, 'This is not a valid phone number')
+    .matches(/^07\d{8}$/, 'Invalid email address format.'),
+  gender: string()
+    .required('Please pick a gender'),
+});
+
+export const clientRegisterValidationSchema = commonFieldsSchema.concat(object({
   username: string()
     .required('Please enter your username')
     .min(2, 'Should be at least 2 characters long.'),
-}).required();
+}).required());
 
-export const trainerRegisterValidationSchema = object({
-  email: string()
-    .required('Please enter an email address.')
-    .email('Your email address does not seem valid.'),
-  phone: string()
-    .required('Please enter your mobile number'),
-  // .min(6, 'This is not a valid phone number'),
-  password: string()
-    .required('Please enter a password')
-    .min(6, 'Your password should be at least 6 characters long.'),
-  passwordCheck: string()
-    .required('Please retype the password.')
-    .oneOf([ref('password')], 'The passwords don\'t match'),
-  firstName: string()
-    .required('Please enter your first name.')
-    .min(2, 'The first name should be at least 2 characters long.'),
-  lastName: string()
-    .required('Please enter your last name')
-    .min(2, 'The last name should be at least 2 characters long.'),
+const validateDateOfBirth = (dateOfBirth) => {
+  const currentDate = new Date();
+  const userDateOfBirth = new Date(dateOfBirth);
+  const age = currentDate.getFullYear() - userDateOfBirth.getFullYear();
+
+  if (currentDate.getMonth() < userDateOfBirth.getMonth()
+      || (currentDate.getMonth() === userDateOfBirth.getMonth() && currentDate.getDate() < userDateOfBirth.getDate())) {
+    return age - 1 >= 18;
+  }
+
+  return age >= 18;
+};
+
+export const trainerRegisterValidationSchema = commonFieldsSchema.concat(object({
   dateOfBirth: date()
-    .required('Please add your birthday'),
-  // .min(2, 'The last name should be at least 2 characters long.'),
-  gender: string()
-    .required('Please pick a gender'),
-}).required();
+    .required('Please add your birthday')
+    .test('is-of-legal-age', 'You must be at least 18 years old', validateDateOfBirth),
+}).required());
 
 export const getUserSchema = (userType: UserType) => {
   switch (userType) {
@@ -132,3 +151,27 @@ export const getUserSchema = (userType: UserType) => {
       return 'admin';
   }
 };
+
+export const ForgotPassValidationSchema = object({
+  email: string()
+    .required(emailMessage)
+    .email(emailValidationMessage),
+}).required();
+
+export const loginValidationSchema = object({
+  email: string()
+    .required(emailMessage)
+    .email(emailValidationMessage),
+  password: string()
+    .required(passwordMessage)
+    .min(6, passwordValidationMessage),
+}).required();
+
+export const forgotPasswordValidationSchema = object({
+  password: string()
+    .required(passwordMessage)
+    .min(6, passwordValidationMessage),
+  passwordCheck: string()
+    .required(passwordRecheckMessage)
+    .oneOf([ref('password')], passwordRecheckValidationMessage),
+}).required();

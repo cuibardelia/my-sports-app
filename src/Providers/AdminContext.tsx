@@ -5,21 +5,19 @@ import * as React from 'react';
 import {
   getFormattedUser,
   getUserAPI,
-  TrainerInfo,
-  UserFormattedInfo,
 } from '../helpers/fnRequest';
-import { UserType } from '../Types';
 import { useProtectedCallback } from '../hooks/useProtectedCall';
+import { ITrainer, IUser, UserType } from '../components/types/User';
 
 interface IAdminContext {
-  selectedUser: TrainerInfo;
-  setSelectedUser: (u: TrainerInfo) => void;
+  selectedUser: ITrainer;
+  setSelectedUser: (u: ITrainer) => void;
   resetUsers: () => void;
-  users: UserFormattedInfo[];
-  setUserForDeletion: (u: TrainerInfo) => void;
-  userForDeletion: TrainerInfo;
-  setUserForPicInspection: (u: TrainerInfo) => void;
-  userForPicInspection: TrainerInfo;
+  users: IUser[];
+  setUserForDeletion: (u: ITrainer) => void;
+  userForDeletion: ITrainer;
+  setUserForPicInspection: (u: ITrainer) => void;
+  userForPicInspection: ITrainer;
   successfullySaved: boolean;
   setSuccessfullySaved: (f: boolean) => void;
   errorMessage: string;
@@ -33,12 +31,12 @@ export const AdminProvider: React.FunctionComponent<{
   userType: UserType;
   children: React.ReactNode;
 }> = ({ userType, children }) => {
-  const [selectedUser, setSelectedUser] = useState<TrainerInfo>(null);
-  const [userForDeletion, setUserForDeletion] = useState<TrainerInfo>(null);
-  const [userForPicInspection, setUserForPicInspection] = useState<TrainerInfo>(null);
+  const [selectedUser, setSelectedUser] = useState<ITrainer>(null);
+  const [userForDeletion, setUserForDeletion] = useState<ITrainer>(null);
+  const [userForPicInspection, setUserForPicInspection] = useState<ITrainer>(null);
   const [successfullySaved, setSuccessfullySaved] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
-  const [users, setUsers] = useState<UserFormattedInfo[]>([]);
+  const [users, setUsers] = useState([]);
 
   const fetchUsers = useProtectedCallback(getUserAPI(userType), 'users', (data) => {
     const formattedUsers = getFormattedUser(data, userType);

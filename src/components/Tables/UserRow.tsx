@@ -5,12 +5,13 @@ import * as React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { lightGreen, purple } from '@mui/material/colors';
-import { ClientInfo, TrainerInfo, UserFormattedInfo } from '../../helpers/fnRequest';
-import { UserType } from '../../Types';
 import { useAdminContext } from '../../Providers/AdminContext';
+import {
+  IClient, ITrainer, IUser, UserType,
+} from '../types/User';
 
 interface UserRowProps {
-  user: UserFormattedInfo;
+  user: IUser;
 }
 
 const HoverAvatar = styled(Avatar)`
@@ -23,20 +24,20 @@ const HoverAvatar = styled(Avatar)`
 
 export const UserRow: React.FC<UserRowProps> = ({ user }) => {
   const { setSelectedUser, setUserForDeletion, setUserForPicInspection } = useAdminContext();
-  const extraOption = user.userType === UserType.CLIENT ? (user as ClientInfo).username : (user as TrainerInfo).specialties;
+  const extraOption = user.userType === UserType.CLIENT ? (user as IClient).username : (user as ITrainer).specialties;
   const isClient = user.userType === UserType.CLIENT;
 
   const onEditClick = () => {
-    setSelectedUser(user as TrainerInfo);
+    setSelectedUser(user as ITrainer);
   };
 
   const onDeleteClick = () => {
-    setUserForDeletion(user as TrainerInfo);
+    setUserForDeletion(user as ITrainer);
   };
 
   const onAvatarClick = () => {
     if (!isClient) {
-      setUserForPicInspection(user as TrainerInfo);
+      setUserForPicInspection(user as ITrainer);
     }
   };
 

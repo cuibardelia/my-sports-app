@@ -1,20 +1,33 @@
 import * as React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { AuthContainer } from './AuthLayout.css';
-import Navbar from '../components/Navbar/Navbar';
+import styled from 'styled-components';
 import Sidebar from '../components/Sidebar/Sidebar';
-import { Footer } from '../components/Extras.css';
+import { useAuthContext } from '../Providers/AuthContext';
+import { UserType } from '../components/types/User';
+import Navbar from '../components/Navbar/Navbar';
+import MainNavbar from '../components/Navbar/MainNavBar';
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+`;
+
+const renderTopNavi = (userType: UserType): JSX.Element => (userType === UserType.ADMIN ? <Navbar /> : <MainNavbar />);
 
 export const MainAppLayout: React.FunctionComponent = () => {
+  const { user } = useAuthContext();
   const location = useLocation();
   const showSidebar = location.pathname !== '/settings';
 
   return (
-    <AuthContainer>
-      <Navbar />
+    <MainContainer>
+      { renderTopNavi(user.userType) }
       {showSidebar && (<Sidebar />)}
       <Outlet />
-      <Footer>WIP</Footer>
-    </AuthContainer>
+    </MainContainer>
   );
 };

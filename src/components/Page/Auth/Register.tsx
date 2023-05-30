@@ -1,17 +1,24 @@
 import * as React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
+import { Box } from '@mui/material';
 import { useAuthContext } from '../../../Providers/AuthContext';
-import { Input } from '../../Login/Input';
-import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
-import { FormDataType, UserType } from '../../../Types';
+import {
+  AuthCard, BottomLinks,
+} from '../../Form/Form.css';
+import { FormDataType } from '../../../Types';
 import { getRegisterFields, getUserSchema } from '../../../helpers/fnForm';
 import { getAuthHeaders } from '../../../helpers/fnRequest';
-import { AuthPaths, getDefaultRoute } from '../../../helpers/fnPaths';
+import { getDefaultRoute } from '../../../helpers/fnPaths';
+import { IAuth } from '../../types/Auth';
+import { FieldPicker } from '../../Form/FieldPicker';
+import { GoBack } from '../../Form/GoBack';
+import DefaultButton from '../../Button/DefaultButton';
 
-const Register: React.FC<{ userType: UserType }> = ({ userType }) => {
+const Register: React.FC<IAuth> = ({ userType }) => {
   const methods = useForm<FormDataType>({
     resolver: yupResolver(getUserSchema(userType)),
   });
@@ -24,20 +31,18 @@ const Register: React.FC<{ userType: UserType }> = ({ userType }) => {
     const { passwordCheck, ...payload } = formData;
     const url = `${process.env.AUTH_API}/register/${userType}`;
 
-    // TODO: axios
-    const data = await fetch(url, {
-      method: 'POST',
+    await axios.post(url, JSON.stringify(payload), {
       headers: getAuthHeaders(userType),
-      body: JSON.stringify(payload),
-    }).then((res) => res.json());
+    })
+      .then((response) => {
+        login(response.data);
+        navigate(getDefaultRoute(userType));
+      })
+      .catch((error) => {
+        setServerError(error.message);
+      });
 
     // FIXME: proper error handling
-    if (data.success) {
-      login(data);
-      navigate(getDefaultRoute(userType));
-    } else {
-      setServerError(data.message);
-    }
   }
 
   const fields = getRegisterFields(userType);
@@ -48,13 +53,12 @@ const Register: React.FC<{ userType: UserType }> = ({ userType }) => {
       <div>
         <AuthCard>
           <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
-            {fields.map((input) => <Input key={input.name} name={input.name} type={input.type} labelText={input.labelText} />)}
-            <Button>Register</Button>
+            <Box display="flex" flexDirection="column">
+              {fields.map((input) => <FieldPicker key={`picker-${input.name}`} input={input} />)}
+            </Box>
+            <DefaultButton text="Register" type="submit" />
             <BottomLinks>
-              <div>
-                Got lost?
-                <Link to={AuthPaths.LOGIN}>Go back to Login</Link>
-              </div>
+              <GoBack />
             </BottomLinks>
           </form>
         </AuthCard>

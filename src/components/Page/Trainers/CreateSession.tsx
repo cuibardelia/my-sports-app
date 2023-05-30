@@ -6,14 +6,15 @@ import { Container } from '@mui/system';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SessionStepper from './SessionStepper';
-import SessionButton from './SessionButton';
+import CreateSessionButton from '../../Button/CreateSessionButton';
 import ExerciseGrid from '../../Grid/ExerciseGrid';
 import { getFavExercisesApi, getProtectedHeaders } from '../../../helpers/fnRequest';
 import { useAuthContext } from '../../../Providers/AuthContext';
-import { Exercise } from '../../../Types';
 import PickDetailsModal from '../../Modal/PickDetailsModal';
 import ConfirmActionModal from '../../Modal/Presentational/ConfirmActionModal';
 import { useProtectedCall } from '../../../hooks/useProtectedCall';
+import { Exercise } from '../../types/Exercise';
+import { PageContainer } from '../../PageContainer.css';
 
 // FIXME: types
 const CreateSession: React.FC = () => {
@@ -130,7 +131,7 @@ const CreateSession: React.FC = () => {
   };
 
   return (
-    <div>
+    <PageContainer>
       <SessionStepper activeStep={activeStep} />
       <Container
         maxWidth="sm"
@@ -140,9 +141,9 @@ const CreateSession: React.FC = () => {
       >
         {renderStepContent(activeStep)}
       </Container>
-      <ConfirmActionModal open={!!successMessage} onClose={onSavedConfirmationClose} message={successMessage} />
-      <SessionButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} handleSave={handleSave} />
-    </div>
+      <ConfirmActionModal open={!!successMessage} onClose={onSavedConfirmationClose} message={successMessage} title="Session saved" />
+      <CreateSessionButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} handleSave={handleSave} />
+    </PageContainer>
   );
 };
 

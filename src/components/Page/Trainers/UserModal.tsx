@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Dialog, DialogContent, DialogContentText, DialogTitle,
 } from '@mui/material';
-import { IClient } from '../../../Types';
+import { IClient } from '../../types/User';
 
 interface TrainerModalProps {
   client: IClient;

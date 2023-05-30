@@ -3,19 +3,21 @@ import {
   Container, Grid, Pagination, styled,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
 import ExerciseCard from '../ExerciseCard/ExerciseCard';
 import { IExerciseGrid } from '../../Providers/ExercisesContext';
+import NoData from '../Empty/NoData';
 
 // TODO: styling, responsiveness - need content container
-
 const GridContainer = styled(Container)({
-  margin: '40px 80px 100px 130px',
+  margin: '20px 0',
   height: '80%',
 });
 
 const StyledPagination = styled(Pagination)({
   marginTop: '40px',
 });
+const LoadingSpinner = () => <CircularProgress color="inherit" />;
 
 const itemsPerPage = 9;
 
@@ -34,6 +36,10 @@ const ExerciseGrid: React.FC<IExerciseGrid> = ({ items, allowsMultiplePick = fal
   useEffect(() => () => {
     setCurrentPage(1);
   }, [items]);
+
+  if (!items.length) {
+    return <NoData message="No favorites yet" />;
+  }
 
   // FIXME: no style props
   return (

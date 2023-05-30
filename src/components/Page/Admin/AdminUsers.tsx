@@ -1,17 +1,16 @@
 import * as React from 'react';
-
-import PageContainer from '../../PageContainer.css';
 import { UserTable } from '../../Tables/UserTable';
-import { UserType } from '../../../Types';
 import { AdminProvider } from '../../../Providers/AdminContext';
 import UserModal from './UserModal';
 import DeleteModal from './DeleteModal';
 import PicSuccessModal from '../../Modal/PicSuccessModal';
 import TrainerPicModal from '../../Modal/TrainerPicModal';
 import AdminErrorModal from '../../Modal/AdminErrorModal';
+import { IAuth } from '../../types/Auth';
+import { AdminPageContainer } from '../../PageContainer.css';
 
-const AdminUsers: React.FC<{ userType: UserType }> = ({ userType }) => (
-  <PageContainer>
+const AdminUsers: React.FC<IAuth> = ({ userType }) => (
+  <AdminPageContainer>
     <AdminProvider userType={userType}>
       <main>
         <UserTable userType={userType} />
@@ -22,6 +21,6 @@ const AdminUsers: React.FC<{ userType: UserType }> = ({ userType }) => (
         <AdminErrorModal />
       </main>
     </AdminProvider>
-  </PageContainer>
+  </AdminPageContainer>
 );
 export default AdminUsers;

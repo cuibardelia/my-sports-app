@@ -1,76 +1,62 @@
 import {
-  specialtiesList, TargetArea, UserType,
-} from '../Types';
+  IClient,
+  ICommonAPIData,
+  ICommonUser,
+  ICommonUserUntouched,
+  ITrainer, ITrainerAPIData, IUser,
+  UserType,
+} from '../components/types/User';
+import { TargetArea } from '../components/types/Exercise';
 
-/*
-=========================
-	    GET USERS
-=========================
-*/
 // TODO: reuse, replace
 export const getUserAPI = (userType: UserType): string => (process.env.GET_USERS_API.replace('REPLACE', userType));
 
-// FIXME: Sessions type
-type CommonInfo = {
-  id: string;
-  name: string,
-  email: string;
-  userType: UserType;
-  bio: string;
-  sessions?: any[];
-  favoriteExercises?: any[];
-  picUrl: string;
-};
-
-export interface TrainerInfo extends CommonInfo {
-  specialties: typeof specialtiesList,
-}
-
-export interface ClientInfo extends CommonInfo {
-  username: string,
-}
-
-export type UserFormattedInfo = TrainerInfo | ClientInfo;
-
-// FIXME: TYPE
-const getFormattedTrainer = (data: any) => ({
-  specialties: data.specialties,
+const getFormattedTrainer = (data: ITrainerAPIData): Partial<ITrainer> => ({
+  specialties: data.specialties || [],
+  formattedSpecialties: data.specialties.join(', '),
+  dateOfBirth: data.dateOfBirth,
+  age: data.age,
+  bio: data.bio || '',
 });
 
-const getFormattedClient = (data: any) => ({
+const getFormattedClient = (data: IClient) => ({
   username: data.username,
+  currentWeight: data.currentWeight || 0,
+  goalWeight: data.goalWeight || 0,
+  height: data.height || 0,
+  favoriteTrainers: data.favoriteTrainers || [],
 });
 
-export const getFullName = (user: any) => `${user.firstName} ${user.lastName}`;
+export const getFullName = (user: ICommonUserUntouched) => `${user.firstName} ${user.lastName}`;
 
-const getFormattedCommonValues = (data: any): CommonInfo => ({
+const getFormattedCommonValues = (data: ICommonAPIData): Partial<ICommonUser> => ({
   id: data._id,
-  bio: data.bio,
   picUrl: data.picUrl || '',
   name: getFullName(data),
   email: data.email,
   userType: data.userType,
 });
 
-const getParticularValues = (userData: any, userType: UserType) => (userType === UserType.CLIENT ? getFormattedClient(userData) : getFormattedTrainer(userData));
+// TODO: don't like this, think of options
+const getParticularValues = (userData: ICommonAPIData, userType: UserType) => {
+  if (userType === UserType.CLIENT) {
+    const clientData = userData as IClient;
+    return getFormattedClient(clientData);
+  }
+  const trainerData = userData as ITrainer;
+  return getFormattedTrainer(trainerData);
+};
 
-export const getFormattedUser = (userData: any, userType: UserType): UserFormattedInfo[] => {
+export const getFormattedUser = (userData: ICommonAPIData[], userType: UserType) => {
   if (!userData) {
     return null;
   }
-  return userData.map((t) => ({
-    ...getFormattedCommonValues(t),
-    ...getParticularValues(t, userType),
-  }));
+  return userData.map((data) => {
+    const commonValues = getFormattedCommonValues(data);
+    const particularValues = getParticularValues(data, userType);
+    return { ...commonValues, ...particularValues };
+  });
 };
-
-interface CommonHeaders {
-  'Content-type': string;
-}
-
-// interface AuthHeader extends CommonHeaders {
-//   'X-User-Type': UserType;
-// }
 
 type AuthHeader = {
   'Content-type': string;

@@ -7,8 +7,7 @@ interface IButtons {
   handleNext: () => void;
   handleSave: () => void;
 }
-
-const SessionButton: React.FC<IButtons> = ({
+const CreateSessionButton: React.FC<IButtons> = ({
   activeStep, handleBack, handleSave, handleNext,
 }) => (
   <div>
@@ -28,4 +27,4 @@ const SessionButton: React.FC<IButtons> = ({
   </div>
 );
 
-export default SessionButton;
+export default CreateSessionButton;

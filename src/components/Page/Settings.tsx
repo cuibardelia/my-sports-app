@@ -9,12 +9,12 @@ import {
   Typography,
 } from '@mui/material';
 import { styled } from '@mui/system';
-import { useState } from 'react'; // Replace with the path to your Upload component
+import { useState } from 'react';
 import axios from 'axios';
 import UploadPic from './Common/UploadPic';
 import { getProtectedHeaders } from '../../helpers/fnRequest';
 import { useAuthContext } from '../../Providers/AuthContext';
-import { IClient } from '../../Types';
+import { IClient } from '../types/User';
 
 const SettingsContainer = styled(Container)({
   marginTop: '2rem',

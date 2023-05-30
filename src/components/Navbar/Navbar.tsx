@@ -1,54 +1,54 @@
 import * as React from 'react';
+import { styled } from '@mui/system';
+import { Toolbar, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import { MenuItem, NavContainer } from './Navbar.css';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import {
+  AdminMenu, getMenu,
+} from '../../helpers/fnPaths';
+import { TransparentAppBar } from './Navbar.css';
+import { LogoSmall } from '../Sidebar/Sidebar.css';
 import { useAuthContext } from '../../Providers/AuthContext';
-import { getMenu, MenuOptions } from '../../helpers/fnPaths';
+import { StyledIconButton } from '../Icons/Icons.css';
+
+const RightAlignedLinks = styled('div')({
+  marginLeft: 'auto',
+});
+
+const StyledLink = styled(Link)(({ theme }) => ({
+  color: theme.palette.secondary.main,
+  marginRight: theme.spacing(2),
+  textDecoration: 'none',
+}));
 
 const Navbar: React.FC = () => {
-  // const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const { logout } = useAuthContext();
   const navigate = useNavigate();
 
-  const { logout, user } = useAuthContext();
-  const { TopPaths } = getMenu(user.userType);
-  // FIXME
-  // const hasLogOut = hasLogout(user.userType);
-  const hasLogOut = true;
-
-  if (!TopPaths && !hasLogOut) {
-    return null;
-  }
-
-  let menu = [];
-  if (TopPaths) {
-    menu = Object.entries(TopPaths)?.map(([key, value]) => ({
-      path: value,
-      name: MenuOptions[key],
-    }));
-  }
+  const menu = getMenu(AdminMenu);
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
 
-  // TODO: tabindex for accessibility
   return (
-    <NavContainer>
-      <ul>
-        {menu?.map((item) => (
-          <Link to={item.path} key={`menu-${item.name}`}>
-            <MenuItem>{item.name}</MenuItem>
-          </Link>
-        ))}
-        { hasLogOut && (
-        <MenuItem
-          onClick={handleLogout}
-        >
-          Logout
-        </MenuItem>
-        )}
-      </ul>
-    </NavContainer>
+    <TransparentAppBar position="static">
+      <Toolbar>
+        <LogoSmall />
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} />
+        <RightAlignedLinks>
+          {menu.map((menuItem) => (
+            <StyledLink key={menuItem.name} to={menuItem.path}>
+              {menuItem.name}
+            </StyledLink>
+          ))}
+          <StyledIconButton edge="end" onClick={handleLogout}>
+            <PowerSettingsNewIcon />
+          </StyledIconButton>
+        </RightAlignedLinks>
+      </Toolbar>
+    </TransparentAppBar>
   );
 };
 

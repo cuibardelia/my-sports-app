@@ -1,13 +1,12 @@
-import {
-  Exercise, IClient, ICommonUser, ITrainer, IUser,
-} from '../Types';
+import { Exercise } from '../components/types/Exercise';
+import { IClient, ITrainer, IUser } from '../components/types/User';
 
 export const isAmongFavorites = (exercise: Exercise, user: IUser): boolean => {
   if (!exercise) {
     return false;
   }
   const { id } = exercise;
-  return (user as ICommonUser).favoriteExercises.some((eId) => id === eId);
+  return (user as IUser).favoriteExercises.some((eId) => id === eId);
 };
 
 export const getFavActionText = (isFavorite: boolean): string => (isFavorite ? 'Remove from Favorites' : 'Add to Favorites');

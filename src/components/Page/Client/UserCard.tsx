@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Typography } from '@mui/material';
-import { IClient, IUser } from '../../../Types';
+import { IClient, IUser } from '../../types/User';
 
 const CardContainer = styled.div`
   display: flex;

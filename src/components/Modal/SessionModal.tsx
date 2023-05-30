@@ -11,11 +11,12 @@ import {
 import {
   getEquipment,
 } from '../../helpers/fnRequest';
+import { SessionPlan } from '../../helpers/fnSession';
 
 interface ISessionModal {
-  session: any;
+  session: SessionPlan;
   handleClose: () => void;
-  handleExercises: (a: any) => void;
+  handleExercises: (a: string[]) => void;
 }
 const SessionModal: React.FC<ISessionModal> = ({ handleClose, session, handleExercises }) => {
   if (!session) {

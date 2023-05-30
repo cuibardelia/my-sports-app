@@ -3,13 +3,11 @@ import axios from 'axios';
 import { useAuthContext } from '../Providers/AuthContext';
 import { getProtectedHeaders, rapidOptions } from '../helpers/fnRequest';
 
-const useProtectedHeaders = () => {
+export const useProtectedHeaders = () => {
   const { token } = useAuthContext();
-  const options = {
+  return {
     headers: getProtectedHeaders(token),
   };
-
-  return options;
 };
 
 export const useProtectedCallback = (api: string, dataKey: string, callback) => {

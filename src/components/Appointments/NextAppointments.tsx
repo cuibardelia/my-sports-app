@@ -3,10 +3,10 @@ import { useState } from 'react';
 import AppointmentModal from '../Modal/AppointmentModal';
 import SessionExerciseModal from '../Modal/SessionExerciseModal';
 import { Appointment } from '../../helpers/fnSession';
-import { Exercise } from '../../Types';
 import { useProtectedCall } from '../../hooks/useProtectedCall';
-import NoData from '../NotFound/NoData';
 import AppointmentCard from '../Card/AppointmentCard';
+import { Exercise } from '../types/Exercise';
+import NoData from '../Empty/NoData';
 
 const NextAppointments: React.FC = () => {
   const { data } = useProtectedCall(`${process.env.TRAINER_API}/get-appointments`, 'appointments');
@@ -29,8 +29,9 @@ const NextAppointments: React.FC = () => {
     setAppointmentData(a);
   };
 
+  // TODO: New appt
   if (!data?.length) {
-    return <NoData message="No appointments yet" />;
+    return <NoData message="No appointments yet" buttonText="Create" link="new-appointment" />;
   }
 
   return (

@@ -3,12 +3,12 @@ import {
   createContext, useContext, useEffect, useState,
 } from 'react';
 import { useAuthContext } from './AuthContext';
-import { Exercise, TargetArea } from '../Types';
 import {
   getFavExercisesApi, getFormattedTargets,
 } from '../helpers/fnRequest';
 import { abs } from '../components/ExerciseCard/abs-example';
 import { getRapidAPI, useProtectedCallback } from '../hooks/useProtectedCall';
+import { Exercise, TargetArea } from '../components/types/Exercise';
 
 export interface IExerciseGrid {
   items: TargetArea[] | Exercise[];

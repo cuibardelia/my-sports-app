@@ -5,13 +5,15 @@ import {
 import { deepPurple, green, purple } from '@mui/material/colors';
 import { useEffect, useState } from 'react';
 import { styled } from '@mui/system';
-import PageContainer from '../../PageContainer.css';
+import CircularProgress from '@mui/material/CircularProgress';
+import axios from 'axios';
+import { PageContainer } from '../../PageContainer.css';
 import {
   buddyAPIMapping,
 } from '../../../helpers/fnRequest';
-import { ITrainer } from '../../../Types';
 import TrainerModal from './TrainerModal';
-import { useProtectedCallback } from '../../../hooks/useProtectedCall';
+import { useProtectedHeaders } from '../../../hooks/useProtectedCall';
+import { ITrainer } from '../../types/User';
 
 const BuddyAvatar = styled(Avatar)(() => ({
   width: '100%',
@@ -25,11 +27,14 @@ const BuddyAvatar = styled(Avatar)(() => ({
   justifyContent: 'center',
   borderRadius: 0,
 }));
+const LoadingSpinner = () => <CircularProgress color="inherit" />;
 
 const Buddies: React.FC = () => {
   const [activeOption, setActiveOption] = useState<string>('All');
   const [items, setItems] = useState<ITrainer[]>([]);
   const [selectedUser, setSelectedUser] = useState<ITrainer>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const options = useProtectedHeaders();
 
   const handleMenuClick = (option) => {
     setActiveOption(option);
@@ -43,19 +48,17 @@ const Buddies: React.FC = () => {
     setSelectedUser(null);
   };
 
-  const fetchData = () => {
-    const callAPI = useProtectedCallback(buddyAPIMapping[activeOption], 'users', setItems);
-    callAPI();
-  };
-
   useEffect(() => {
-    fetchData();
+    setLoading(true);
+    axios.get(buddyAPIMapping[activeOption], options)
+      .then((response) => {
+        setItems(response.data.users);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [activeOption]);
-
-  // if (!items) {
-  //   return <div>loading</div>;
-  // }
-  // TODO: pagination
 
   return (
     <PageContainer>
@@ -75,15 +78,19 @@ const Buddies: React.FC = () => {
           </Button>
         ))}
       </ButtonGroup>
-      <Grid container spacing={2} sx={{ margin: '2rem' }}>
-        {items?.map((buddy) => (
-          <Grid item xs={6} sm={4} md={3} key={buddy.email} onClick={() => handleItemClick(buddy)}>
-            <BuddyAvatar src={buddy.picUrl} alt={buddy.firstName}>
-              {buddy.firstName.charAt(0)}
-            </BuddyAvatar>
-            <Typography variant="subtitle1" align="center">{`${buddy.firstName} ${buddy.lastName}`}</Typography>
-          </Grid>
-        ))}
+      <Grid container spacing={2} sx={{ width: '1/3' }}>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          items?.map((buddy) => (
+            <Grid item xs={6} sm={4} md={3} key={buddy.email} onClick={() => handleItemClick(buddy)}>
+              <BuddyAvatar src={buddy.picUrl} alt={buddy.firstName}>
+                {buddy.firstName.charAt(0)}
+              </BuddyAvatar>
+              <Typography variant="subtitle1" align="center">{`${buddy.firstName} ${buddy.lastName}`}</Typography>
+            </Grid>
+          ))
+        )}
       </Grid>
       <TrainerModal trainer={selectedUser} handleClose={handleModalClose} />
     </PageContainer>

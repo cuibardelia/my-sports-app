@@ -9,7 +9,7 @@ import {
   DialogTitle,
   Pagination,
 } from '@mui/material';
-import { Exercise } from '../../Types';
+import { Exercise } from '../types/Exercise';
 
 interface ModalProps {
   exercises: any[];

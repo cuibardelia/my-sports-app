@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createContext, useContext } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
-import { IUser } from '../Types';
+import { IUser } from '../components/types/User';
 
 // FIXME: linting & IDE
 // TODO: error boundary

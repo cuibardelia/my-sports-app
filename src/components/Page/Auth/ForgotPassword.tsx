@@ -1,31 +1,27 @@
 import * as React from 'react';
-import { object, string } from 'yup';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
 import { useState } from 'react';
-import { Link, Navigate, useLocation } from 'react-router-dom';
-import { IAuthData, useAuthContext } from '../../../Providers/AuthContext';
-import { Input } from '../../Login/Input';
-import { AuthCard, BottomLinks, Button } from '../../Login/Form.css';
-import { FormDataType, UserType } from '../../../Types';
+import { Navigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { useAuthContext } from '../../../Providers/AuthContext';
+import { Input } from '../../Form/Input';
+import { AuthCard, BottomLinks } from '../../Form/Form.css';
+import { FormDataType } from '../../../Types';
 import { getAuthHeaders } from '../../../helpers/fnRequest';
-import { AuthPaths } from '../../../helpers/fnPaths';
+import { IAuth } from '../../types/Auth';
+import { ForgotPassValidationSchema } from '../../../helpers/fnForm';
+import { GoBack } from '../../Form/GoBack';
+import DefaultButton from '../../Button/DefaultButton';
 
-const ForgotPassword: React.FC<{ userType: UserType }> = ({ userType }) => {
-  const forgotPasswordValidationSchema = object({
-    email: string()
-      .required('Please enter an email address.')
-      .email('Your email address does not seem valid.'),
-  }).required();
-
+const ForgotPassword: React.FC<IAuth> = ({ userType }) => {
   const methods = useForm<FormDataType>({
-    resolver: yupResolver(forgotPasswordValidationSchema),
+    resolver: yupResolver(ForgotPassValidationSchema),
   });
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverError, setServerError] = useState('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { user } = useAuthContext();
-
   const location = useLocation();
 
   if (user) {
@@ -35,33 +31,28 @@ const ForgotPassword: React.FC<{ userType: UserType }> = ({ userType }) => {
   }
 
   async function handleSubmit(formData: FormDataType) {
-    // TODO: axios
-    const data: IAuthData = await fetch(`${process.env.AUTH_API}/forgot-password`, {
-      method: 'POST',
+    await axios.post(`${process.env.AUTH_API}/forgot-password`, JSON.stringify(formData), {
       headers: getAuthHeaders(userType),
-      body: JSON.stringify(formData),
-    }).then((res) => res.json());
-
-    if (typeof data !== 'object') {
-      // TODO: modal for server error
-      setServerError(data);
-    }
-    // TODO: modal for success
+    })
+      .then((response) => {
+      // TODO: show modal - response
+        console.log(response);
+      })
+      .catch((error) => {
+        setServerError(error.message);
+      });
   }
 
-  // TODO: form error handling
+  // TODO: Form error handling
   return (
   // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
       <AuthCard>
         <form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
           <Input name="email" type="email" labelText="Email" />
-          <Button>Submit</Button>
+          <DefaultButton text="Submit" type="submit" />
           <BottomLinks>
-            <div>
-              Got lost?
-              <Link to={AuthPaths.LOGIN}>Go back to Login</Link>
-            </div>
+            <GoBack />
           </BottomLinks>
         </form>
       </AuthCard>

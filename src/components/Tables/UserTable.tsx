@@ -4,7 +4,7 @@ import {
 import * as React from 'react';
 import { UserRow } from './UserRow';
 import { useAdminContext } from '../../Providers/AdminContext';
-import { UserType } from '../../Types';
+import { UserType } from '../types/User';
 
 interface IUserTable {
   userType: UserType;

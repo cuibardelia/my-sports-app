@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { LogoContainer } from '../components/Sidebar/Sidebar.css';
 import { AuthContainer } from './AuthLayout.css';
-import { Footer } from '../components/Extras.css';
 
 const AuthLogoContainer = styled(LogoContainer)`
     position: fixed;
@@ -15,6 +14,5 @@ export const AuthLayout: React.FunctionComponent = () => (
   <AuthContainer>
     <AuthLogoContainer />
     <Outlet />
-    <Footer>WIP</Footer>
   </AuthContainer>
 );

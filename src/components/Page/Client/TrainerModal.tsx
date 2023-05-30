@@ -7,7 +7,7 @@ import {
 import { useAuthContext } from '../../../Providers/AuthContext';
 import { isAmongPTList } from '../../../helpers/fnFeatures';
 import { getProtectedHeaders } from '../../../helpers/fnRequest';
-import { ITrainer } from '../../../Types';
+import { ITrainer } from '../../types/User';
 
 interface TrainerModalProps {
   trainer: ITrainer;

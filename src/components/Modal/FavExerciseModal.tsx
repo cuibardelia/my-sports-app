@@ -1,12 +1,12 @@
 import * as React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Exercise } from '../../Types';
 import { useExercisesContext } from '../../Providers/ExercisesContext';
 import { getFavActionApi, getProtectedHeaders } from '../../helpers/fnRequest';
 import { useAuthContext } from '../../Providers/AuthContext';
 import { getFavActionText, isAmongFavorites } from '../../helpers/fnFeatures';
 import ExerciseModal from './Presentational/ExerciseModal';
+import { Exercise } from '../types/Exercise';
 
 interface ModalProps {
   exercise: Exercise;

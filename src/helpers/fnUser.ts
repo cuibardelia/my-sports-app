@@ -1,6 +1,6 @@
 import {
   IClient, ITrainer, IUser, UserType,
-} from '../Types';
+} from '../components/types/User';
 
 export const getUserName = (user: IUser): string => {
   if (!user) {
