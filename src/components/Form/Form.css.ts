@@ -39,3 +39,25 @@ export const BottomLinks = styled.div`
     color: #4CAF50;
   }
 `;
+
+export const FormRow = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginBottom: '16px',
+});
+
+export const FormColumn = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  marginRight: '16px',
+});
+
+export const Delimiter = styled('div')({
+  width: '1px',
+  height: '100%',
+  backgroundColor: '#ccc',
+  margin: '0 16px',
+});

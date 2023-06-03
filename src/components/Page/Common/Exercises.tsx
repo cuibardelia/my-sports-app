@@ -1,24 +1,25 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import {
-  Tab, Tabs,
-} from '@mui/material';
+import { useEffect, useState } from 'react';
 import { PageContainer } from '../../PageContainer.css';
 import ExerciseGrid from '../../Grid/ExerciseGrid';
 import { exerciseOptions, SelectedOption, useExercisesContext } from '../../../Providers/ExercisesContext';
 import FavExerciseModal from '../../Modal/FavExerciseModal';
 import { useAuthContext } from '../../../Providers/AuthContext';
-import theme from '../../../theme';
+import TabNav from '../../Navigation/TabNav';
+
+const getOptionIndex = (value: SelectedOption): number => Object.values(SelectedOption).indexOf(value);
 
 const Exercises: React.FC = () => {
   const {
     setSelectedOption, activeOption, items, openExercise,
   } = useExercisesContext();
   const { user } = useAuthContext();
+  const [tabIndex, setTabIndex] = useState<number>(0);
 
   // TODO: Token reset on client side
   const handleClick = (option) => {
     setSelectedOption(option);
+    setTabIndex(getOptionIndex(option));
   };
 
   useEffect(() => {
@@ -34,18 +35,7 @@ const Exercises: React.FC = () => {
   return (
     <PageContainer>
       <>
-        <Tabs value={activeOption} aria-label="exercises groups">
-          {exerciseOptions.map((option) => (
-            <Tab
-              key={option}
-              onClick={() => handleClick(option)}
-              label={option}
-              style={{
-                color: activeOption === option ? theme.palette.primary.main : theme.palette.primary.dark,
-              }}
-            />
-          ))}
-        </Tabs>
+        <TabNav optionsList={exerciseOptions} tabIndex={tabIndex} handleClick={handleClick} activeOption={activeOption} />
         <FavExerciseModal exercise={openExercise} />
         <ExerciseGrid items={items} />
       </>

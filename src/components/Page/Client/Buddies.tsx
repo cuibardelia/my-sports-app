@@ -14,6 +14,7 @@ import {
 import TrainerModal from './TrainerModal';
 import { useProtectedHeaders } from '../../../hooks/useProtectedCall';
 import { ITrainer } from '../../types/User';
+import TabNav from '../../Navigation/TabNav';
 
 const BuddyAvatar = styled(Avatar)(() => ({
   width: '100%',
@@ -29,15 +30,19 @@ const BuddyAvatar = styled(Avatar)(() => ({
 }));
 const LoadingSpinner = () => <CircularProgress color="inherit" />;
 
+const buddyList = ['All', 'My Personal Trainers'];
+
 const Buddies: React.FC = () => {
   const [activeOption, setActiveOption] = useState<string>('All');
   const [items, setItems] = useState<ITrainer[]>([]);
   const [selectedUser, setSelectedUser] = useState<ITrainer>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const options = useProtectedHeaders();
+  const [tabIndex, setTabIndex] = useState<number>(0);
 
   const handleMenuClick = (option) => {
     setActiveOption(option);
+    setTabIndex(buddyList.indexOf(option));
   };
 
   const handleItemClick = (item) => {
@@ -62,22 +67,7 @@ const Buddies: React.FC = () => {
 
   return (
     <PageContainer>
-      <ButtonGroup variant="contained" aria-label="button group">
-        {['All', 'My Personal Trainers'].map((option) => (
-          <Button
-            key={option}
-            onClick={() => handleMenuClick(option)}
-            sx={{
-              backgroundColor: activeOption === option ? purple[300] : green[300],
-              '&:hover': {
-                backgroundColor: green[400],
-              },
-            }}
-          >
-            {option}
-          </Button>
-        ))}
-      </ButtonGroup>
+      <TabNav optionsList={buddyList} tabIndex={tabIndex} handleClick={handleMenuClick} activeOption={activeOption} />
       <Grid container spacing={2} sx={{ width: '1/3' }}>
         {loading ? (
           <LoadingSpinner />

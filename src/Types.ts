@@ -1,16 +1,19 @@
+import { Dayjs } from 'dayjs';
+
 /*
 ========================
 	    DROPDOWN
 ========================
 */
 export const OptionMapping = {
-  profile: 'Me',
   dailyStats: 'Daily Goals',
+  weightEvolution: 'Your progress',
   stepStats: 'Your Steps',
   activeZoneStats: 'AZM',
 };
 export type OptionMappingKeys = keyof typeof OptionMapping;
 
+export const dashboardOptions = Object.values(OptionMapping);
 export const optionMappingKeys: (keyof typeof OptionMapping)[] = Object.keys(OptionMapping) as (keyof typeof OptionMapping)[];
 
 /*
@@ -42,9 +45,27 @@ export type TrainerFormData = {
   passwordCheck: string;
   fName: string;
   lName: string;
-  // FIXME
-  dateOfBirth: string;
+  dateOfBirth: Dayjs,
   gender: Gender;
+};
+
+export type ProfileSettingsFormData = {
+  currentWeight: number,
+  goalWeight: number,
+  height: number,
+  dateOfBirth: Dayjs,
+};
+
+export type AppointmentForm = {
+  startDate: Dayjs,
+  endDate: Dayjs,
+  room: string,
+};
+
+export type SessionForm = {
+  name: string,
+  notes: string,
+  difficulty: string,
 };
 
 export type FormDataType = TrainerFormData | ClientFormData;

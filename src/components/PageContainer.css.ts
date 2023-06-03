@@ -27,3 +27,11 @@ export const Container = styled.div`
   justify-content: center;
   height: 100vh;
 `;
+
+export const StepsContainer = styled(Container)(() => ({
+  height: '66vh',
+  width: '66vw',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+}));

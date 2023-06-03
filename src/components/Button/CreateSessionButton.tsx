@@ -15,14 +15,14 @@ const CreateSessionButton: React.FC<IButtons> = ({
       Back
     </Button>
     {activeStep < 2 && (
-      <Button variant="contained" color="primary" onClick={handleNext}>
-        Next
-      </Button>
+    <Button type="submit" variant="contained" color="primary" onClick={handleNext}>
+      Next
+    </Button>
     )}
     {activeStep === 2 && (
-      <Button variant="contained" color="primary" onClick={handleSave}>
-        Save
-      </Button>
+    <Button variant="contained" color="primary" onClick={handleSave}>
+      Save
+    </Button>
     )}
   </div>
 );

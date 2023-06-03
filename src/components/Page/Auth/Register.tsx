@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Box } from '@mui/material';
 import { useAuthContext } from '../../../Providers/AuthContext';
 import {
-  AuthCard, BottomLinks,
+  AuthCard, BottomLinks, Delimiter, FormColumn, FormRow,
 } from '../../Form/Form.css';
 import { FormDataType } from '../../../Types';
 import { getRegisterFields, getUserSchema } from '../../../helpers/fnForm';
@@ -17,15 +17,20 @@ import { IAuth } from '../../types/Auth';
 import { FieldPicker } from '../../Form/FieldPicker';
 import { GoBack } from '../../Form/GoBack';
 import DefaultButton from '../../Button/DefaultButton';
+import { maxRegistrationDate } from '../../Form/DateField';
+import { ErrorMessage } from '../../Form/ErrorMessage';
 
 const Register: React.FC<IAuth> = ({ userType }) => {
-  const methods = useForm<FormDataType>({
-    resolver: yupResolver(getUserSchema(userType)),
-  });
   const [serverError, setServerError] = useState('');
-
   const { login } = useAuthContext();
   const navigate = useNavigate();
+
+  const methods = useForm<FormDataType>({
+    resolver: yupResolver(getUserSchema(userType)),
+    defaultValues: {
+      dateOfBirth: maxRegistrationDate,
+    },
+  });
 
   async function onSubmit(formData: FormDataType) {
     const { passwordCheck, ...payload } = formData;
@@ -41,8 +46,6 @@ const Register: React.FC<IAuth> = ({ userType }) => {
       .catch((error) => {
         setServerError(error.message);
       });
-
-    // FIXME: proper error handling
   }
 
   const fields = getRegisterFields(userType);
@@ -50,19 +53,34 @@ const Register: React.FC<IAuth> = ({ userType }) => {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
-      <div>
-        <AuthCard>
-          <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
-            <Box display="flex" flexDirection="column">
-              {fields.map((input) => <FieldPicker key={`picker-${input.name}`} input={input} />)}
-            </Box>
-            <DefaultButton text="Register" type="submit" />
-            <BottomLinks>
-              <GoBack />
-            </BottomLinks>
-          </form>
-        </AuthCard>
-      </div>
+      <AuthCard>
+        <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <FormRow>
+              <FormColumn>
+                {fields.slice(0, Math.ceil(fields.length / 2)).map((input) => (
+                  <FieldPicker key={`picker-${input.name}`} input={input} />
+                ))}
+              </FormColumn>
+              <Delimiter />
+              <FormColumn>
+                {fields.slice(Math.ceil(fields.length / 2)).map((input) => (
+                  <FieldPicker key={`picker-${input.name}`} input={input} />
+                ))}
+              </FormColumn>
+            </FormRow>
+            {' '}
+
+          </Box>
+          <DefaultButton text="Register" type="submit" />
+          <BottomLinks>
+            <GoBack />
+          </BottomLinks>
+          {serverError && (
+          <ErrorMessage message={serverError} />
+          )}
+        </form>
+      </AuthCard>
     </FormProvider>
   );
 };

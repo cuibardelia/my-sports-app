@@ -40,6 +40,7 @@ export enum FeaturePaths {
   NEW_SESSION = 'new-session',
   SETTINGS = 'settings',
   APPOINTMENTS = 'appointments',
+  PROFILE = 'profile',
   NEW_APPOINTMENT = 'new-appointment',
 }
 

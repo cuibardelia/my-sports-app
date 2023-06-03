@@ -124,8 +124,7 @@ const UserModal: React.FC = () => {
               <DialogContentText>
                 {specialties.length > 0 && (
                 <>
-                  <b>Specialties:</b>
-                  {' '}
+                  <b>Specialties:  </b>
                   {specialties.join(', ')}
                 </>
                 )}

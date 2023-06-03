@@ -30,12 +30,13 @@ import {
 } from './helpers/fnPaths';
 import { UserType } from './components/types/User';
 import theme from './theme';
+import UserProfile from './components/Page/Common/UserProfile';
+import CreateAppointment from './components/Page/Trainers/CreateAppointment';
 
 const App: React.FC = () => (
   <ThemeProvider theme={theme}>
     <AuthContextProvider>
       <ExercisesProvider>
-
         <GlobalStyles />
         <Router>
           <div className="App">
@@ -59,6 +60,7 @@ const App: React.FC = () => (
                 <Route path={ConnectionPaths.TRAINERS} element={<Buddies />} />
                 <Route path={FeaturePaths.HISTORIC} element={<Historic />} />
                 <Route path={FeaturePaths.SETTINGS} element={<Settings />} />
+                <Route path={FeaturePaths.PROFILE} element={<UserProfile />} />
               </Route>
               <Route path="/trainer" element={<PrivateRoute userType="trainer" />}>
                 <Route path={FeaturePaths.DASHBOARD} element={<TrainerDashboard />} />
@@ -67,7 +69,8 @@ const App: React.FC = () => (
                 <Route path={FeaturePaths.SESSIONS} element={<TrainerSessions />} />
                 <Route path={`${FeaturePaths.SESSIONS}/${FeaturePaths.NEW_SESSION}`} element={<CreateSession />} />
                 <Route path={FeaturePaths.APPOINTMENTS} element={<NextAppointments />} />
-                {/* <Route path="/trainer-settings" element={<TrainerSettings />} /> */}
+                <Route path={FeaturePaths.PROFILE} element={<UserProfile />} />
+                <Route path={FeaturePaths.NEW_APPOINTMENT} element={<CreateAppointment />} />
               </Route>
               <Route path="/admin" element={<PrivateRoute userType="admin" />}>
                 <Route path={FeaturePaths.DASHBOARD} element={<AdminDashboard />} />

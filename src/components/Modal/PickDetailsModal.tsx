@@ -32,12 +32,14 @@ const PickDetailsModal: React.FC<IPickModal> = ({ exercise, handleExercise }) =>
           label="Sets"
           type="number"
           value={sets}
+          inputProps={{ min: '1' }}
           onChange={(e) => setSets(parseInt(e.target.value, 10))}
         />
         <TextField
           label="Repetitions"
           type="number"
           value={repetitions}
+          inputProps={{ min: '1' }}
           onChange={(e) => setRepetitions(parseInt(e.target.value, 10))}
         />
       </DialogContent>

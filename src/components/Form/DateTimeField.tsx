@@ -1,13 +1,13 @@
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { styled } from '@mui/material/styles';
 import dayjs from 'dayjs';
 import { FieldContainer, InputCommonStyle } from './Input';
 import { ErrorMessage } from './ErrorMessage';
 
-const CustomDateField = styled(DatePicker)(() => ({
+const CustomDateTimeField = styled(DateTimePicker)(() => ({
   ...InputCommonStyle,
 }));
 
@@ -16,13 +16,13 @@ interface IDateInput {
   label: string;
 }
 
-export const maxRegistrationDate = dayjs().subtract(18, 'year');
-
-export const DateInput: React.FC<IDateInput> = ({ name, label }) => {
+export const DateTimeInput: React.FC<IDateInput> = ({ name, label }) => {
   const { control, register } = useFormContext();
   const {
     ref,
   } = register(name);
+
+  const currentDate = dayjs();
 
   // TODO: theme
   return (
@@ -34,13 +34,13 @@ export const DateInput: React.FC<IDateInput> = ({ name, label }) => {
       render={({ field, fieldState }) => (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <FieldContainer>
-            <CustomDateField
+            <CustomDateTimeField
               label={label}
               value={field.value}
               inputRef={ref}
               onChange={field.onChange}
-              maxDate={maxRegistrationDate}
               {...field}
+              minDate={currentDate}
             />
             {fieldState.error && (
               <ErrorMessage message={fieldState.error.message} />

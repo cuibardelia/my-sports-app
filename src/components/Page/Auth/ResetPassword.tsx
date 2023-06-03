@@ -11,9 +11,9 @@ import { AuthCard, Button } from '../../Form/Form.css';
 import { FormDataType } from '../../../Types';
 import { cType } from '../../../helpers/fnRequest';
 import { forgotPasswordValidationSchema } from '../../../helpers/fnForm';
+import { ErrorMessage } from '../../Form/ErrorMessage';
 
 const ResetPassword: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverError, setServerError] = useState('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { login, user } = useAuthContext();
@@ -42,8 +42,6 @@ const ResetPassword: React.FC = () => {
     // TODO: modal for success + redirect
   }
 
-  // TODO: Form error handling, seems like pwd check doesn't work
-  // TODO: view pwd options
   return (
     <FormProvider {...methods}>
       <AuthCard>
@@ -55,6 +53,9 @@ const ResetPassword: React.FC = () => {
             labelText="Retype Password"
           />
           <Button>Submit</Button>
+          {serverError && (
+          <ErrorMessage message={serverError} />
+          )}
         </form>
       </AuthCard>
     </FormProvider>

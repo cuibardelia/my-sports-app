@@ -48,6 +48,17 @@ export interface IClient extends ICommonUser {
   currentWeight: number;
   goalWeight: number;
   height: number;
+  dateOfBirth: string;
+  objectives: {
+    dateInitial: string,
+    goalWeight: number,
+    initialWeight: number,
+    dateAchieved?: string,
+  }[],
+  weightStats: {
+    date: string;
+    value: number;
+  }[],
   favoriteTrainers: string[];
   // FIXME
   _id?: string;

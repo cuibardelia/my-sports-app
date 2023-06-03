@@ -3,7 +3,7 @@ import {
   ICommonAPIData,
   ICommonUser,
   ICommonUserUntouched,
-  ITrainer, ITrainerAPIData, IUser,
+  ITrainer, ITrainerAPIData,
   UserType,
 } from '../components/types/User';
 import { TargetArea } from '../components/types/Exercise';
@@ -158,6 +158,23 @@ export const getDate = (date): string => (
   })}`
 );
 
+export const getProgressLabel = (date): string => (
+  new Date(date).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+  })
+);
+
+export const getFormattedLabels = (dateString: string): string => {
+  const date = new Date(dateString);
+  return date.toISOString().split('T')[0];
+};
+
 export const getEquipment = (equipment: string[]): string => (
   equipment?.join(', ') || 'None'
 );
+
+export const remapWeightStats = (stats) => stats.map((i) => ({
+  date: getFormattedLabels(i.date),
+  weight: i.value,
+}));

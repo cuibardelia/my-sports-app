@@ -23,12 +23,19 @@ const SessionModal: React.FC<ISessionModal> = ({ handleClose, session, handleExe
     return null;
   }
 
+  // TODO
+  // const handleDelete = () => {
+  //
+  // }
+
   return (
     <Dialog open={!!session} onClose={handleClose}>
       <DialogTitle>{session.name}</DialogTitle>
       <DialogContent>
         <Typography variant="h5">Equipment:</Typography>
         <DialogContentText>{getEquipment(session.equipment)}</DialogContentText>
+        <Typography variant="h5">Body parts:</Typography>
+        <DialogContentText>{getEquipment(session.targets)}</DialogContentText>
         <Typography variant="h5">Notes:</Typography>
         <DialogContentText>{session.notes}</DialogContentText>
       </DialogContent>
@@ -39,6 +46,9 @@ const SessionModal: React.FC<ISessionModal> = ({ handleClose, session, handleExe
         <Button onClick={() => handleExercises(session.exercises)} color="primary">
           See Exercises
         </Button>
+        {/* <Button onClick={handleDelete} color="secondary"> */}
+        {/*  Delete */}
+        {/* </Button> */}
       </DialogActions>
     </Dialog>
   );

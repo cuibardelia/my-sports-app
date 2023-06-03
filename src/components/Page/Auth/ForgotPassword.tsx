@@ -13,14 +13,13 @@ import { IAuth } from '../../types/Auth';
 import { ForgotPassValidationSchema } from '../../../helpers/fnForm';
 import { GoBack } from '../../Form/GoBack';
 import DefaultButton from '../../Button/DefaultButton';
+import { ErrorMessage } from '../../Form/ErrorMessage';
 
 const ForgotPassword: React.FC<IAuth> = ({ userType }) => {
   const methods = useForm<FormDataType>({
     resolver: yupResolver(ForgotPassValidationSchema),
   });
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverError, setServerError] = useState('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { user } = useAuthContext();
   const location = useLocation();
 
@@ -43,7 +42,6 @@ const ForgotPassword: React.FC<IAuth> = ({ userType }) => {
       });
   }
 
-  // TODO: Form error handling
   return (
   // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
@@ -54,6 +52,9 @@ const ForgotPassword: React.FC<IAuth> = ({ userType }) => {
           <BottomLinks>
             <GoBack />
           </BottomLinks>
+          {serverError && (
+          <ErrorMessage message={serverError} />
+          )}
         </form>
       </AuthCard>
     </FormProvider>

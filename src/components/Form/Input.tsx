@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { useFormContext } from 'react-hook-form';
-import { TextField, FormControl, FormHelperText } from '@mui/material';
+import { TextField, FormControl } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { ErrorMessage } from './ErrorMessage';
 
 export type FieldType = {
   name: string;
   labelText: string;
   type: InputTypes;
+  multiline?: boolean;
+  rows?: number;
+  fullWidth?: boolean;
 };
 
 type InputTypes =
@@ -39,15 +43,18 @@ export const InputCommonStyle = {
   },
 };
 
+export const FieldContainer = styled('div')(({ theme }) => ({
+  position: 'relative',
+  marginBottom: theme.spacing(2),
+}));
+
 const CustomTextField = styled(TextField)(() => ({
   ...InputCommonStyle,
 }));
 
-const CustomFormHelperText = styled(FormHelperText)({
-  color: '#FF8C66',
-});
-
-export const Input: React.FC<FieldType> = ({ name, labelText, type = 'text' }) => {
+export const Input: React.FC<FieldType> = ({
+  name, labelText, type = 'text', multiline = false, rows = 1, fullWidth = false,
+}) => {
   const {
     formState: { errors },
     register,
@@ -56,15 +63,20 @@ export const Input: React.FC<FieldType> = ({ name, labelText, type = 'text' }) =
   return (
     <div>
       <FormControl error={Boolean(errors[name])}>
-        <CustomTextField
-          id={name}
-          label={labelText}
-          type={type}
-          {...register(name)}
-        />
-        {errors[name] && (
-        <CustomFormHelperText>{errors[name].message}</CustomFormHelperText>
-        )}
+        <FieldContainer>
+          <CustomTextField
+            id={name}
+            label={labelText}
+            type={type}
+            multiline={multiline}
+            rows={rows}
+            fullWidth={fullWidth}
+            {...register(name)}
+          />
+          {errors[name] && (
+          <ErrorMessage message={errors[name].message} />
+          )}
+        </FieldContainer>
       </FormControl>
     </div>
   );

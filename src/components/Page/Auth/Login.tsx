@@ -18,9 +18,9 @@ import { IAuth } from '../../types/Auth';
 import { loginValidationSchema } from '../../../helpers/fnForm';
 import DefaultButton from '../../Button/DefaultButton';
 import { FormLinks, LinkContainer } from '../../Form/FormLinks';
+import { ErrorMessage } from '../../Form/ErrorMessage';
 
 const Login: React.FC<IAuth> = ({ userType }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverError, setServerError] = useState('');
   const { login, user } = useAuthContext();
   const methods = useForm<FormDataType>({
@@ -48,7 +48,6 @@ const Login: React.FC<IAuth> = ({ userType }) => {
     });
   }
 
-  // TODO: Form error handling
   return (
   // eslint-disable-next-line react/jsx-props-no-spreading
     <FormProvider {...methods}>
@@ -62,9 +61,7 @@ const Login: React.FC<IAuth> = ({ userType }) => {
             <LinkContainer><Link to={AuthPaths.FORGOT}>Forgot password?</Link></LinkContainer>
           </BottomLinks>
           {serverError && (
-          <FormHelperText error>
-            {serverError}
-          </FormHelperText>
+          <ErrorMessage message={serverError} />
           )}
         </form>
       </AuthCard>

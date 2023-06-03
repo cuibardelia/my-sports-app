@@ -44,8 +44,7 @@ const WrongPage: React.FC<IWrongPage> = ({ message, buttonMessage }) => {
   return (
     <NotFoundPageContainer>
       <NotFoundMessage>
-        {message}
-        {' '}
+        {`${message} `}
       </NotFoundMessage>
       <AvocadoImage src="/assets/avo-cardio.png" alt="Avocado" />
       <CenteredContainer>

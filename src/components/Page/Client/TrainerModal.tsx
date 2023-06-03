@@ -2,12 +2,13 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+  Button, Dialog, DialogActions, DialogContent, DialogTitle,
 } from '@mui/material';
 import { useAuthContext } from '../../../Providers/AuthContext';
 import { isAmongPTList } from '../../../helpers/fnFeatures';
 import { getProtectedHeaders } from '../../../helpers/fnRequest';
 import { ITrainer } from '../../types/User';
+import TrainerCard from '../Trainers/TrainerCard';
 
 interface TrainerModalProps {
   trainer: ITrainer;
@@ -47,14 +48,7 @@ const TrainerModal: React.FC<TrainerModalProps> = ({ trainer, handleClose }) => 
     <Dialog open={!!trainer} onClose={handleClose} maxWidth="md">
       <DialogTitle>{`${trainer.firstName} ${trainer.lastName}`}</DialogTitle>
       <DialogContent>
-        <img src={trainer.picUrl} alt={trainer.firstName} style={{ width: '100%', marginBottom: '16px' }} />
-        <DialogContentText>
-          <b>Bio: </b>
-          {trainer.bio}
-          <br />
-          <b>Specialties: </b>
-          {trainer.specialties}
-        </DialogContentText>
+        <TrainerCard user={trainer} />
         {!isPT && (
         <DialogActions>
           <Button onClick={addAsPt} variant="outlined" color="primary">

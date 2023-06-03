@@ -2,13 +2,26 @@ import * as React from 'react';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
-import { Box, Card, Typography } from '@mui/material';
+import {
+  Box, Card, Typography,
+} from '@mui/material';
+import { CloudUpload } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 import { useAuthContext } from '../../../Providers/AuthContext';
 import { getUploadApi } from '../../../helpers/fnRequest';
 
 interface PicProps {
   onUploadComplete: (url: string) => void;
 }
+
+const UploadIcon = styled(CloudUpload)(({ theme }) => ({
+  marginRight: '8px',
+  color: theme.palette.primary.dark,
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.dark,
+}));
 
 const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
@@ -18,6 +31,8 @@ const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
     const file = acceptedFiles[0];
     const formData = new FormData();
     formData.append('file', file);
+    // FIXME!!!
+    formData.append('size', 'w_350');
 
     try {
       const response = await axios.post(getUploadApi(user.userType), formData, {
@@ -39,15 +54,15 @@ const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handleDrop });
 
-  // TODO: upload icon from mui
   return (
     <div>
       <Card {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
         <input {...getInputProps()} />
-        <Box p={3} textAlign="center">
-          <Typography variant="body1" color="textSecondary">
+        <Box p={3} textAlign="center" display="flex" alignItems="center">
+          <UploadIcon />
+          <StyledTypography variant="body1">
             DRAG & DROP or CLICK for profile picture upload
-          </Typography>
+          </StyledTypography>
         </Box>
       </Card>
       {uploadedImageUrl && (

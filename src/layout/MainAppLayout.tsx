@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import Sidebar from '../components/Sidebar/Sidebar';
 import { useAuthContext } from '../Providers/AuthContext';
 import { UserType } from '../components/types/User';
-import Navbar from '../components/Navbar/Navbar';
-import MainNavbar from '../components/Navbar/MainNavBar';
+import Navbar from '../components/Navigation/Navbar';
+import MainNavbar from '../components/Navigation/MainNavBar';
 
 const MainContainer = styled.div`
   display: flex;
