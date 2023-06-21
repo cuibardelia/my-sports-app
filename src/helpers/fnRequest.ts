@@ -173,8 +173,3 @@ export const getFormattedLabels = (dateString: string): string => {
 export const getEquipment = (equipment: string[]): string => (
   equipment?.join(', ') || 'None'
 );
-
-export const remapWeightStats = (stats) => stats.map((i) => ({
-  date: getFormattedLabels(i.date),
-  weight: i.value,
-}));

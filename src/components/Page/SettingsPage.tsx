@@ -17,6 +17,10 @@ import ConfirmActionModal from '../Modal/Presentational/ConfirmActionModal';
 
 const SettingsContainer = styled(Container)({
   marginTop: '2rem',
+  height: '70vh',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
 
 const settingsList = ['Personal Data', 'Profile Pic'];
