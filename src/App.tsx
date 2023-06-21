@@ -14,12 +14,11 @@ import Register from './components/Page/Auth/Register';
 import ForgotPassword from './components/Page/Auth/ForgotPassword';
 import ResetPassword from './components/Page/Auth/ResetPassword';
 import PrivateRoute from './HOC/PrivateRoute';
-import Settings from './components/Page/Settings';
+import SettingsPage from './components/Page/SettingsPage';
 import AdminDashboard from './components/Page/Admin/AdminDashboard';
 import TrainerDashboard from './components/Page/Trainers/TrainerDashboard';
-// import InviteTrainer from './components/Page/Trainers/InviteTrainer';
 import AdminUsers from './components/Page/Admin/AdminUsers';
-import Landing from './components/Page/Landing';
+import Landing from './components/Page/Landing/Landing';
 import TrainerSessions from './components/Page/Trainers/TrainerSessions';
 import { ExercisesProvider } from './Providers/ExercisesContext';
 import TrainerBuddies from './components/Page/Trainers/TrainerBuddies';
@@ -32,6 +31,7 @@ import { UserType } from './components/types/User';
 import theme from './theme';
 import UserProfile from './components/Page/Common/UserProfile';
 import CreateAppointment from './components/Page/Trainers/CreateAppointment';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => (
   <ThemeProvider theme={theme}>
@@ -52,15 +52,15 @@ const App: React.FC = () => (
                 <Route path={`${UserPaths.TRAINER}/${AuthPaths.FORGOT}`} element={<ForgotPassword userType={UserType.TRAINER} />} />
                 <Route path={`${AuthPaths.RESET}/:resetToken`} element={<ResetPassword />} />
               </Route>
-              {/* <Route path={AuthPaths.INVITE_TRAINER} element={<InviteTrainer />} /> */}
               <Route path="/client" element={<PrivateRoute userType="client" />}>
                 <Route path={FeaturePaths.DASHBOARD} element={<Dashboard />} />
                 <Route path={FeaturePaths.EXERCISES} element={<Exercises />} />
                 <Route path={ConnectionPaths.BUDDIES} element={<Buddies />} />
                 <Route path={ConnectionPaths.TRAINERS} element={<Buddies />} />
                 <Route path={FeaturePaths.HISTORIC} element={<Historic />} />
-                <Route path={FeaturePaths.SETTINGS} element={<Settings />} />
+                <Route path={FeaturePaths.SETTINGS} element={<SettingsPage />} />
                 <Route path={FeaturePaths.PROFILE} element={<UserProfile />} />
+                <Route path={FeaturePaths.APPOINTMENTS} element={<NextAppointments />} />
               </Route>
               <Route path="/trainer" element={<PrivateRoute userType="trainer" />}>
                 <Route path={FeaturePaths.DASHBOARD} element={<TrainerDashboard />} />
@@ -76,13 +76,11 @@ const App: React.FC = () => (
                 <Route path={FeaturePaths.DASHBOARD} element={<AdminDashboard />} />
                 <Route path={ConnectionPaths.TRAINERS} element={<AdminUsers userType={UserType.TRAINER} />} />
                 <Route path={ConnectionPaths.CLIENTS} element={<AdminUsers userType={UserType.CLIENT} />} />
-                {/* <Route path="/admin-settings" element={<AdminSettings />} /> */}
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </Router>
-
       </ExercisesProvider>
     </AuthContextProvider>
   </ThemeProvider>

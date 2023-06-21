@@ -1,34 +1,28 @@
 import React from 'react';
 import {
-  Chart, ArgumentAxis, ValueAxis, AreaSeries,
+  Chart, ArgumentAxis, ValueAxis, LineSeries,
 } from '@devexpress/dx-react-chart-material-ui';
-import { Paper } from '@material-ui/core';
-import { useTheme } from '@mui/material';
+import { Paper, useTheme } from '@mui/material';
+import { styled } from '@mui/system';
+import { AreaSeries } from '@devexpress/dx-react-chart';
 import {
-  getProgressLabel, remapWeightStats,
+  getProgressLabel,
 } from '../../helpers/fnRequest';
-import { useAuthContext } from '../../Providers/AuthContext';
 import { IClient } from '../types/User';
 import NoData from '../Empty/NoData';
 
-const CustomAxisLabel = (props) =>
+const StyledLineSeries = styled(LineSeries)(({ theme }) => ({
+  stroke: theme.palette.primary.main,
+}));
+
+const CustomAxisLabel = (props) => (
 // eslint-disable-next-line react/destructuring-assignment
-  <ArgumentAxis.Label {...props} text={getProgressLabel(props.text)} />;
+  <ArgumentAxis.Label {...props} text={getProgressLabel(props.text)} />);
 
-export const WeightStats = () => {
-  const { user } = useAuthContext();
-  const client = user as IClient;
-
-  // TODO: NO DATA
+export const WeightStats: React.FC<{ client: IClient }> = ({ client }) => {
   const theme = useTheme();
   const areaColor = theme.palette.primary.main;
   const labelColor = theme.palette.secondary.main;
-
-  // const data = [
-  //   { date: '2022-01-01', weight: 70 },
-  //   { date: '2022-01-02', weight: 69 },
-  //   { date: '2022-01-03', weight: 68 },
-  // ];
 
   if (!client.weightStats.length) {
     return <NoData message="No data yet" />;
@@ -37,19 +31,22 @@ export const WeightStats = () => {
   return (
     <Paper>
       <Chart
-        data={remapWeightStats(client.weightStats)}
+        data={client.weightStats}
       >
         <ArgumentAxis
           labelComponent={CustomAxisLabel}
+          indentFromAxis={40}
+
         />
-        <ValueAxis indentFromAxis={40} />
+        <ValueAxis />
         <AreaSeries
-          valueField="weight"
+          valueField="value"
           argumentField="date"
           color={labelColor}
         />
       </Chart>
     </Paper>
+
   );
 };
 

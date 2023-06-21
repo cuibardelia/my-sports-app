@@ -13,7 +13,7 @@ export const MenuOptions = {
 
 export const AdminMenu = [MenuOptions.DASHBOARD, MenuOptions.TRAINERS, MenuOptions.CLIENTS];
 
-export const TrainerMenu = [MenuOptions.DASHBOARD, MenuOptions.CLIENTS, MenuOptions.EXERCISES, MenuOptions.SESSIONS, MenuOptions.APPOINTMENTS];
+export const TrainerMenu = [MenuOptions.DASHBOARD, MenuOptions.EXERCISES, MenuOptions.SESSIONS, MenuOptions.APPOINTMENTS];
 
 export const ClientMenu = [MenuOptions.DASHBOARD, MenuOptions.TRAINERS, MenuOptions.EXERCISES, MenuOptions.APPOINTMENTS];
 

@@ -2,9 +2,14 @@ import * as React from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
+import styled from 'styled-components';
 
 // Steps per date range
 // https://dev.fitbit.com/build/reference/web-api/activity-timeseries/get-activity-timeseries-by-date-range/
+export const ChartArea = styled.main`
+    width: 90%;
+    height: 500px;
+`;
 
 const activeSteps = [
   {
@@ -40,26 +45,28 @@ const activeSteps = [
 const StepsChart: React.FC = () =>
   // TODO: calculate domain based on max
   (
-    <ResponsiveContainer width="100%" height="100%">
-      <BarChart
-        width={600}
-        height={600}
-        data={activeSteps}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="dateTime" />
-        <YAxis dataKey="value" domain={[20, 10000]} />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="value" fill="#8884d8" />
-      </BarChart>
-    </ResponsiveContainer>
+    <ChartArea>
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          width={600}
+          height={600}
+          data={activeSteps}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="dateTime" />
+          <YAxis dataKey="value" domain={[20, 10000]} />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="value" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </ChartArea>
   );
 
 export default StepsChart;

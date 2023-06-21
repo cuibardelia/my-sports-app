@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useState } from 'react';
 import { PageContainer } from '../../PageContainer.css';
 import StepsChart from '../../Chart/StepsChart';
@@ -10,14 +9,12 @@ import {
 import WeightStats from '../../Chart/WeightStats';
 import TabNav from '../../Navigation/TabNav';
 import DashboardCard from '../../Card/DashboardCard';
+import { useAuthContext } from '../../../Providers/AuthContext';
+import { IClient } from '../../types/User';
 
 // Daily activity
 // https://dev.fitbit.com/build/reference/web-api/activity/get-daily-activity-summary/
 
-const ChartArea = styled.main`
-    width: 600px;
-    height: 500px;
-`;
 export function getKeyFromValue(value: string): string {
   return Object.keys(OptionMapping).find((key) => OptionMapping[key] === value);
 }
@@ -25,6 +22,8 @@ export function getKeyFromValue(value: string): string {
 const getChartIndex = (value: OptionMappingKeys): number => dashboardOptions.indexOf(value);
 
 const Dashboard: React.FC = () => {
+  const { user } = useAuthContext();
+  const client = user as IClient;
   const [selectedChart, setSelectedChart] = useState<string>('dailyStats');
   const [tabIndex, setTabIndex] = useState<number>(0);
 
@@ -34,11 +33,9 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-  // TODO: best user of the week, month, results
-
     <PageContainer>
       <TabNav optionsList={dashboardOptions} tabIndex={tabIndex} handleClick={handleOptionChange} activeOption={OptionMapping[selectedChart]} />
-      <ChartArea>
+      <div>
         {(() => {
           switch (selectedChart) {
             case 'dailyStats':
@@ -46,14 +43,14 @@ const Dashboard: React.FC = () => {
             case 'stepStats':
               return <StepsChart />;
             case 'weightEvolution':
-              return <WeightStats />;
+              return <WeightStats client={client} />;
             case 'activeZoneStats':
               return <ActiveZoneChart />;
             default:
               return null;
           }
         })()}
-      </ChartArea>
+      </div>
     </PageContainer>
   );
 };

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuthContext } from '../Providers/AuthContext';
 import { getProtectedHeaders, rapidOptions } from '../helpers/fnRequest';
+import { Exercise } from '../components/types/Exercise';
 
 export const useProtectedHeaders = () => {
   const { token } = useAuthContext();
@@ -44,4 +45,16 @@ export const getRapidAPI = (api: string, callback) => () => {
     .catch((error) => {
       console.error(error);
     });
+};
+
+export const fetchFavExercises = async (ids: string[]): Promise<Exercise[]> => {
+  const requests = ids.map((id) => axios.get(`${process.env.EXERCISES_API}/exercise/${encodeURI(id)}`, rapidOptions));
+
+  try {
+    const responses = await Promise.all(requests);
+    return await Promise.all(responses.map((response) => response.data));
+  } catch (error) {
+    console.error('Error fetching exercises:', error);
+    return [];
+  }
 };

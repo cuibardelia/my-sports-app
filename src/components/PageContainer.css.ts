@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 // FIXME: containers & Font
 export const PageContainer = styled.div`
-  height: 100vh;
   width: 100vw;
-  padding: 0 100px 50px 290px;
+  padding: 0 50px 50px 280px;
 `;
 
 export const NotFoundPageContainer = styled(PageContainer)`
@@ -35,3 +34,31 @@ export const StepsContainer = styled(Container)(() => ({
   justifyContent: 'center',
   alignItems: 'center',
 }));
+
+const colorAnimation = keyframes`
+  0% {
+    background-color: #9dd45b;
+  }
+  25% {
+    background-color: #8884d8;
+  }
+  50% {
+    background-color: #5F852D;
+  }
+  75% {
+    background-color: #5a5487;
+  }
+  100% {
+    background-color: #9dd45b;
+  }
+`;
+
+export const AnimationContainer = styled.div`
+  height: 20vh;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top, transparent, #f5f5f5);
+  animation: ${colorAnimation} 4s linear infinite;
+`;

@@ -3,14 +3,14 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { Box, styled } from '@mui/system';
 import SessionStepper from './SessionStepper';
 import CreateSessionButton from '../../Button/CreateSessionButton';
 import ExerciseGrid from '../../Grid/ExerciseGrid';
-import { getFavExercisesApi, getProtectedHeaders } from '../../../helpers/fnRequest';
+import { getProtectedHeaders } from '../../../helpers/fnRequest';
 import { useAuthContext } from '../../../Providers/AuthContext';
 import PickDetailsModal from '../../Modal/PickDetailsModal';
 import ConfirmActionModal from '../../Modal/Presentational/ConfirmActionModal';
-import { useProtectedCall } from '../../../hooks/useProtectedCall';
 import { Exercise } from '../../types/Exercise';
 import { PageContainer, StepsContainer } from '../../PageContainer.css';
 import { Dropdown } from '../../Form/Dropdown';
@@ -18,6 +18,11 @@ import { SessionForm } from '../../../Types';
 import { SessionSchema } from '../../../helpers/fnForm';
 import { Input } from '../../Form/Input';
 import { FeaturePaths } from '../../../helpers/fnPaths';
+import { useExercisesContext } from '../../../Providers/ExercisesContext';
+
+export const ExercisesContainer = styled(Box)`
+  height: 60vh;
+`;
 
 const steps = ['Choose a name', 'Select exercises', 'Add notes and difficulty'];
 
@@ -27,15 +32,15 @@ const CreateSession: React.FC = () => {
   const [name, setName] = useState('');
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [notes, setNotes] = useState('');
-  // TODO
+  // FIXME
   // const [calories, setCalories] = useState('');
-  // TODO: DIfficulty scale in UI
+  // FIXME: DIfficulty scale in UI
   const [difficulty, setDifficulty] = useState('Easy');
   const [exercise, setExercise] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
   const navigate = useNavigate();
-  const { user, token } = useAuthContext();
-  const { data } = useProtectedCall(getFavExercisesApi(user.userType), 'data');
+  const { token } = useAuthContext();
+  const { favExercises } = useExercisesContext();
 
   const methods = useForm<SessionForm>({
     resolver: yupResolver(SessionSchema),
@@ -61,7 +66,7 @@ const CreateSession: React.FC = () => {
   const addExercise = (e: Exercise, sets: number, repetitions: number) => {
     setExercise(null);
     const ex = {
-      _id: e._id,
+      id: e.id,
       sets,
       repetitions,
     };
@@ -85,7 +90,7 @@ const CreateSession: React.FC = () => {
     axios.post(`${process.env.TRAINER_API}/add-session`, body, {
       headers: getProtectedHeaders(token),
     })
-      .then((response) => {
+      .then(() => {
         setSuccessMessage('Session successfully saved');
       })
       .catch((error) => {
@@ -111,10 +116,10 @@ const CreateSession: React.FC = () => {
         );
       case 1:
         return (
-          <>
-            <ExerciseGrid allowsMultiplePick setSelectedExercise={handleSelection} items={data} />
+          <ExercisesContainer>
+            <ExerciseGrid allowsMultiplePick setSelectedExercise={handleSelection} items={favExercises.current} />
             <PickDetailsModal exercise={exercise} handleExercise={addExercise} />
-          </>
+          </ExercisesContainer>
         );
       case 2:
         return (

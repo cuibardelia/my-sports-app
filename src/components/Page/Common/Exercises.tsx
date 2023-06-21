@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import { styled } from '@mui/system';
+import { Box } from '@mui/material';
 import { PageContainer } from '../../PageContainer.css';
 import ExerciseGrid from '../../Grid/ExerciseGrid';
 import { exerciseOptions, SelectedOption, useExercisesContext } from '../../../Providers/ExercisesContext';
@@ -8,7 +10,9 @@ import { useAuthContext } from '../../../Providers/AuthContext';
 import TabNav from '../../Navigation/TabNav';
 
 const getOptionIndex = (value: SelectedOption): number => Object.values(SelectedOption).indexOf(value);
-
+const ExercisesContainer = styled(Box)`
+ height: 60vh;
+`;
 const Exercises: React.FC = () => {
   const {
     setSelectedOption, activeOption, items, openExercise,
@@ -37,7 +41,10 @@ const Exercises: React.FC = () => {
       <>
         <TabNav optionsList={exerciseOptions} tabIndex={tabIndex} handleClick={handleClick} activeOption={activeOption} />
         <FavExerciseModal exercise={openExercise} />
-        <ExerciseGrid items={items} />
+        <ExercisesContainer>
+          <ExerciseGrid items={items} />
+        </ExercisesContainer>
+
       </>
     </PageContainer>
   );

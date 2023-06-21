@@ -1,30 +1,22 @@
 import {
-  Avatar, ButtonBase, IconButton, styled, TableCell, TableRow,
+  IconButton, TableCell, TableRow, ButtonBase,
 } from '@mui/material';
 import * as React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { lightGreen, purple } from '@mui/material/colors';
 import { useAdminContext } from '../../Providers/AdminContext';
 import {
   IClient, ITrainer, IUser, UserType,
 } from '../types/User';
+import MainAvatar from '../Pics/MainAvatar';
 
 interface UserRowProps {
   user: IUser;
 }
 
-const HoverAvatar = styled(Avatar)`
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: ${purple[300]};
-  }
-`;
-
 export const UserRow: React.FC<UserRowProps> = ({ user }) => {
   const { setSelectedUser, setUserForDeletion, setUserForPicInspection } = useAdminContext();
-  const extraOption = user.userType === UserType.CLIENT ? (user as IClient).username : (user as ITrainer).specialties;
+  const extraOption = user.userType === UserType.CLIENT ? (user as IClient).username : (user as ITrainer).formattedSpecialties;
   const isClient = user.userType === UserType.CLIENT;
 
   const onEditClick = () => {
@@ -49,7 +41,7 @@ export const UserRow: React.FC<UserRowProps> = ({ user }) => {
     <TableRow>
       <TableCell>
         <ButtonBase component="div" onClick={onAvatarClick}>
-          <HoverAvatar alt={user.name} src={user.picUrl} sx={{ bgcolor: lightGreen[500] }} />
+          <MainAvatar user={user} />
         </ButtonBase>
       </TableCell>
       <TableCell>{user.name}</TableCell>

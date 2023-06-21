@@ -6,8 +6,7 @@ import {
 } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-import { FormHelperText } from '@mui/material';
-import { Input } from '../../Form/Input';
+import { FieldContainer, Input } from '../../Form/Input';
 import { useAuthContext } from '../../../Providers/AuthContext';
 import { AuthCard, BottomLinks } from '../../Form/Form.css';
 import { FormDataType } from '../../../Types';
@@ -43,7 +42,6 @@ const Login: React.FC<IAuth> = ({ userType }) => {
       console.log(response);
       login(response.data);
     }).catch((error) => {
-      console.log('here error', error);
       setServerError(error.response.data.error);
     });
   }
@@ -53,16 +51,18 @@ const Login: React.FC<IAuth> = ({ userType }) => {
     <FormProvider {...methods}>
       <AuthCard>
         <form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
-          <Input name="email" type="email" labelText="Email" />
-          <Input name="password" type="password" labelText="Password" />
-          <DefaultButton text="Sign In" type="submit" />
-          <BottomLinks>
-            { isClient && <FormLinks message="Don't have an account?" link={AuthPaths.REGISTER} linkMessage="Register here" /> }
-            <LinkContainer><Link to={AuthPaths.FORGOT}>Forgot password?</Link></LinkContainer>
-          </BottomLinks>
-          {serverError && (
-          <ErrorMessage message={serverError} />
-          )}
+          <FieldContainer>
+            <Input name="email" type="email" labelText="Email" />
+            <Input name="password" type="password" labelText="Password" />
+            <DefaultButton text="Sign In" type="submit" />
+            <BottomLinks>
+              { isClient && <FormLinks message="Don't have an account?" link={AuthPaths.REGISTER} linkMessage="Register here" /> }
+              <LinkContainer><Link to={AuthPaths.FORGOT}>Forgot password?</Link></LinkContainer>
+            </BottomLinks>
+            {serverError && (
+            <ErrorMessage message={serverError} />
+            )}
+          </FieldContainer>
         </form>
       </AuthCard>
     </FormProvider>

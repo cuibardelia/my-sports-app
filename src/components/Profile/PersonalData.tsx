@@ -29,8 +29,7 @@ const PersonalData: React.FC<IPersonalData> = ({ handleSuccess }) => {
   const { user, token } = useAuthContext();
   const client = user as IClient;
 
-  // FIXME: Something off with the dates
-  const bd = client.dateOfBirth || '1982-11-19 00:00:00';
+  const bd = client.dateOfBirth;
 
   const methods = useForm<ProfileSettingsFormData>({
     resolver: yupResolver(profileSettings),
@@ -42,7 +41,9 @@ const PersonalData: React.FC<IPersonalData> = ({ handleSuccess }) => {
     },
   });
 
+  // TODO: is maintaining logic
   // TODO: message new objective?
+  // FIXME: block second set of fields
   const onSubmit = (formData: ProfileSettingsFormData) => {
     axios.put(`${process.env.CLIENT_API}/update-settings`, JSON.stringify(formData), { headers: getProtectedHeaders(token) })
       .then((response) => {

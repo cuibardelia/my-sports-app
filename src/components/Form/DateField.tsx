@@ -7,30 +7,49 @@ import dayjs from 'dayjs';
 import { FieldContainer, InputCommonStyle } from './Input';
 import { ErrorMessage } from './ErrorMessage';
 
-const CustomDateField = styled(DatePicker)(() => ({
+export const CustomDateField = styled(DatePicker)(() => ({
   ...InputCommonStyle,
 }));
 
 interface IDateInput {
   name: string;
   label: string;
+  isRange?: boolean;
+  onClose?: () => void
 }
+
+const getDefaultDate = (): Date => {
+  const currentDate = dayjs();
+  const monday = currentDate.day(1).startOf('day');
+  if (currentDate.isAfter(monday)) {
+    return monday.add(1, 'week').toDate();
+  }
+  return new Date(monday.toDate());
+};
 
 export const maxRegistrationDate = dayjs().subtract(18, 'year');
 
-export const DateInput: React.FC<IDateInput> = ({ name, label }) => {
+export const DateInput: React.FC<IDateInput> = ({
+  name, label, isRange = false, onClose,
+}) => {
   const { control, register } = useFormContext();
   const {
     ref,
   } = register(name);
 
-  // TODO: theme
+  const maxDate = isRange ? undefined : maxRegistrationDate;
+
+  const shouldDisableDate = (date: Date) => {
+    const selectedDate = dayjs(date).toDate();
+    return isRange ? selectedDate.getDay() !== 1 : false;
+  };
+
   return (
     <Controller
       control={control}
       name={name}
       rules={{ required: true }}
-      defaultValue={null}
+      defaultValue={isRange ? getDefaultDate() : null}
       render={({ field, fieldState }) => (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <FieldContainer>
@@ -39,7 +58,9 @@ export const DateInput: React.FC<IDateInput> = ({ name, label }) => {
               value={field.value}
               inputRef={ref}
               onChange={field.onChange}
-              maxDate={maxRegistrationDate}
+              shouldDisableDate={shouldDisableDate}
+              maxDate={maxDate}
+              {...(onClose && { onClose })}
               {...field}
             />
             {fieldState.error && (

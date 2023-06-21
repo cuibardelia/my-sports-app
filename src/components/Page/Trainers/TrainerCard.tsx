@@ -35,7 +35,7 @@ const NoPictureCard = styled(Card)`
 
 const TrainerCard: React.FC<{ user: IUser }> = ({ user }) => {
   const {
-    picUrl, bio, formattedSpecialties,
+    picUrl, bio, specialties,
   } = user as ITrainer;
 
   return (
@@ -59,7 +59,7 @@ const TrainerCard: React.FC<{ user: IUser }> = ({ user }) => {
         <InfoItem>
           <Typography variant="subtitle1">Specialties:</Typography>
           <Typography variant="body1">
-            {formattedSpecialties}
+            {specialties.join(',')}
           </Typography>
         </InfoItem>
       </InfoContainer>

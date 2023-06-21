@@ -27,11 +27,11 @@ export const InputCommonStyle = {
   margin: '8px',
   borderWidth: '1px',
   borderStyle: 'solid',
-  borderColor: '#C9A0FF',
-  background: '#E6F7E0',
+  borderColor: '#6770D2',
+  background: '#E3F2E7',
   borderRadius: '4px',
   '&:focus': {
-    background: '#C0EDB9',
+    background: '#8ED1AC',
   },
   '&:-webkit-autofill': {
     WebkitBoxShadow: '0 0 0px 1000px #C0EDB9 inset',
@@ -45,7 +45,7 @@ export const InputCommonStyle = {
 
 export const FieldContainer = styled('div')(({ theme }) => ({
   position: 'relative',
-  marginBottom: theme.spacing(2),
+  marginBottom: '16px',
 }));
 
 const CustomTextField = styled(TextField)(() => ({

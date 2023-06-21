@@ -56,6 +56,10 @@ export type ProfileSettingsFormData = {
   dateOfBirth: Dayjs,
 };
 
+export type DateRangeForm = {
+  startDate: Dayjs,
+};
+
 export type AppointmentForm = {
   startDate: Dayjs,
   endDate: Dayjs,

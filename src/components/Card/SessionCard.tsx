@@ -5,12 +5,17 @@ import {
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Radio from '@mui/material/Radio';
+import { styled } from '@mui/system';
 import { SessionPlan } from '../../helpers/fnSession';
 
 interface ISessionCard {
   session: SessionPlan,
   allowsPick?: boolean,
 }
+
+const SCard = styled(Card)(({ theme }) => ({
+  background: `linear-gradient(45deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.lightFormat})`,
+}));
 
 // FIXME: no multiple Pick
 const SessionCard: React.FC<ISessionCard> = ({ session, allowsPick = false }) => {
@@ -21,7 +26,7 @@ const SessionCard: React.FC<ISessionCard> = ({ session, allowsPick = false }) =>
   };
 
   return (
-    <Card key={session._id} variant="outlined">
+    <SCard key={session._id} variant="outlined">
       <CardContent>
         <Typography variant="h5">{session.name}</Typography>
       </CardContent>
@@ -30,7 +35,7 @@ const SessionCard: React.FC<ISessionCard> = ({ session, allowsPick = false }) =>
         <Radio checked={isPicked} color="primary" />
       </IconButton>
       )}
-    </Card>
+    </SCard>
   );
 };
 

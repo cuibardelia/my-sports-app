@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Avatar,
   Box,
@@ -7,31 +7,35 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle, FormControl, FormControlLabel, Radio, RadioGroup, TextField,
+  DialogTitle,
+  FormControl,
+  FormControlLabel,
+  Checkbox,
+  TextField,
   Typography,
 } from '@mui/material';
 import { styled } from '@mui/system';
-import { useRef, useState } from 'react';
 import axios from 'axios';
 import { useAdminContext } from '../../../Providers/AdminContext';
 import { getProtectedHeaders } from '../../../helpers/fnRequest';
 import { useAuthContext } from '../../../Providers/AuthContext';
 import { specialtiesList } from '../../../Types';
 
-const StyledAvatar = styled(Avatar)({
+const StyledAvatar = styled(Avatar)({});
 
+const StyledForm = styled('form')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1rem',
 });
 
-// TODO: refactor, this a monster
 const UserModal: React.FC = () => {
-  // TODO: types!!!
   const { selectedUser, setSelectedUser, resetUsers } = useAdminContext();
   const { token } = useAuthContext();
   const [editMode, setEditMode] = useState(false);
   const [bio, setBio] = useState(selectedUser?.bio || '');
   const [specialties, setSpecialties] = useState(selectedUser?.specialties || []);
   const [editableBio, setEditableBio] = useState(selectedUser?.bio || '');
-  // FIXME: doesn't keep previous specialties on modal
   const [editableSpecialties, setEditableSpecialties] = useState(selectedUser?.specialties || []);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -39,9 +43,12 @@ const UserModal: React.FC = () => {
     setSelectedUser(null);
   };
 
-  if (!selectedUser) {
-    return null;
-  }
+  useEffect(() => {
+    if (selectedUser) {
+      setBio(selectedUser?.bio);
+      setSpecialties(selectedUser?.specialties);
+    }
+  }, [selectedUser]);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -65,7 +72,6 @@ const UserModal: React.FC = () => {
         headers: getProtectedHeaders(token),
       })
       .then(() => {
-        // TODO: success toast
         console.log('Successfully Updated');
         resetUsers();
       })
@@ -88,6 +94,10 @@ const UserModal: React.FC = () => {
     setEditableSpecialties(selectedSpecialties);
   };
 
+  if (!selectedUser) {
+    return null;
+  }
+
   return (
     <Dialog open={!!selectedUser} onClose={handleClose} maxWidth="sm" fullWidth>
       <DialogTitle>User Profile</DialogTitle>
@@ -96,7 +106,7 @@ const UserModal: React.FC = () => {
           <StyledAvatar src={selectedUser.picUrl} alt={selectedUser.name} />
           <Typography variant="h6">{selectedUser.name}</Typography>
           {editMode ? (
-            <form ref={formRef}>
+            <StyledForm ref={formRef}>
               <TextField
                 value={editableBio}
                 onChange={(e) => setEditableBio(e.target.value)}
@@ -106,25 +116,28 @@ const UserModal: React.FC = () => {
               />
               <FormControl component="fieldset">
                 <Typography variant="body1">Specialties</Typography>
-                <RadioGroup name="specialties" value={editableSpecialties} onChange={handleSpecialtiesChange}>
-                  {specialtiesList.map((specialty) => (
-                    <FormControlLabel
-                      key={specialty}
-                      value={specialty}
-                      control={<Radio />}
-                      label={specialty}
-                    />
-                  ))}
-                </RadioGroup>
+                {specialtiesList.map((specialty) => (
+                  <FormControlLabel
+                    key={specialty}
+                    control={(
+                      <Checkbox
+                        checked={editableSpecialties.includes(specialty)}
+                        onChange={handleSpecialtiesChange}
+                        value={specialty}
+                      />
+                            )}
+                    label={specialty}
+                  />
+                ))}
               </FormControl>
-            </form>
+            </StyledForm>
           ) : (
             <>
               <Typography variant="body1">{bio}</Typography>
               <DialogContentText>
                 {specialties.length > 0 && (
                 <>
-                  <b>Specialties:  </b>
+                  <b>Specialties: </b>
                   {specialties.join(', ')}
                 </>
                 )}

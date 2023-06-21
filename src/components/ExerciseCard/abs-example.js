@@ -2,7 +2,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0001.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/J3xGdy=uGEyk7X',
     id: '0001',
     name: '3/4 sit-up',
     target: 'abs',
@@ -10,7 +10,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0002.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/chth9xKBboueTR',
     id: '0002',
     name: '45° side bend',
     target: 'abs',
@@ -18,7 +18,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0003.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/=e28lxZqUF6tQo',
     id: '0003',
     name: 'air bike',
     target: 'abs',
@@ -26,7 +26,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0006.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/HY04ZjqdXM6-gF',
     id: '0006',
     name: 'alternate heel touchers',
     target: 'abs',
@@ -34,7 +34,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2355.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/BVUjNPKMbP7_=_',
     id: '2355',
     name: 'arm slingers hanging bent knee legs',
     target: 'abs',
@@ -42,7 +42,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2333.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/JHEP9POLO8nP=s',
     id: '2333',
     name: 'arm slingers hanging straight legs',
     target: 'abs',
@@ -50,7 +50,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3204.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/jcYtnMU0=7i-Wb',
     id: '3204',
     name: 'arms overhead full sit-up (male)',
     target: 'abs',
@@ -58,7 +58,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'assisted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0011.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/m=iG+xt2ZA5Mu6',
     id: '0011',
     name: 'assisted hanging knee raise',
     target: 'abs',
@@ -66,7 +66,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'assisted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0010.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Yp1YKcY7egULKr',
     id: '0010',
     name: 'assisted hanging knee raise with throw down',
     target: 'abs',
@@ -74,7 +74,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'assisted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0012.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/mVOtJhaXMNlb8+',
     id: '0012',
     name: 'assisted lying leg raise with lateral throw down',
     target: 'abs',
@@ -82,7 +82,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'assisted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0013.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/nIoXgzyuvEfj8c',
     id: '0013',
     name: 'assisted lying leg raise with throw down',
     target: 'abs',
@@ -90,7 +90,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'medicine ball',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0014.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/5G51fsT_fUIazo',
     id: '0014',
     name: 'assisted motion russian twist',
     target: 'abs',
@@ -98,7 +98,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'assisted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1714.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/LC2-9GXtwo-ix_',
     id: '1714',
     name: 'assisted prone rectus femoris stretch',
     target: 'abs',
@@ -106,7 +106,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'assisted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1758.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/eqDo_Djgh9W0Mw',
     id: '1758',
     name: 'assisted sit-up',
     target: 'abs',
@@ -114,7 +114,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0969.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/9KvDtdFnv5JJQ4',
     id: '0969',
     name: 'band alternating v-up',
     target: 'abs',
@@ -122,7 +122,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0971.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/DQLuESswxwEhm0',
     id: '0971',
     name: 'band assisted wheel rollerout',
     target: 'abs',
@@ -130,7 +130,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0972.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/m3DGRbn4mj_Iz_',
     id: '0972',
     name: 'band bicycle crunch',
     target: 'abs',
@@ -138,7 +138,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0979.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/oQNqt1glFOvc7i',
     id: '0979',
     name: 'band horizontal pallof press',
     target: 'abs',
@@ -146,7 +146,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0981.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/_=kcFeQYCIKJM-',
     id: '0981',
     name: 'band jack knife sit-up',
     target: 'abs',
@@ -154,7 +154,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0985.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/wrLc-rx2-VNz_b',
     id: '0985',
     name: 'band kneeling twisting crunch',
     target: 'abs',
@@ -162,7 +162,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1002.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/qF7W+aAxzaTL2D',
     id: '1002',
     name: 'band lying straight leg raise',
     target: 'abs',
@@ -170,7 +170,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0992.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/dR-6irUa300CLA',
     id: '0992',
     name: 'band push sit-up',
     target: 'abs',
@@ -178,7 +178,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1011.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/vh3bPHEPiXtp-D',
     id: '1011',
     name: 'band seated twist',
     target: 'abs',
@@ -186,7 +186,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1005.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/N55qFnDsBST4X3',
     id: '1005',
     name: 'band standing crunch',
     target: 'abs',
@@ -194,7 +194,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1007.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/miUIdwmOYZ3upr',
     id: '1007',
     name: 'band standing twisting crunch',
     target: 'abs',
@@ -202,7 +202,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1014.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ldSizwkABVrH4p',
     id: '1014',
     name: 'band v-up',
     target: 'abs',
@@ -210,7 +210,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'band',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1015.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/UkiA+HjZG1hSb0',
     id: '1015',
     name: 'band vertical pallof press',
     target: 'abs',
@@ -218,7 +218,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0071.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/qyaV4AC3+hRUZs',
     id: '0071',
     name: 'barbell press sit-up',
     target: 'abs',
@@ -226,7 +226,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0084.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/xoQUsdXULN42mz',
     id: '0084',
     name: 'barbell rollerout',
     target: 'abs',
@@ -234,7 +234,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0083.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Su5BjiksjI=JJu',
     id: '0083',
     name: 'barbell rollerout from bench',
     target: 'abs',
@@ -242,7 +242,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0094.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ExupftdHQqFEOD',
     id: '0094',
     name: 'barbell seated twist',
     target: 'abs',
@@ -250,7 +250,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0096.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/M7cHFmxoYrfNV6',
     id: '0096',
     name: 'barbell side bent v. 2',
     target: 'abs',
@@ -258,7 +258,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2799.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/noriPMIbhN-UGZ',
     id: '2799',
     name: 'barbell sitted alternate leg raise',
     target: 'abs',
@@ -266,7 +266,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2800.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/uQSbN6caOAdqS8',
     id: '2800',
     name: 'barbell sitted alternate leg raise (female)',
     target: 'abs',
@@ -274,7 +274,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0103.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/3G-Mcbq_sUikiU',
     id: '0103',
     name: 'barbell standing ab rollerout',
     target: 'abs',
@@ -282,7 +282,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0112.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/SgAMnVN+5a9pkt',
     id: '0112',
     name: 'barbell standing twist',
     target: 'abs',
@@ -290,7 +290,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3544.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/lKolzUsb8zSybK',
     id: '3544',
     name: 'bodyweight incline side plank',
     target: 'abs',
@@ -298,7 +298,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0138.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/gbKH_qfrAuppcX',
     id: '0138',
     name: 'bottoms-up',
     target: 'abs',
@@ -306,7 +306,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2466.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/rQuoPwtEuI1XVS',
     id: '2466',
     name: 'bridge - mountain climber (cross body)',
     target: 'abs',
@@ -314,7 +314,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0870.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/yOhkIgUUdNgoH-',
     id: '0870',
     name: 'butt-ups',
     target: 'abs',
@@ -322,7 +322,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0174.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/KPf4oRS-hQ-d5m',
     id: '0174',
     name: 'cable judo flip',
     target: 'abs',
@@ -330,7 +330,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0175.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/IgJ8OGhLvoH2xY',
     id: '0175',
     name: 'cable kneeling crunch',
     target: 'abs',
@@ -338,7 +338,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0873.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/65PidmAknjCho4',
     id: '0873',
     name: 'cable reverse crunch',
     target: 'abs',
@@ -346,7 +346,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0211.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ws8LW4Byz+WeMe',
     id: '0211',
     name: 'cable russian twists (on stability ball)',
     target: 'abs',
@@ -354,7 +354,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0212.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/IX6Zd=Mue9u-2M',
     id: '0212',
     name: 'cable seated crunch',
     target: 'abs',
@@ -362,7 +362,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2399.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/HWx81fsFnM39DI',
     id: '2399',
     name: 'cable seated twist',
     target: 'abs',
@@ -370,7 +370,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0222.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/oBv2smVlwqHwmf',
     id: '0222',
     name: 'cable side bend',
     target: 'abs',
@@ -378,7 +378,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0221.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/hZE1Rmj7XQEGOs',
     id: '0221',
     name: 'cable side bend crunch (bosu ball)',
     target: 'abs',
@@ -386,7 +386,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0223.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/AE4BDRQcq0-k7g',
     id: '0223',
     name: 'cable side crunch',
     target: 'abs',
@@ -394,7 +394,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0226.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/C0eJucjn9dBm-y',
     id: '0226',
     name: 'cable standing crunch',
     target: 'abs',
@@ -402,7 +402,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0874.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/XuSVlNUTxqpl+8',
     id: '0874',
     name: 'cable standing crunch (with rope attachment)',
     target: 'abs',
@@ -410,7 +410,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0230.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/oMv8qlTF0J=dGZ',
     id: '0230',
     name: 'cable standing lift',
     target: 'abs',
@@ -418,7 +418,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0242.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/wE00fYSplcrPVM',
     id: '0242',
     name: 'cable tuck reverse crunch',
     target: 'abs',
@@ -426,7 +426,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0243.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/jffZP8WavLBDLN',
     id: '0243',
     name: 'cable twist',
     target: 'abs',
@@ -434,7 +434,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'cable',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0862.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Q7cvDDJZyaoUEX',
     id: '0862',
     name: 'cable twist (up-down)',
     target: 'abs',
@@ -442,7 +442,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2963.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/56c3xSRLNA_G+4',
     id: '2963',
     name: 'captains chair straight leg raise',
     target: 'abs',
@@ -450,7 +450,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0260.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/NdGTDJDa-K50Dn',
     id: '0260',
     name: 'cocoons',
     target: 'abs',
@@ -458,7 +458,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1468.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/xrGITkVER-6sHx',
     id: '1468',
     name: 'crab twist toe touch',
     target: 'abs',
@@ -466,7 +466,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0262.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/loCrrJHGUUQ+JX',
     id: '0262',
     name: 'cross body crunch',
     target: 'abs',
@@ -474,7 +474,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0267.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/zFIC7144Bd4cvB',
     id: '0267',
     name: 'crunch (hands overhead)',
     target: 'abs',
@@ -482,7 +482,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'stability ball',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0271.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/aqXOre8rNzgEWd',
     id: '0271',
     name: 'crunch (on stability ball)',
     target: 'abs',
@@ -490,7 +490,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'stability ball',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0272.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/hgRKluGwrqdhdZ',
     id: '0272',
     name: 'crunch (on stability ball, arms straight)',
     target: 'abs',
@@ -498,7 +498,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0274.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/pQtMflArXi=qq6',
     id: '0274',
     name: 'crunch floor',
     target: 'abs',
@@ -506,7 +506,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3016.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/hjLzNoovdwJ7gd',
     id: '3016',
     name: 'curl-up',
     target: 'abs',
@@ -514,7 +514,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0276.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/CMW4PnNPTQZK9R',
     id: '0276',
     name: 'dead bug',
     target: 'abs',
@@ -522,7 +522,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0277.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/p-40O01PBeEpJX',
     id: '0277',
     name: 'decline crunch',
     target: 'abs',
@@ -530,7 +530,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0282.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/N0OucW8kjkX-FZ',
     id: '0282',
     name: 'decline sit-up',
     target: 'abs',
@@ -538,7 +538,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'dumbbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0407.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/NvNMdN_zjoFeCg',
     id: '0407',
     name: 'dumbbell side bend',
     target: 'abs',
@@ -546,7 +546,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0443.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/LIdPvlSsC-oshC',
     id: '0443',
     name: 'elbow-to-knee',
     target: 'abs',
@@ -554,7 +554,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3303.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/4c=JS12P5bbokZ',
     id: '3303',
     name: 'flag',
     target: 'abs',
@@ -562,7 +562,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0456.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/HhDuRuu-vk+t_d',
     id: '0456',
     name: 'flexion leg sit up (bent knee)',
     target: 'abs',
@@ -570,7 +570,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0457.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/G6Nbbfdx=JLWrb',
     id: '0457',
     name: 'flexion leg sit up (straight arm)',
     target: 'abs',
@@ -578,7 +578,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2429.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ItlmRLtitxmznJ',
     id: '2429',
     name: 'frog crunch',
     target: 'abs',
@@ -586,7 +586,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3301.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/eySKZe9nbeL3sX',
     id: '3301',
     name: 'frog planche',
     target: 'abs',
@@ -594,7 +594,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3296.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/9WJTUCxeSu0Cdj',
     id: '3296',
     name: 'front lever',
     target: 'abs',
@@ -602,7 +602,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0464.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/xSXsE212n0Kenv',
     id: '0464',
     name: 'front plank with twist',
     target: 'abs',
@@ -610,7 +610,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3315.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/psY6l=klTY7Ofx',
     id: '3315',
     name: 'full maltese',
     target: 'abs',
@@ -618,7 +618,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3299.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ggaFp5psv84cCS',
     id: '3299',
     name: 'full planche',
     target: 'abs',
@@ -626,7 +626,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0467.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/rC=fJ73ZXT=74k',
     id: '0467',
     name: 'gorilla chin',
     target: 'abs',
@@ -634,7 +634,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0469.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/QbY6Whnu-N9-Yh',
     id: '0469',
     name: 'groin crunch',
     target: 'abs',
@@ -642,7 +642,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3202.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/0tJ83XwFNm-yQJ',
     id: '3202',
     name: 'half sit-up (male)',
     target: 'abs',
@@ -650,7 +650,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1764.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/6Kpn+6HkadrarP',
     id: '1764',
     name: 'hanging leg hip raise',
     target: 'abs',
@@ -658,7 +658,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0472.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/3HLY34b8mAs+5N',
     id: '0472',
     name: 'hanging leg raise',
     target: 'abs',
@@ -666,7 +666,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1761.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/4Nso2wjn+IqxoY',
     id: '1761',
     name: 'hanging oblique knee raise',
     target: 'abs',
@@ -674,7 +674,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0473.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ldU9LBUhxFKAn9',
     id: '0473',
     name: 'hanging pike',
     target: 'abs',
@@ -682,7 +682,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0474.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/j3AJf3TWu-K4jI',
     id: '0474',
     name: 'hanging straight leg hip raise',
     target: 'abs',
@@ -690,7 +690,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0475.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/mpwipI85HC_LQD',
     id: '0475',
     name: 'hanging straight leg raise',
     target: 'abs',
@@ -698,7 +698,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0476.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/LM5XqlqzRuJ7Pp',
     id: '0476',
     name: 'hanging straight twisting leg hip raise',
     target: 'abs',
@@ -706,7 +706,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0484.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/-+DTfX=oUABLOy',
     id: '0484',
     name: 'hip raise (bent knee)',
     target: 'abs',
@@ -714,7 +714,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1471.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/c0jLA-vD+ydczg',
     id: '1471',
     name: 'inchworm',
     target: 'abs',
@@ -722,7 +722,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3698.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Cb7LHwXdY2dizj',
     id: '3698',
     name: 'inchworm v. 2',
     target: 'abs',
@@ -730,7 +730,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0491.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/4XDn2DxSmwaD90',
     id: '0491',
     name: 'incline leg hip raise (leg straight)',
     target: 'abs',
@@ -738,7 +738,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0495.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/kGyFe4eDzShvbf',
     id: '0495',
     name: 'incline twisting sit-up',
     target: 'abs',
@@ -746,7 +746,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0507.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/V=ZArmnS1B=h22',
     id: '0507',
     name: 'jackknife sit-up',
     target: 'abs',
@@ -754,7 +754,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0508.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/LB4yQFcUSJwqgo',
     id: '0508',
     name: 'janda sit-up',
     target: 'abs',
@@ -762,7 +762,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'kettlebell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0517.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/bB5SmIbKz_EM0m',
     id: '0517',
     name: 'kettlebell advanced windmill',
     target: 'abs',
@@ -770,7 +770,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'kettlebell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0524.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/VLEpMHU0PVs2gF',
     id: '0524',
     name: 'kettlebell bent press',
     target: 'abs',
@@ -778,7 +778,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'kettlebell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0530.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/mNt4TXeUj1EN+k',
     id: '0530',
     name: 'kettlebell double windmill',
     target: 'abs',
@@ -786,7 +786,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'kettlebell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0532.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/75XahHGNF+cNwX',
     id: '0532',
     name: 'kettlebell figure 8',
     target: 'abs',
@@ -794,7 +794,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'kettlebell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0554.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/7tL6q5qW2amVyY',
     id: '0554',
     name: 'kettlebell windmill',
     target: 'abs',
@@ -802,7 +802,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3640.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/wYanZrS9VyYFna',
     id: '3640',
     name: 'knee touch crunch',
     target: 'abs',
@@ -810,7 +810,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3239.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/1BaphiZUwLkGWz',
     id: '3239',
     name: 'kneeling plank tap shoulder (male)',
     target: 'abs',
@@ -818,7 +818,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3419.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/sAy75-p0SPgcN_',
     id: '3419',
     name: 'l-sit on floor',
     target: 'abs',
@@ -826,7 +826,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'barbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0562.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/tyiTsSJki4kaTA',
     id: '0562',
     name: 'landmine 180',
     target: 'abs',
@@ -834,7 +834,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3300.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/oA-jCoOu7gj_sw',
     id: '3300',
     name: 'lean planche',
     target: 'abs',
@@ -842,7 +842,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0570.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/5HEdPc4_RLvzrE',
     id: '0570',
     name: 'leg pull in flat bench',
     target: 'abs',
@@ -850,7 +850,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'leverage machine',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0583.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/OM-wLvbez2G1mo',
     id: '0583',
     name: 'lever kneeling twist',
     target: 'abs',
@@ -858,7 +858,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'leverage machine',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1452.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Cffnzf29kV1k96',
     id: '1452',
     name: 'lever seated crunch',
     target: 'abs',
@@ -866,7 +866,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'leverage machine',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0595.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Vfh8pSG8ZbEmV5',
     id: '0595',
     name: 'lever seated crunch (chest pad)',
     target: 'abs',
@@ -874,7 +874,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'leverage machine',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3760.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/EXhmgu8bmBALRO',
     id: '3760',
     name: 'lever seated crunch v. 2',
     target: 'abs',
@@ -882,7 +882,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'leverage machine',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0600.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/N0YqcMdlV5Izal',
     id: '0600',
     name: 'lever seated leg raise crunch ',
     target: 'abs',
@@ -890,7 +890,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1688.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/uQ4M3gqyuRQO+t',
     id: '1688',
     name: 'lunge with twist',
     target: 'abs',
@@ -898,7 +898,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2312.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/LRTueF0jk1X6BG',
     id: '2312',
     name: 'lying elbow to knee',
     target: 'abs',
@@ -906,7 +906,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0620.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/XBfnjDmPj3uxGF',
     id: '0620',
     name: 'lying leg raise flat bench',
     target: 'abs',
@@ -914,7 +914,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0865.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/h8sYMfi9IXWmNQ',
     id: '0865',
     name: 'lying leg-hip raise',
     target: 'abs',
@@ -922,7 +922,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0634.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/b7Gwg7tMb=ACPY',
     id: '0634',
     name: 'negative crunch',
     target: 'abs',
@@ -930,7 +930,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1495.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/B4SKZkYM6kD0Sv',
     id: '1495',
     name: 'oblique crunch v. 2',
     target: 'abs',
@@ -938,7 +938,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0635.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/+ZIWyhcamBosXf',
     id: '0635',
     name: 'oblique crunches floor',
     target: 'abs',
@@ -946,7 +946,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'medicine ball',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0640.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ioJKrN+N_FNAij',
     id: '0640',
     name: 'one arm slam (with medicine ball)',
     target: 'abs',
@@ -954,7 +954,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0641.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/-p8+9Lh36s=oHv',
     id: '0641',
     name: 'otis up',
     target: 'abs',
@@ -962,7 +962,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3147.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/d7xVGbUOydBnip',
     id: '3147',
     name: 'pelvic tilt',
     target: 'abs',
@@ -970,7 +970,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1687.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/iBen=ViF3Qy6AS',
     id: '1687',
     name: 'posterior step to overhead reach',
     target: 'abs',
@@ -978,7 +978,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3119.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/QeWhcZ5=yV414J',
     id: '3119',
     name: 'potty squat',
     target: 'abs',
@@ -986,7 +986,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3665.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/PzI1Nvt7ZFgXsr',
     id: '3665',
     name: 'power point plank',
     target: 'abs',
@@ -994,7 +994,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3203.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/5BQM11s=hh7JUt',
     id: '3203',
     name: 'prisoner half sit-up (male)',
     target: 'abs',
@@ -1002,7 +1002,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'stability ball',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1707.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/f=Flo3YMk=Tci6',
     id: '1707',
     name: 'prone twist on stability ball',
     target: 'abs',
@@ -1010,7 +1010,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'stability ball',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0650.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/NoPZJ9vh-pBPoR',
     id: '0650',
     name: 'pull-in (on stability ball)',
     target: 'abs',
@@ -1018,7 +1018,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0664.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/X_nWSRwVTIHwrr',
     id: '0664',
     name: 'push-up to side plank',
     target: 'abs',
@@ -1026,7 +1026,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3201.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/dqfFzsC2aRHLav',
     id: '3201',
     name: 'quarter sit-up',
     target: 'abs',
@@ -1034,7 +1034,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0872.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/RQjAtAL-6E+8=X',
     id: '0872',
     name: 'reverse crunch',
     target: 'abs',
@@ -1042,7 +1042,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3663.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/p4H+epH4D6apqp',
     id: '3663',
     name: 'reverse plank with leg lift',
     target: 'abs',
@@ -1050,7 +1050,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'roller',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2204.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/wmcITUhJPSlvNI',
     id: '2204',
     name: 'roller body saw',
     target: 'abs',
@@ -1058,7 +1058,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'roller',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2206.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/ypY8ITAh_loYBk',
     id: '2206',
     name: 'roller reverse crunch',
     target: 'abs',
@@ -1066,7 +1066,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0687.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/B9+zjo-4IPY3Tw',
     id: '0687',
     name: 'russian twist',
     target: 'abs',
@@ -1074,7 +1074,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0689.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Nu7ryJAC0Llypb',
     id: '0689',
     name: 'seated leg raise',
     target: 'abs',
@@ -1082,7 +1082,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0691.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/NRdpX10IUD1B2f',
     id: '0691',
     name: 'seated side crunch (wall)',
     target: 'abs',
@@ -1090,7 +1090,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3699.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/yOeaj9ATQgUw2V',
     id: '3699',
     name: 'shoulder tap',
     target: 'abs',
@@ -1098,7 +1098,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0705.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/D3pUpoXq_2SFtX',
     id: '0705',
     name: 'side bridge v. 2',
     target: 'abs',
@@ -1106,7 +1106,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0709.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/1P3i7mT4sydO_x',
     id: '0709',
     name: 'side hip (on parallel bars)',
     target: 'abs',
@@ -1114,7 +1114,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3213.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Cr2GHAuOtOZOkP',
     id: '3213',
     name: 'side-to-side toe touch (male)',
     target: 'abs',
@@ -1122,7 +1122,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0735.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/t79_wn7Dun=Hfa',
     id: '0735',
     name: 'sit-up v. 2',
     target: 'abs',
@@ -1130,7 +1130,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3679.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/MrkIrvZEap+L+c',
     id: '3679',
     name: 'sit-up with arms on chest',
     target: 'abs',
@@ -1138,7 +1138,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'hammer',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/1496.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/R7js6A6MBV=q7D',
     id: '1496',
     name: 'sledge hammer',
     target: 'abs',
@@ -1146,7 +1146,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'smith machine',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0756.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/72TOa16XTDuKrW',
     id: '0756',
     name: 'smith hip raise',
     target: 'abs',
@@ -1154,7 +1154,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'dumbbell',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0777.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/tf7pkNnH-pVM3b',
     id: '0777',
     name: 'spell caster',
     target: 'abs',
@@ -1162,7 +1162,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2329.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/+feTNq4e6fx-KA',
     id: '2329',
     name: 'spine twist',
     target: 'abs',
@@ -1170,7 +1170,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'stability ball',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2297.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/HidxEPA=k=j0oF',
     id: '2297',
     name: 'stability ball crunch (full range hands behind head)',
     target: 'abs',
@@ -1178,7 +1178,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'wheel roller',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0796.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/IbONXX_By9EwtI',
     id: '0796',
     name: 'standing wheel rollerout',
     target: 'abs',
@@ -1186,7 +1186,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3314.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/wnUUojRITSInE5',
     id: '3314',
     name: 'straddle maltese',
     target: 'abs',
@@ -1194,7 +1194,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3298.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/Ja2G-eXNdpL1jp',
     id: '3298',
     name: 'straddle planche',
     target: 'abs',
@@ -1202,7 +1202,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0805.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/f+TORZTRb_xwk5',
     id: '0805',
     name: 'suspended abdominal fallout',
     target: 'abs',
@@ -1210,7 +1210,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0807.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/d83otoWqdMtn-K',
     id: '0807',
     name: 'suspended reverse crunch',
     target: 'abs',
@@ -1218,7 +1218,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0871.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/zpPm87d7IM2ov1',
     id: '0871',
     name: 'tuck crunch',
     target: 'abs',
@@ -1226,7 +1226,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2802.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/+c=9ng8JvsD8ed',
     id: '2802',
     name: 'twisted leg raise',
     target: 'abs',
@@ -1234,7 +1234,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2801.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/agq=eNvq1sGPIq',
     id: '2801',
     name: 'twisted leg raise (female)',
     target: 'abs',
@@ -1242,7 +1242,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3420.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/jkORjWm3oGyXNc',
     id: '3420',
     name: 'v-sit on floor',
     target: 'abs',
@@ -1250,7 +1250,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0826.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/L4mbLkOPd+OESq',
     id: '0826',
     name: 'vertical leg raise (on parallel bars)',
     target: 'abs',
@@ -1258,7 +1258,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0832.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/e6E7EHNw2P3ngU',
     id: '0832',
     name: 'weighted crunch',
     target: 'abs',
@@ -1266,7 +1266,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/3670.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/=uRtFXYky4V+ML',
     id: '3670',
     name: 'weighted decline sit-up',
     target: 'abs',
@@ -1274,7 +1274,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2135.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/gWU1hzV7dLMMSM',
     id: '2135',
     name: 'weighted front plank',
     target: 'abs',
@@ -1282,7 +1282,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0866.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/lmjT6b_VlrUxCi',
     id: '0866',
     name: 'weighted hanging leg-hip raise',
     target: 'abs',
@@ -1290,7 +1290,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0840.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/RiIL1uAX-J2z0s',
     id: '0840',
     name: 'weighted overhead crunch (on stability ball)',
     target: 'abs',
@@ -1298,7 +1298,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0846.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/LFAwby=EvfcIaN',
     id: '0846',
     name: 'weighted russian twist',
     target: 'abs',
@@ -1306,7 +1306,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0845.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/mARHbT5dIbN9HA',
     id: '0845',
     name: 'weighted russian twist (legs up)',
     target: 'abs',
@@ -1314,7 +1314,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/2371.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/bnAgo7Ugji+7bI',
     id: '2371',
     name: 'weighted russian twist v. 2',
     target: 'abs',
@@ -1322,7 +1322,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0849.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/sdTjSKAnvNmdsQ',
     id: '0849',
     name: 'weighted seated twist (on stability ball)',
     target: 'abs',
@@ -1330,7 +1330,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'weighted',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0850.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/oF+A9DNoa3fdb0',
     id: '0850',
     name: 'weighted side bend (on stability ball)',
     target: 'abs',
@@ -1338,7 +1338,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'wheel roller',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0857.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/0R0HEBtpKtFB6i',
     id: '0857',
     name: 'wheel rollerout',
     target: 'abs',
@@ -1346,7 +1346,7 @@ export const abs = [
   {
     bodyPart: 'waist',
     equipment: 'body weight',
-    gifUrl: 'http://d205bpvrqc9yn1.cloudfront.net/0858.gif',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/xbW99x1pDiVniN',
     id: '0858',
     name: 'wind sprints',
     target: 'abs',

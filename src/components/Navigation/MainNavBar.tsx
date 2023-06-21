@@ -1,13 +1,24 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Toolbar, Avatar } from '@mui/material';
+import { Toolbar } from '@mui/material';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { styled } from '@mui/system';
 import { useAuthContext } from '../../Providers/AuthContext';
 import { UserType } from '../types/User';
 import { StyledIconButton } from '../Icons/Icons.css';
 import { TransparentAppBar } from './Navbar.css';
 import { FeaturePaths } from '../../helpers/fnPaths';
+import { UserAvatar } from '../Pics/MainAvatar';
+
+const StyledNavIcon = styled(StyledIconButton)`
+ margin-right: 0.3rem;
+`;
+
+const NavUserAvatar = styled(UserAvatar)`
+  width: 3.3rem;
+  height: 3.3rem;
+`;
 
 const MainNavbar: React.FC = () => {
   const navigate = useNavigate();
@@ -31,15 +42,15 @@ const MainNavbar: React.FC = () => {
     <TransparentAppBar position="static">
       <Toolbar>
         <div style={{ flexGrow: 1 }} />
-        <Avatar alt="My Profile" src={user.picUrl} onClick={goToProfile} />
         { user.userType === UserType.CLIENT && (
-        <StyledIconButton edge="end" onClick={goToSettings}>
+        <StyledNavIcon onClick={goToSettings}>
           <SettingsIcon />
-        </StyledIconButton>
+        </StyledNavIcon>
         )}
-        <StyledIconButton edge="end" onClick={handleLogout}>
+        <StyledNavIcon onClick={handleLogout}>
           <PowerSettingsNewIcon />
-        </StyledIconButton>
+        </StyledNavIcon>
+        <NavUserAvatar alt="My Profile" src={user.picUrl} onClick={goToProfile} />
       </Toolbar>
     </TransparentAppBar>
 

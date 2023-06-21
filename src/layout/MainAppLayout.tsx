@@ -12,8 +12,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding: 20px;
+  padding-right: 20px;
 `;
 
 const renderTopNavi = (userType: UserType): JSX.Element => (userType === UserType.ADMIN ? <Navbar /> : <MainNavbar />);

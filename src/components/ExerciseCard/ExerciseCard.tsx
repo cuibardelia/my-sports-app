@@ -5,25 +5,25 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useState } from 'react';
 import Radio from '@mui/material/Radio';
 import {
-  Snap, StyledCard,
+  StyledCard,
 } from './ExerciseCard.css';
 import { useExercisesContext } from '../../Providers/ExercisesContext';
 import { useAuthContext } from '../../Providers/AuthContext';
 import { isAmongFavorites } from '../../helpers/fnFeatures';
 import { Exercise } from '../types/Exercise';
+import ExerciseImage, { StyledImg } from '../Card/ExerciseImage';
 
 type CardExercisePropType = {
   // FIXME: type
   e: any;
   name: string;
-  path: string;
   allowsPick?: boolean;
   setSelectedExercise?: (e: Exercise) => void;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ExerciseCard: React.FC<CardExercisePropType> = ({
-  e, path, allowsPick = false, setSelectedExercise,
+  e, allowsPick = false, setSelectedExercise,
 }) => {
   const { setSelectedOption, setModalDetail } = useExercisesContext();
   const [isPicked, setIsPicked] = useState<boolean>(false);
@@ -49,7 +49,9 @@ const ExerciseCard: React.FC<CardExercisePropType> = ({
   // TODO: change color
   return (
     <StyledCard onClick={handleClick}>
-      <Snap src={path} />
+      {
+        isCategory ? (<StyledImg src={e.url} alt={e.name} />) : (<ExerciseImage exercise={e} />)
+      }
       { hasFavoriteIcon && (
       <IconButton>
         {isFavorite ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}

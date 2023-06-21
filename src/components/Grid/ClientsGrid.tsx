@@ -45,13 +45,6 @@ const ClientsGrid: React.FC<IClientsGrid> = ({
   // FIXME: no style props
   return (
     <GridContainer>
-      <Grid container spacing={2} sx={{ margin: '2rem' }}>
-        {displayedItems?.map((buddy) => (
-          <Grid item xs={6} sm={4} md={3} key={buddy.email} onClick={() => setSelectedClient(buddy)}>
-            <ClientCard buddy={buddy} allowsPick={allowsMultiplePick} />
-          </Grid>
-        ))}
-      </Grid>
       { totalPages > 1 && (
       <Pagination
         count={totalPages}
@@ -59,6 +52,13 @@ const ClientsGrid: React.FC<IClientsGrid> = ({
         onChange={handlePageChange}
       />
       )}
+      <Grid container spacing={2} sx={{ margin: '2rem' }}>
+        {displayedItems?.map((buddy) => (
+          <Grid item xs={6} sm={4} md={3} key={buddy.email} onClick={() => setSelectedClient(buddy)}>
+            <ClientCard buddy={buddy} allowsPick={allowsMultiplePick} />
+          </Grid>
+        ))}
+      </Grid>
     </GridContainer>
   );
 };

@@ -3,6 +3,7 @@ import {
   Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
 } from '@mui/material';
 import { Exercise } from '../../types/Exercise';
+import ExerciseImage from '../../Card/ExerciseImage';
 
 interface ModalProps {
   exercise: Exercise;
@@ -13,7 +14,6 @@ interface ModalProps {
 const ExerciseModal: React.FC<ModalProps> = ({
   exercise, handleClose, buttonText, handleButton,
 }) => {
-  console.log('here', exercise);
   if (!exercise) {
     return null;
   }
@@ -21,7 +21,7 @@ const ExerciseModal: React.FC<ModalProps> = ({
     <Dialog open={!!exercise} onClose={handleClose} maxWidth="md">
       <DialogTitle>{exercise.name}</DialogTitle>
       <DialogContent>
-        <img src={exercise.gifUrl} alt={exercise.name} style={{ width: '100%', marginBottom: '16px' }} />
+        <ExerciseImage exercise={exercise} />
         <DialogContentText>
           <b>Equipment: </b>
           {exercise.equipment}

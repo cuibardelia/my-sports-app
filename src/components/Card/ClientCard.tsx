@@ -1,19 +1,19 @@
 import * as React from 'react';
 import {
-  Avatar, Card, styled, Typography,
+  Avatar, Card, Typography,
 } from '@mui/material';
-import { deepPurple, green } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Radio from '@mui/material/Radio';
 import { IClient } from '../types/User';
 
-const BuddyAvatar = styled(Avatar)(() => ({
-  width: '100%',
+export const BuddyAvatar = styled(Avatar)<{ isClientModal?: boolean }>(({ theme, isClientModal }) => ({
+  width: isClientModal ? '200px' : '100%',
   height: 'auto',
   aspectRatio: '1/1',
-  backgroundColor: green[300],
-  color: deepPurple[300],
+  backgroundColor: theme.palette.secondary.main,
+  color: theme.palette.primary.main,
   fontSize: '1.5rem',
   display: 'flex',
   alignItems: 'center',

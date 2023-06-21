@@ -226,7 +226,12 @@ export const SessionSchema = object({
   difficulty: string().required('Please select difficulty'),
 });
 
-export const AppointmentSchema = object({
+export const StartDateSchema = object({
+  startDate: date()
+    .required('Please add a start date'),
+});
+
+export const DateRangeSchema = object({
   startDate: date()
     .required('Please add a start date')
     .test(
@@ -242,7 +247,7 @@ export const AppointmentSchema = object({
     .test(
       'endDate',
       'Incorrect end D'
-        + 'date',
+          + 'date',
       function (value) {
         const { startDate } = this.parent;
         // @ts-ignore
@@ -251,5 +256,8 @@ export const AppointmentSchema = object({
         return startDate < value && hoursDifference <= 3;
       },
     ),
-  room: string().required('Please select a room'),
 });
+
+export const AppointmentSchema = DateRangeSchema.concat(object({
+  room: string().required('Please select a room'),
+}));

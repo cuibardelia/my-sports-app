@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { PageContainer } from '../../PageContainer.css';
+import DashboardCard from '../../Card/DashboardCard';
 
 const TrainerDashboard: React.FC = () => (
   <PageContainer>
-    <main>
-      List of whats happening this week, birthdays, achievements
-    </main>
+    <DashboardCard />
   </PageContainer>
 );
 export default TrainerDashboard;

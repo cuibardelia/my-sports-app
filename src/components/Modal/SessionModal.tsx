@@ -4,14 +4,24 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
-  Typography,
 } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import {
   getEquipment,
 } from '../../helpers/fnRequest';
 import { SessionPlan } from '../../helpers/fnSession';
+import { DialogText, PaddedTypography } from './AppointmentModal';
+
+const SmallDialog = styled(DialogContent)(({ theme }) => ({
+  width: '380px',
+}));
+
+const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
+  color: theme.palette.text.disabled,
+  textAlign: 'center',
+  background: `linear-gradient(to right bottom, ${theme.palette.primary.dark} 30%, ${theme.palette.primary.light})`,
+}));
 
 interface ISessionModal {
   session: SessionPlan;
@@ -30,20 +40,20 @@ const SessionModal: React.FC<ISessionModal> = ({ handleClose, session, handleExe
 
   return (
     <Dialog open={!!session} onClose={handleClose}>
-      <DialogTitle>{session.name}</DialogTitle>
-      <DialogContent>
-        <Typography variant="h5">Equipment:</Typography>
-        <DialogContentText>{getEquipment(session.equipment)}</DialogContentText>
-        <Typography variant="h5">Body parts:</Typography>
-        <DialogContentText>{getEquipment(session.targets)}</DialogContentText>
-        <Typography variant="h5">Notes:</Typography>
-        <DialogContentText>{session.notes}</DialogContentText>
-      </DialogContent>
+      <StyledDialogTitle>{session.name}</StyledDialogTitle>
+      <SmallDialog>
+        <PaddedTypography variant="h5">⚽ Equipment:</PaddedTypography>
+        <DialogText>{getEquipment(session.equipment)}</DialogText>
+        <PaddedTypography variant="h5">🏃 Body parts:</PaddedTypography>
+        <DialogText>{getEquipment(session.targets)}</DialogText>
+        <PaddedTypography variant="h5">✒️  Notes:</PaddedTypography>
+        <DialogText>{session.notes}</DialogText>
+      </SmallDialog>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleClose} variant="outlined" color="primary">
           Close
         </Button>
-        <Button onClick={() => handleExercises(session.exercises)} color="primary">
+        <Button onClick={() => handleExercises(session.exercises)} variant="outlined" color="primary">
           See Exercises
         </Button>
         {/* <Button onClick={handleDelete} color="secondary"> */}

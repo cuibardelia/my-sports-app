@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  createContext, useContext, useEffect, useState,
+  createContext, MutableRefObject, useContext, useEffect, useRef, useState,
 } from 'react';
 import { useAuthContext } from './AuthContext';
 import {
-  getFavExercisesApi, getFormattedTargets,
+  getFormattedTargets,
 } from '../helpers/fnRequest';
 import { abs } from '../components/ExerciseCard/abs-example';
-import { getRapidAPI, useProtectedCallback } from '../hooks/useProtectedCall';
+import { fetchFavExercises, getRapidAPI } from '../hooks/useProtectedCall';
 import { Exercise, TargetArea } from '../components/types/Exercise';
 
 export interface IExerciseGrid {
@@ -16,7 +16,6 @@ export interface IExerciseGrid {
   setSelectedExercise?: (e:Exercise) => void;
 }
 
-// TODO: special cant be seen by those who don't have the speciality
 export enum SelectedOption {
   CAT = 'Categories',
   FAV = 'Favorites',
@@ -30,6 +29,7 @@ interface IExercisesContext {
   items: TargetArea[] | Exercise[];
   openExercise: Exercise;
   setModalDetail: (e: Exercise) => void;
+  favExercises: MutableRefObject<Exercise[]>
 }
 
 const targetCategories = ['abductors', 'abs', 'adductors', 'biceps', 'calves', 'cardiovascular system', 'delts', 'forearms', 'glutes', 'hamstrings', 'lats', 'levator scapulae', 'pectorals', 'quads', 'serratus anterior', 'spine', 'traps', 'triceps', 'upper back'];
@@ -44,14 +44,24 @@ export const ExercisesProvider: React.FunctionComponent<{
   const [activeOption, setActiveOption] = useState<string>(exerciseOptions[0]);
   const [items, setItems] = useState<TargetArea[] | Exercise[]>([]);
   const [openExercise, setOpenExercise] = useState<Exercise>(null);
+  const favExercises = useRef<Exercise[]>([]);
   const { user } = useAuthContext();
 
-  const callFavAPI = useProtectedCallback(getFavExercisesApi(user?.userType), 'data', setItems);
   const fetchTargetList = getRapidAPI('targetList', (data) => {
     const formattedTargets = getFormattedTargets(data);
     setItems(formattedTargets);
   });
   const fetchAllFromCategory = getRapidAPI(`target/${encodeURI(activeOption)}`, setItems);
+
+  useEffect(() => {
+    const getFavExercises = async () => {
+      if (user?.favoriteExercises) {
+        favExercises.current = await fetchFavExercises(user.favoriteExercises as string[]);
+      }
+    };
+
+    getFavExercises().then(null);
+  }, []);
 
   // TODO: Redux
   useEffect(() => {
@@ -62,7 +72,7 @@ export const ExercisesProvider: React.FunctionComponent<{
         setItems(getFormattedTargets(targetCategories));
         break;
       case SelectedOption.FAV:
-        callFavAPI();
+        setItems(favExercises.current);
         break;
       case SelectedOption.SPEC:
         setItems(getFormattedTargets(specialCategories));
@@ -90,7 +100,7 @@ export const ExercisesProvider: React.FunctionComponent<{
 
   return (
     <ExercisesContext.Provider value={{
-      activeOption, setSelectedOption, items, setModalDetail, openExercise,
+      activeOption, setSelectedOption, items, setModalDetail, openExercise, favExercises,
     }}
     >
       {children}

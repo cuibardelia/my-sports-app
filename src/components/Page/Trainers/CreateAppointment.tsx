@@ -70,11 +70,11 @@ const CreateAppointment: React.FC = () => {
     axios.post(`${process.env.TRAINER_API}/create-session-appointment`, body, {
       headers: getProtectedHeaders(token),
     })
-      .then((response) => {
-        setSuccessMessage('Session successfully saved');
+      .then(() => {
+        setSuccessMessage('Appointment successfully added.');
       })
       .catch((error) => {
-        console.log(error);
+        setSuccessMessage(error.response.data.error);
       });
   };
 
@@ -96,7 +96,8 @@ const CreateAppointment: React.FC = () => {
     setSuccessMessage('');
     navigate(`../${FeaturePaths.APPOINTMENTS}`);
   };
-
+  // FIXME: check if time slot is alrady taken for that ROom
+  // FIXME: multiple sesssion should not be possible
   const renderStepContent = (step) => {
     switch (step) {
       case 0:

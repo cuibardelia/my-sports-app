@@ -1,171 +1,107 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Card, CardContent, Typography, List, ListItem, ListItemAvatar, Avatar, ListItemText,
+  CardContent, Typography, Box,
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { useAuthContext } from '../../Providers/AuthContext';
-import { IClient } from '../types/User';
+import { IClient, UserType } from '../types/User';
+import {
+  LightCard, StyledCard,
+} from './Dashboard.css';
+import { getProtectedHeaders } from '../../helpers/fnRequest';
+import CheeringMessage from './CheeringMessage';
+import AppointmentMessage from './AppointmentMessage';
+import AchieversList from './AchieversList';
+import WinnersList from './WinnersList';
+import TrainerMessage from './TrainerMessage';
 
-// TODO: most active at the gym
-// TODO: biggest weight loss
-
-const winners = [
-  { name: 'John Doe', photoUrl: '/john-doe.jpg' },
-  { name: 'Jane Smith', photoUrl: '/jane-smith.jpg' },
-];
-
-interface IPensiveMessage {
-  kilos: number;
-  isProgress: boolean;
-  noResultsYet: boolean;
+export interface TopClient {
+  client: IClient;
+  appointmentCount?: number;
 }
 
-const KilosTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.secondary.main,
-  fontSize: '3rem',
-}));
-
-interface IToGoMessage {
-  kilos: number;
-  noResultsYet?: boolean;
+interface LatestAchiever {
+  username: string;
+  picUrl: string;
+  dateAchieved: Date;
+  weightStatus: string;
 }
-
-const MoreToGoMessage: React.FC<IToGoMessage> = ({ kilos, noResultsYet = false }) => (
-  <Typography variant="body1" gutterBottom sx={{ marginTop: 2 }}>
-    {'Only '}
-    <KilosTypography variant="body1" display="inline">
-      {kilos}
-    </KilosTypography>
-    {` ${noResultsYet ? '' : 'more'} kgs to go!`}
-  </Typography>
-);
-
-const PensiveMessage: React.FC<IPensiveMessage> = ({ kilos, isProgress, noResultsYet }) => (isProgress ? (
-  <MoreToGoMessage kilos={kilos} />
-) : (
-  <>
-    <Typography variant="body1" gutterBottom sx={{ marginTop: 2 }}>
-      {`You can ${noResultsYet ? '' : 'still'} make it! `}
-    </Typography>
-    <MoreToGoMessage kilos={kilos} noResultsYet={noResultsYet} />
-  </>
-));
-
-interface IObjectiveCTA {
-  objectiveAttained: boolean;
-}
-
-const ObjectiveCTA: React.FC<IObjectiveCTA> = ({ objectiveAttained }) => (
-  <Typography variant="body2" gutterBottom sx={{ marginTop: 2 }}>
-    {`Let\'s set your ${objectiveAttained ? 'new' : ''} `}
-    <Link to="../settings">
-      objectives
-    </Link>
-  </Typography>
-);
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  maxWidth: 400,
-  margin: '0 auto',
-  padding: theme.spacing(2),
-}));
-
-const StyledCongratulations = styled(Typography)<{ isProgress: boolean }>(({ theme, isProgress }) => ({
-  color: isProgress ? theme.palette.primary.dark : theme.palette.primary.main,
-}));
-
-const StyledList = styled(List)(({ theme }) => ({
-  marginTop: theme.spacing(2),
-}));
-
-const StyledListItem = styled(ListItem)(({ theme }) => ({
-  paddingLeft: theme.spacing(0),
-}));
 
 // TODO REFACTOR
 const DashboardCard = () => {
-  const { user } = useAuthContext();
-  const client = user as IClient;
-  const { goalWeight, currentWeight } = client;
+  const { user, token } = useAuthContext();
+  const [topUsers, setTopUsers] = useState<TopClient[]>([]);
+  const [latestAchievers, setLatestAchievers] = useState<LatestAchiever[]>([]);
 
-  let initialWeight = 0;
-  let latestWeight = 0;
-  let previousWeight = 0;
-  let weightChange = 0;
-  let noResultsYet = true;
-  let needsSettings = false;
-  let latestObjective = null;
-  let objectiveAttained = false;
+  const options = {
+    headers: {
+      ...getProtectedHeaders(token),
+      'X-User-Type': user.userType,
+    },
+  };
 
-  if (client.objectives?.length) {
-    latestObjective = client.objectives.slice(-1);
-    initialWeight = latestObjective[0].initialWeight;
-  }
+  useEffect(() => {
+    // FIXME: env
+    axios.get('http://localhost:5000/api/user/get-winners', options)
+      .then((response) => {
+        setTopUsers(response.data.topClients);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    axios.get('http://localhost:5000/api/user/get-objecive-attainers', options)
+      .then((response) => {
+        setLatestAchievers(response.data.clients);
+        console.log(response.data.clients);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-  if (client.weightStats?.length) {
-    latestWeight = client.weightStats.slice(-1)[0].value || 0;
-    previousWeight = client.weightStats.slice(-2)?.[0]?.value || initialWeight;
-    noResultsYet = false;
-  }
-
-  weightChange = latestWeight - previousWeight;
-
-  const appointmentCount = 4;
-  const isLossObjective = initialWeight - goalWeight > 0;
-  const isProgress = isLossObjective ? weightChange < 0 : weightChange > 0;
-  // eslint-disable-next-line no-nested-ternary
-  const statsIcon = isProgress ? '🎉' : noResultsYet ? '🚀' : '😓';
-  const objective = isLossObjective ? 'loss' : 'gain';
-  const remainingKgs = Math.abs(currentWeight - goalWeight);
-  // eslint-disable-next-line no-nested-ternary
-  const statsMessage = isProgress ? `Congratulations on your weight ${objective}!` : noResultsYet ? 'Welcome to your journey' : `Looks like you\'ve gone astray from your weight ${objective} objective`;
-
-  if ((isLossObjective && currentWeight <= goalWeight) || (!isLossObjective && currentWeight >= goalWeight)) {
-    objectiveAttained = true;
-  }
-
-  if (!currentWeight || !goalWeight) {
-    needsSettings = true;
-  }
+  const isClient = user.userType === UserType.CLIENT;
 
   return (
-    <StyledCard>
-      <CardContent>
-        <StyledCongratulations variant="h5" isProgress={isProgress}>
-          {`${statsIcon} ${statsMessage}`}
-          {
-            needsSettings || objectiveAttained
-              ? (
-                <ObjectiveCTA objectiveAttained={objectiveAttained} />
-              ) : (
-                <PensiveMessage isProgress={isProgress} kilos={remainingKgs} noResultsYet={noResultsYet} />
-              )
-          }
-        </StyledCongratulations>
-        <Typography variant="body2" gutterBottom sx={{ marginTop: 2 }}>
-          {'You have '}
-          <Link to="../appointments">
-            {appointmentCount}
-            {'  PT sessions'}
-          </Link>
-          {' this week.'}
-        </Typography>
-        <Typography variant="h6" component="div" sx={{ marginTop: 4 }}>
-          This week&apos;s top achievers:
-        </Typography>
-        <StyledList sx={{ marginTop: 2 }}>
-          {winners.map((winner, index) => (
-            <StyledListItem key={`${index}-${winner}`}>
-              <ListItemAvatar>
-                <Avatar alt={winner.name} src={winner.photoUrl} />
-              </ListItemAvatar>
-              <ListItemText primary={winner.name} />
-            </StyledListItem>
-          ))}
-        </StyledList>
-      </CardContent>
-    </StyledCard>
+    <LightCard>
+      <Box display="flex" flexDirection="column">
+        <Box display="flex" flexDirection="row">
+          <Box flexGrow={1} mr={2}>
+            {isClient ? (<CheeringMessage />) : (<TrainerMessage />)}
+          </Box>
+          <Box flexGrow={1}>
+            <AppointmentMessage />
+          </Box>
+        </Box>
+        <Box display="flex" flexDirection="row" mt={2}>
+          <Box flexGrow={1} mr={2}>
+            <StyledCard>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  This week&apos;s top active users:
+                </Typography>
+                <Typography variant="h6" component="div">
+                  Most active users in FitBud
+                </Typography>
+              </CardContent>
+              <WinnersList winners={topUsers} />
+            </StyledCard>
+          </Box>
+          <Box flexGrow={1}>
+            <StyledCard>
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Latest achievers:
+                </Typography>
+                <Typography variant="h6" component="div">
+                  Buddies who recently achieved their goals
+                </Typography>
+              </CardContent>
+              <AchieversList winners={latestAchievers} />
+            </StyledCard>
+          </Box>
+        </Box>
+      </Box>
+    </LightCard>
   );
 };
 

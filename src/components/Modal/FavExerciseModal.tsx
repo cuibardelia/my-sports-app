@@ -41,7 +41,6 @@ const FavExerciseModal: React.FC<ModalProps> = ({ exercise }) => {
   };
 
   const actionText = getFavActionText(isFavorite);
-  // TODO: In a session / class we can list the equipment needed for one -> PICS
   // fixme: pagination ruins button handling
 
   if (!exercise) {

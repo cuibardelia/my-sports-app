@@ -1,5 +1,6 @@
 import { specialtiesList } from '../../Types';
-import { SessionPlan } from '../../helpers/fnSession';
+import { Appointment, SessionPlan } from '../../helpers/fnSession';
+import { Exercise } from './Exercise';
 
 export enum UserType {
   CLIENT = 'client',
@@ -21,7 +22,7 @@ export interface ICommonUserUntouched extends ICredentialData {
   lastName: string;
   firstName: string;
   picUrl: string;
-  favoriteExercises: string[];
+  favoriteExercises: string[] | Exercise[];
   sessions: SessionPlan[];
   userType: UserType;
 }
@@ -35,7 +36,9 @@ export interface ICommonAPIData extends ICommonUserUntouched {
 export interface ICommonUser extends ICommonUserUntouched {
   id: string;
   name: string;
+  appointments: Appointment[],
 }
+
 export interface ITrainerAPIData extends ICommonAPIData {
   dateOfBirth: string;
   bio: string;
