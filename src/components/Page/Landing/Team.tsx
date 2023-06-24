@@ -66,7 +66,7 @@ const Team = () => {
           <Divider />
         </Box>
         <Box sx={{
-          display: 'flex', justifyContent: 'center', marginTop: '20px', width: '80%',
+          display: 'flex', justifyContent: 'center', marginTop: '20px',
         }}
         >
           <Carousel indicators={false} prevLabel="" nextLabel="">

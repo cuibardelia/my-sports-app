@@ -17,6 +17,7 @@ import ObjectiveStat from './ObjectiveStat';
 import StatsPieChart from '../../Chart/StatsPieChart';
 import AgeStat from '../../Chart/AgeStat';
 import Team from './Team';
+import ExercisesStats from '../../Chart/ExercisesStats';
 
 const StyledBox = styled(Box)({
   height: '500px',
@@ -41,7 +42,7 @@ const StatsContainer = styled(Box)(({ theme }) => ({
   padding: '3rem',
 }));
 
-const StatsRowContainer = styled(Box)(({ theme }) => ({
+const StatsRowContainer = styled(Box)(({
   width: '100%',
   display: 'flex',
   justifyContent: 'flex-end',
@@ -142,7 +143,6 @@ const Landing = () => {
               </Slide>
             </Box>
           </div>
-
           <StatsContainer>
             <StatsRowContainer>
               <Box sx={{ width: '50%', display: 'flex', alignItems: 'center' }}>
@@ -187,6 +187,17 @@ const Landing = () => {
             </Box>
           </StatsContainer>
           <Team />
+          <StatsContainer>
+            <StatsRowContainer>
+              <TextBoxContent>
+                {`  With a vast database of over 1800 exercises to choose from, you'll never run out of options to keep your workouts fresh and exciting.
+                  Discover our top 5 most loved exercises that our members can't get enough of. From intense cardio workouts to targeted strength training, these exercises have proven to be effective in achieving incredible results. Stay tuned for our carousel showcasing these favorites, and get ready to elevate your fitness journey with us!
+                   Join now and experience the power of variety and customization in your personal training sessions.
+              `}
+              </TextBoxContent>
+            </StatsRowContainer>
+          </StatsContainer>
+          <ExercisesStats />
         </Parallax>
       </ParallaxContainer>
     </LandingContainer>
