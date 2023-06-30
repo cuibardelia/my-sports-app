@@ -8,7 +8,8 @@ export type Exercise = {
   name: string;
   gifUrl: string;
   id: string;
+  target: string;
   bodyPart: string;
   equipment: string;
-  _id: string;
+  _id?: string;
 };

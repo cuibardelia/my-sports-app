@@ -27,7 +27,6 @@ const CardContainer = styled(Grid)(() => ({
   },
 }));
 
-// FIXME: need resposnive
 const FixedGrid = styled(Grid)(() => ({
   height: '100%',
 }));

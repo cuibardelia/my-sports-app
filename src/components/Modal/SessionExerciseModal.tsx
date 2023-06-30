@@ -53,7 +53,7 @@ const SessionExerciseModal: React.FC<ModalProps> = ({ exercises, handleClose }) 
           {currentExercise.equipment}
           <br />
           <b>Body part: </b>
-          {currentExercise.bodyPart}
+          {currentExercise.target}
         </DialogContentText>
         <DialogActions>
           <Button onClick={handleClose} variant="outlined" color="primary">

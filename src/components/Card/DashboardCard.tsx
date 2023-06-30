@@ -52,7 +52,6 @@ const DashboardCard = () => {
     axios.get('http://localhost:5000/api/user/get-objecive-attainers', options)
       .then((response) => {
         setLatestAchievers(response.data.clients);
-        console.log(response.data.clients);
       })
       .catch((error) => {
         console.error(error);

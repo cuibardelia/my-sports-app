@@ -10,9 +10,11 @@ import { useAuthContext } from '../../../Providers/AuthContext';
 import TabNav from '../../Navigation/TabNav';
 
 const getOptionIndex = (value: SelectedOption): number => Object.values(SelectedOption).indexOf(value);
+
 const ExercisesContainer = styled(Box)`
- height: 60vh;
+ width: 80%;
 `;
+
 const Exercises: React.FC = () => {
   const {
     setSelectedOption, activeOption, items, openExercise,
@@ -44,7 +46,6 @@ const Exercises: React.FC = () => {
         <ExercisesContainer>
           <ExerciseGrid items={items} />
         </ExercisesContainer>
-
       </>
     </PageContainer>
   );

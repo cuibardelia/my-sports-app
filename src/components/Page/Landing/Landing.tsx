@@ -103,7 +103,6 @@ const Landing = () => {
               <CarouselImage
                 src="/assets/slider-1.png"
                 alt="First slide"
-                style={{ width: '100%' }}
               />
               <Overlay />
             </CarouselItem>
@@ -111,7 +110,6 @@ const Landing = () => {
               <CarouselImage
                 src="/assets/slider-2.png"
                 alt="Second slide"
-                style={{ width: '100%' }}
               />
               <Overlay />
             </CarouselItem>
@@ -119,7 +117,6 @@ const Landing = () => {
               <CarouselImage
                 src="/assets/slider-3.png"
                 alt="Third slide"
-                style={{ width: '100%' }}
               />
               <Overlay />
             </CarouselItem>

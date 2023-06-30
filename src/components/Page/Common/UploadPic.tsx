@@ -23,6 +23,10 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.dark,
 }));
 
+const FullWidthImg = styled('img')({
+  maxWidth: '100%',
+});
+
 const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
   const { token, user } = useAuthContext();
@@ -31,7 +35,6 @@ const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
     const file = acceptedFiles[0];
     const formData = new FormData();
     formData.append('file', file);
-    // FIXME!!!
     formData.append('size', 'w_350');
 
     try {
@@ -69,7 +72,7 @@ const UploadPic: React.FC<PicProps> = ({ onUploadComplete }) => {
         <Box mt={3}>
           <Card>
             <Box p={3} textAlign="center">
-              <img src={uploadedImageUrl} alt="Uploaded" style={{ maxWidth: '100%' }} />
+              <FullWidthImg src={uploadedImageUrl} alt="Uploaded image" />
             </Box>
           </Card>
         </Box>

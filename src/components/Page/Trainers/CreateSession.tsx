@@ -24,6 +24,10 @@ export const ExercisesContainer = styled(Box)`
   height: 60vh;
 `;
 
+export const StyledStepContainer = styled(Box)`
+  margin-top: 100px;
+`;
+
 const steps = ['Choose a name', 'Select exercises', 'Add notes and difficulty'];
 
 // FIXME: types
@@ -149,7 +153,9 @@ const CreateSession: React.FC = () => {
             {renderStepContent(activeStep)}
           </StepsContainer>
           <ConfirmActionModal open={!!successMessage} onClose={onSavedConfirmationClose} message={successMessage} title="Session saved" />
-          <CreateSessionButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} handleSave={handleSave} />
+          <StyledStepContainer>
+            <CreateSessionButton activeStep={activeStep} handleBack={handleBack} handleNext={handleNext} handleSave={handleSave} />
+          </StyledStepContainer>
         </form>
       </FormProvider>
     </PageContainer>

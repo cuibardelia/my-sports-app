@@ -41,7 +41,6 @@ const FavExerciseModal: React.FC<ModalProps> = ({ exercise }) => {
   };
 
   const actionText = getFavActionText(isFavorite);
-  // fixme: pagination ruins button handling
 
   if (!exercise) {
     return null;

@@ -6,6 +6,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import styled from 'styled-components';
 import { fetchFavExercises } from '../../hooks/useProtectedCall';
 import ExerciseImage from '../Card/ExerciseImage';
+import { favEx } from '../../helpers/fnRequest';
 
 const Container = styled(Box)`
   width: 100%;
@@ -28,8 +29,9 @@ const ExercisesStats = () => {
   useEffect(() => {
     axios.get('http://localhost:5000/api/auth/get-exercises', { headers: { 'Content-type': 'application/json' } })
       .then((response) => {
-        console.log('here', response);
-        fetchFavExercises(response.data.exerciseIds).then((r) => setData(r));
+        // FIXME!:
+        // fetchFavExercises(response.data.exerciseIds).then((r) => setData(r));
+        setData(favEx);
       })
       .catch((error) => {
         console.error(error);
@@ -39,7 +41,6 @@ const ExercisesStats = () => {
   if (!data) {
     return null;
   }
-  console.log('here, da', data);
   return (
     <Container>
       <Slide bottom duration={1000}>
@@ -54,14 +55,14 @@ const ExercisesStats = () => {
             <Carousel.Item>
               <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                 {data.slice(0, 3).map((a) => (
-                  <ImageContainer><ExerciseImage exercise={a} /></ImageContainer>
+                  <ImageContainer key={`image-${a.name}`}><ExerciseImage exercise={a} /></ImageContainer>
                 ))}
               </Box>
             </Carousel.Item>
             <Carousel.Item>
               <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                 {data.slice(3, 6).map((a) => (
-                  <ImageContainer><ExerciseImage exercise={a} /></ImageContainer>
+                  <ImageContainer key={`image-${a.name}`}><ExerciseImage exercise={a} /></ImageContainer>
                 ))}
               </Box>
             </Carousel.Item>

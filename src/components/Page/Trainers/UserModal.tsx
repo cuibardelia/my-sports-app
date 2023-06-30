@@ -11,13 +11,15 @@ import WeightStats from '../../Chart/WeightStats';
 import ExerciseGrid from '../../Grid/ExerciseGrid';
 import { Exercise } from '../../types/Exercise';
 import { fetchFavExercises } from '../../../hooks/useProtectedCall';
+import { getTargets } from '../../../helpers/fnStats';
+import GenericPieChart from '../../Chart/GenericPieChart';
 
 const InfoContainer = styled(Box)({
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'center',
-  height: '80%',
+  justifyContent: 'space-between',
+  width: '100%',
 });
 
 const StyledIconButton = styled(IconButton)({
@@ -30,6 +32,23 @@ const StyledDialogContent = styled(DialogContent)({
 
 const Subtitle = styled(Typography)({
   marginBottom: '2rem',
+});
+
+const InfoData = styled(DialogContentText)({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  paddingTop: '3rem',
+  flex: '1',
+});
+
+const ContentBox = styled(Box)({
+  width: '100%',
+  flexDirection: 'row',
+  justifyItems: 'center',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-around',
 });
 
 interface TrainerModalProps {
@@ -53,8 +72,6 @@ const UserModal: React.FC<TrainerModalProps> = ({ client, handleClose }) => {
     getFavExercises().then((res) => setExercises(res));
   }, [client]);
 
-  console.log('here', client?.favoriteExercises);
-
   const handleNext = () => {
     setActiveStep((prevStep) => prevStep + 1);
   };
@@ -68,6 +85,8 @@ const UserModal: React.FC<TrainerModalProps> = ({ client, handleClose }) => {
     handleClose();
   };
 
+  const targets = getTargets(exercises);
+
   const renderStepContent = (step: number) => {
     switch (step) {
       case 0:
@@ -77,19 +96,30 @@ const UserModal: React.FC<TrainerModalProps> = ({ client, handleClose }) => {
               Information
             </Subtitle>
             <InfoContainer>
-              <BuddyAvatar src={client.picUrl} alt={client.firstName} isClientModal>
-                {client.firstName.charAt(0)}
-              </BuddyAvatar>
-              <DialogContentText>
-                <b>Current weight: </b>
-                {client.currentWeight}
-                <br />
-                <b>Goal weight: </b>
-                {client.goalWeight}
-                <br />
-                <b>Height: </b>
-                {client.height}
-              </DialogContentText>
+              <ContentBox>
+                <BuddyAvatar src={client.picUrl} alt={client.firstName} isClientModal>
+                  {client.firstName.charAt(0)}
+                </BuddyAvatar>
+                <InfoData>
+                  <Typography variant="subtitle1">
+                    <b>{'Current weight: '}</b>
+                    {client.currentWeight || 'n/a'}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    <b>{'Goal weight: '}</b>
+                    {client.goalWeight || 'n/a'}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    <b>{'Height: '}</b>
+                    {client.height || 'n/a'}
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    <b>Targeted areas:</b>
+                  </Typography>
+                  <GenericPieChart data={targets} hasImageLabel />
+                  {targets?.length === 0 && <Typography variant="subtitle1">n/a</Typography>}
+                </InfoData>
+              </ContentBox>
             </InfoContainer>
           </>
         );

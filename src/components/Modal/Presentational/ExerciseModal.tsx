@@ -27,7 +27,7 @@ const ExerciseModal: React.FC<ModalProps> = ({
           {exercise.equipment}
           <br />
           <b>Body part: </b>
-          {exercise.bodyPart}
+          {exercise.target}
         </DialogContentText>
         <DialogActions>
           <Button onClick={handleButton} variant="outlined" color="primary">

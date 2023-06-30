@@ -22,6 +22,7 @@ const PieChartComponent = () => {
   if (!data) {
     return null;
   }
+
   return (
     <GenericPieChart data={data} />
   );

@@ -103,9 +103,9 @@ const NextAppointments: React.FC = () => {
     return <NoData message="No appointments yet" buttonText="Create" link={link} />;
   }
 
-  if (!data?.length && !isTrainer) {
-    return <NoData message="No appointments yet" buttonText="Request" link={link} />;
-  }
+  // if (!data?.length && !isTrainer) {
+  //   return <NoData message="No appointments yet" buttonText="Request" link={link} />;
+  // }
 
   const filteredAppointments = data.filter((appointment) => {
     const appointmentStartDate = dayjs(appointment.startDate);

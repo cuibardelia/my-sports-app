@@ -2,7 +2,9 @@ import * as React from 'react';
 import { CardContent, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { DefaultLink, GradientCard, StyledEmoji } from './Dashboard.css';
+import {
+  DefaultLink, GradientCard, StyledEmoji,
+} from './Dashboard.css';
 import { useAuthContext } from '../../Providers/AuthContext';
 import { UserType } from '../types/User';
 import { useProtectedCall } from '../../hooks/useProtectedCall';
@@ -17,7 +19,7 @@ const AppointmentMessage: React.FC = () => {
   useEffect(() => {
     const now = dayjs();
     const startOfWeek = now.startOf('week').startOf('day');
-    const endOfWeek = now.endOf('week').endOf('day');
+    const endOfWeek = now.endOf('week').add(1, 'day').endOf('day');
 
     const appointmentsThisWeek = data.filter((appointment) => {
       const startDate = dayjs(appointment.startDate);

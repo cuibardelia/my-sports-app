@@ -21,16 +21,13 @@ const OuterContainer = styled(Container)({
 
 const InnerContainer = styled(Grid)({
   margin: '20px 0',
-  height: '650px',
 });
 
 const LoadingSpinner = () => <CircularProgress color="inherit" />;
 
-const itemsPerPage = 9;
-
 const ExerciseGrid: React.FC<IExerciseGrid> = ({ items, allowsMultiplePick = false, setSelectedExercise }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const itemsPerPage = allowsMultiplePick ? 6 : 9;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedItems = items.slice(startIndex, endIndex);

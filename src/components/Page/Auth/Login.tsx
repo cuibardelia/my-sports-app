@@ -11,7 +11,7 @@ import { useAuthContext } from '../../../Providers/AuthContext';
 import { AuthCard, BottomLinks } from '../../Form/Form.css';
 import { FormDataType } from '../../../Types';
 import { getAuthHeaders } from '../../../helpers/fnRequest';
-import { AuthPaths, getDefaultRoute } from '../../../helpers/fnPaths';
+import { AuthPaths, getDefaultRoute, UserPaths } from '../../../helpers/fnPaths';
 import { UserType } from '../../types/User';
 import { IAuth } from '../../types/Auth';
 import { loginValidationSchema } from '../../../helpers/fnForm';
@@ -39,7 +39,6 @@ const Login: React.FC<IAuth> = ({ userType }) => {
     await axios.post(`${process.env.AUTH_API}/login`, JSON.stringify(formData), {
       headers: getAuthHeaders(userType),
     }).then((response) => {
-      console.log(response);
       login(response.data);
     }).catch((error) => {
       setServerError(error.response.data.error);
@@ -56,7 +55,12 @@ const Login: React.FC<IAuth> = ({ userType }) => {
             <Input name="password" type="password" labelText="Password" />
             <DefaultButton text="Sign In" type="submit" />
             <BottomLinks>
-              { isClient && <FormLinks message="Don't have an account?" link={AuthPaths.REGISTER} linkMessage="Register here" /> }
+              { isClient && (
+              <>
+                <LinkContainer><Link to={UserPaths.TRAINER}>Login as trainer</Link></LinkContainer>
+                <FormLinks message="Don't have an account?" link={AuthPaths.REGISTER} linkMessage="Register here" />
+              </>
+              )}
               <LinkContainer><Link to={AuthPaths.FORGOT}>Forgot password?</Link></LinkContainer>
             </BottomLinks>
             {serverError && (

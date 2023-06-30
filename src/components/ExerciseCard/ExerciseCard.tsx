@@ -34,6 +34,7 @@ const ExerciseCard: React.FC<CardExercisePropType> = ({
     if (isCategory) {
       setSelectedOption(e.name);
     } else {
+      // FIXME: open modal
       setModalDetail(e);
     }
   };

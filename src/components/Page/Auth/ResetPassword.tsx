@@ -34,7 +34,6 @@ const ResetPassword: React.FC = () => {
     await axios.put(`${process.env.AUTH_API}/reset-password/${resetToken}`, JSON.stringify(formData), {
       headers: cType,
     }).then((response) => {
-      // TODO: show modal
       console.log(response);
     }).catch((error) => {
       setServerError(error.message);

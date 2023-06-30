@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Card, Typography, CardContent } from '@mui/material';
-import { ITrainer, IUser } from '../../types/User';
+import { ITrainer, IUser } from '../types/User';
 
-const CardContainer = styled.div`
+const CardContainer = styled(Card)<{ isOwn?: boolean }>`
   display: flex;
   align-items: center;
   padding: 16px;
+  margin: auto;
+${(props) => props.isOwn
+    && `max-width: 80%;
+    flex-direction: column;`}
 `;
 
-const ProfilePicture = styled.img`
-  width: 150px;
-  height: 150px;
+const ProfilePicture = styled.img<{ isOwn?: boolean }>`
+  width: ${(props) => (props.isOwn ? '300px' : '150px')};
+  height: ${(props) => (props.isOwn ? '300px' : '150px')};
   margin-right: 16px;
   border-radius: 3%;
 `;
@@ -33,15 +37,19 @@ const NoPictureCard = styled(Card)`
   justify-content: center;
 `;
 
-const TrainerCard: React.FC<{ user: IUser }> = ({ user }) => {
+const StyledBody = styled(Typography)`
+  padding: 10px 0;
+`;
+
+const TrainerCard: React.FC<{ user: IUser, isOwn?: boolean }> = ({ user, isOwn = false }) => {
   const {
     picUrl, bio, specialties,
   } = user as ITrainer;
 
   return (
-    <CardContainer>
+    <CardContainer isOwn={isOwn}>
       { picUrl ? (
-        <ProfilePicture src={picUrl} alt="Profile Picture" />
+        <ProfilePicture src={picUrl} alt="Profile Picture" isOwn={isOwn} />
       ) : (
         <NoPictureCard>
           <CardContent>
@@ -51,16 +59,16 @@ const TrainerCard: React.FC<{ user: IUser }> = ({ user }) => {
       )}
       <InfoContainer>
         <InfoItem>
-          <Typography variant="subtitle1">Bio:</Typography>
-          <Typography variant="body1">
+          <Typography variant="h5">📝 Bio:</Typography>
+          <StyledBody variant="body1">
             {bio}
-          </Typography>
+          </StyledBody>
         </InfoItem>
         <InfoItem>
-          <Typography variant="subtitle1">Specialties:</Typography>
-          <Typography variant="body1">
-            {specialties.join(',')}
-          </Typography>
+          <Typography variant="h5">💪 Specialties:</Typography>
+          <StyledBody variant="body1">
+            {specialties.join(', ') || 'None'}
+          </StyledBody>
         </InfoItem>
       </InfoContainer>
     </CardContainer>

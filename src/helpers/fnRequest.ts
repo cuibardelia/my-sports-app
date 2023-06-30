@@ -121,13 +121,80 @@ export const rapidOptions = {
   },
 };
 
-const formatTargetPicName = (t: string) => (t?.split(' ')?.join('-') || '');
+export const formatTargetPicName = (t: string) => (t?.split(' ')?.join('-') || '');
 
 export const getFormattedTargets = (apiAreas: string[]): TargetArea[] => apiAreas.map((t) => ({
   name: t,
   url: `/assets/targets/${formatTargetPicName(t)}.png`,
   type: 'category',
 }));
+
+export const favEx = [
+  {
+    bodyPart: 'waist',
+    equipment: 'body weight',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/UwROoADfWDxrf4',
+    id: '0002',
+    name: '45° side bend',
+    target: 'abs',
+  },
+  {
+    bodyPart: 'waist',
+    equipment: 'assisted',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/gt8WmYLtN5My8h',
+    id: '0010',
+    name: 'assisted hanging knee raise with throw down',
+    target: 'abs',
+  },
+  {
+    bodyPart: 'lower arms',
+    equipment: 'barbell',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/VNqbfC2xDnsNm-',
+    id: '0126',
+    name: 'barbell wrist curl',
+    target: 'forearms',
+  },
+  {
+    bodyPart: 'upper legs',
+    equipment: 'leverage machine',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/qrnVXEm1JMoDPA',
+    id: '0598',
+    name: 'lever seated hip adduction',
+    target: 'adductors',
+  },
+  {
+    bodyPart: 'upper legs',
+    equipment: 'body weight',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/UhzB8mtSpyki1N',
+    id: '1494',
+    name: 'butterfly yoga pose',
+    target: 'adductors',
+  },
+  {
+    bodyPart: 'upper legs',
+    equipment: 'assisted',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/1AbSJTA1RJzFY5',
+    id: '1712',
+    name: 'assisted side lying adductor stretch',
+    target: 'adductors',
+  },
+  {
+    bodyPart: 'upper legs',
+    equipment: 'body weight',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/-t3nf2XkYwMgoe',
+    id: '1775',
+    name: 'side plank hip adduction',
+    target: 'adductors',
+  },
+  {
+    bodyPart: 'waist',
+    equipment: 'body weight',
+    gifUrl: 'https://edbv2-ff7foj6vca-uc.a.run.app/image/d713r3OS6s078L',
+    id: '2355',
+    name: 'arm slingers hanging bent knee legs',
+    target: 'abs',
+  },
+];
 
 /*
 ==============================

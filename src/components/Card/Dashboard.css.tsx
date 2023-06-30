@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import {
-  Card, List, ListItem, Typography,
+  Card, LinearProgress, List, ListItem, Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -23,6 +23,10 @@ export const KilosTypography = styled(Typography)(({ theme }) => ({
 export const StyledCard = styled(Card)(({ theme }) => ({
   margin: '0 auto',
   padding: theme.spacing(2),
+}));
+
+export const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  backgroundColor: theme.palette.background.paper,
 }));
 
 export const LightCard = styled(Card)(({ theme }) => ({
@@ -58,6 +62,7 @@ export const StyledCongratulations = styled(Typography)<{ isProgress: boolean }>
 
 export const StyledList = styled(List)(({ theme }) => ({
   marginTop: theme.spacing(2),
+  padding: 1,
 }));
 
 export const StyledListItem = styled(ListItem)(({ theme }) => ({

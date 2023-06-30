@@ -46,7 +46,7 @@ const WrongPage: React.FC<IWrongPage> = ({ message, buttonMessage }) => {
       <NotFoundMessage>
         {`${message} `}
       </NotFoundMessage>
-      <AvocadoImage src="/assets/avo-cardio.png" alt="Avocado" />
+      <AvocadoImage src="/assets/my-fit-bud.png" alt="Avocado" />
       <CenteredContainer>
         <Button variant="contained" color="primary" onClick={handleGoToMain}>
           {buttonMessage}

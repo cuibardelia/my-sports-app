@@ -4,6 +4,7 @@ import {
 } from 'react';
 import { useAuthContext } from './AuthContext';
 import {
+  favEx,
   getFormattedTargets,
 } from '../helpers/fnRequest';
 import { abs } from '../components/ExerciseCard/abs-example';
@@ -56,18 +57,22 @@ export const ExercisesProvider: React.FunctionComponent<{
   useEffect(() => {
     const getFavExercises = async () => {
       if (user?.favoriteExercises) {
-        favExercises.current = await fetchFavExercises(user.favoriteExercises as string[]);
+        // FIXME!:
+        // favExercises.current = await fetchFavExercises(user.favoriteExercises as string[]);
+        favExercises.current = favEx;
       }
     };
 
-    getFavExercises().then(null);
-  }, []);
+    if (user) {
+      getFavExercises().then(null);
+    }
+  }, [user]);
 
   // TODO: Redux
   useEffect(() => {
     switch (activeOption) {
       case SelectedOption.CAT:
-        // FIXME: REMOVE WHEN SHOWCASING (will add mock data in the meantime, as we pay per request)
+        // FIXME!:
         // fetchTargetList();
         setItems(getFormattedTargets(targetCategories));
         break;
@@ -82,7 +87,7 @@ export const ExercisesProvider: React.FunctionComponent<{
         setItems([]);
         break;
       default:
-        // FIXME: REMOVE WHEN SHOWCASING (will add mock data in the meantime, as we pay per request)
+        // FIXME!:
         // fetchAllFromCategory();
         // @ts-ignore
         setItems(abs);

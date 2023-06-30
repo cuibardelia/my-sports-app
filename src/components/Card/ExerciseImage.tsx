@@ -8,6 +8,11 @@ export const StyledImg = styled(Img)`
   height: 100%
 `;
 
+export const TinyRowImg = styled(Img)`
+    width: 50px;
+  height: 50px;
+`;
+
 const generateRandom = (min: number, max: number): number => Math.floor(Math.random() * max) + min;
 
 const ExerciseImage: React.FC<{ exercise: Exercise }> = ({ exercise }) => (

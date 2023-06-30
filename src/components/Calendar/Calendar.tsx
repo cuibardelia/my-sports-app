@@ -7,16 +7,16 @@ import dayjs, { Dayjs } from 'dayjs';
 import { Appointment } from '../../helpers/fnSession';
 import AppointmentSmallCard from '../Card/AppointmentSmallCard';
 
-const CalendarWrapper = styled(Box)(({ theme }) => ({
+const CalendarWrapper = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   margin: '0 auto',
   padding: '20px',
-}));
+});
 
-const WeekDaysContainer = styled(Box)(({ theme }) => ({
+const WeekDaysContainer = styled(Box)({
   borderBottom: '1px solid #ccc',
-}));
+});
 
 const DayNumber = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold',
@@ -66,21 +66,19 @@ interface CalendarProps {
   startDate: Dayjs;
 }
 
-const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const Calendar: React.FC<CalendarProps> = ({ appointments, onCardClick, startDate }) => {
   const dayAppointments: { [key: number]: Appointment[] } = {};
 
   appointments.forEach((appointment) => {
     const appointmentStartDate = dayjs(appointment.startDate);
-    const day = appointmentStartDate.day();
+    const day = (appointmentStartDate.day() + 6) % 7;
     if (!dayAppointments[day]) {
       dayAppointments[day] = [];
     }
     dayAppointments[day].push(appointment);
   });
-
-  console.log(dayAppointments);
 
   const today = dayjs();
   const weekStart = startDate.clone().startOf('week');

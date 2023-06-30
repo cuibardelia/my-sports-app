@@ -56,8 +56,6 @@ const Team = () => {
       });
   }, []);
 
-  // FIXME: positioning
-
   return (
     <TeamContainer>
       <Slide bottom duration={1000}>

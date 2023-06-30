@@ -25,7 +25,7 @@ export const WeightStats: React.FC<{ client: IClient }> = ({ client }) => {
   const labelColor = theme.palette.secondary.main;
 
   if (!client.weightStats.length) {
-    return <NoData message="No data yet" />;
+    return <NoData message="No data yet" isPage={false} />;
   }
 
   return (

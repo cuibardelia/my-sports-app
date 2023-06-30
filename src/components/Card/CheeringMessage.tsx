@@ -1,35 +1,45 @@
 import * as React from 'react';
-import { CardContent, Typography } from '@mui/material';
+import {
+  Box, CardContent, Typography,
+} from '@mui/material';
 import { useAuthContext } from '../../Providers/AuthContext';
 import {
-  DarkGradientCard, DefaultLink, KilosTypography, LightTypography,
+  DarkGradientCard,
+  DefaultLink, KilosTypography, LightTypography, StyledLinearProgress,
 } from './Dashboard.css';
 import { IClient } from '../types/User';
-import { getStats } from '../../helpers/fnStats';
+import { getProgress, getStats, getStatsMessage } from '../../helpers/fnStats';
 
 interface IPensiveMessage {
   kilos: number;
   isProgress: boolean;
+  progress: number;
   noResultsYet: boolean;
 }
 
 interface IToGoMessage {
   kilos: number;
+  progress?: number;
   noResultsYet?: boolean;
 }
 
-const MoreToGoMessage: React.FC<IToGoMessage> = ({ kilos, noResultsYet = false }) => (
-  <Typography variant="body1" gutterBottom sx={{ marginTop: 2 }}>
-    {'Only '}
-    <KilosTypography variant="body1" display="inline">
-      {kilos}
-    </KilosTypography>
-    {` ${noResultsYet ? '' : 'more'} kgs to go!`}
-  </Typography>
+const MoreToGoMessage: React.FC<IToGoMessage> = ({ kilos, noResultsYet = false, progress = 0 }) => (
+  <Box>
+    <Typography variant="body1" gutterBottom sx={{ marginTop: 2 }}>
+      {'Only '}
+      <KilosTypography variant="body1" display="inline">
+        {kilos}
+      </KilosTypography>
+      {` ${noResultsYet ? '' : 'more'} kgs to go!`}
+    </Typography>
+    { !!progress && <StyledLinearProgress variant="determinate" color="secondary" value={progress} /> }
+  </Box>
 );
 
-const PensiveMessage: React.FC<IPensiveMessage> = ({ kilos, isProgress, noResultsYet }) => (isProgress ? (
-  <MoreToGoMessage kilos={kilos} />
+const PensiveMessage: React.FC<IPensiveMessage> = ({
+  kilos, isProgress, noResultsYet, progress,
+}) => (isProgress ? (
+  <MoreToGoMessage kilos={kilos} progress={progress} />
 ) : (
   <>
     <Typography variant="body1" gutterBottom sx={{ marginTop: 2 }}>
@@ -58,25 +68,21 @@ const CheeringMessage: React.FC = () => {
   const { goalWeight, currentWeight } = client;
 
   const {
-    initialWeight,
-    latestWeight,
-    previousWeight,
     weightChange,
     noResultsYet,
-    latestObjective,
+    initialWeight,
+    isLossObjective,
   } = getStats(client);
 
   let needsSettings = false;
   let objectiveAttained = false;
 
-  const isLossObjective = initialWeight - goalWeight > 0;
-  const isProgress = isLossObjective ? weightChange < 0 : weightChange > 0;
+  const isProgress = isLossObjective ? weightChange <= 0 : weightChange >= 0;
   // eslint-disable-next-line no-nested-ternary
   const statsIcon = isProgress ? '🎉' : noResultsYet ? '🚀' : '😓';
-  const objective = isLossObjective ? 'loss' : 'gain';
   const remainingKgs = Math.abs(currentWeight - goalWeight);
-  // eslint-disable-next-line no-nested-ternary
-  const statsMessage = isProgress ? `Congratulations on your weight ${objective}!` : noResultsYet ? 'Welcome to your journey' : `Looks like you\'ve gone astray from your weight ${objective} objective`;
+  const progress = getProgress(remainingKgs, initialWeight, goalWeight);
+  const statsMessage = getStatsMessage(isProgress, isLossObjective, noResultsYet);
 
   // FIXME: LAST ONE HAS DATE ACHIEVED
   if ((isLossObjective && currentWeight <= goalWeight) || (!isLossObjective && currentWeight >= goalWeight)) {
@@ -97,7 +103,7 @@ const CheeringMessage: React.FC = () => {
                         ? (
                           <ObjectiveCTA objectiveAttained={objectiveAttained} />
                         ) : (
-                          <PensiveMessage isProgress={isProgress} kilos={remainingKgs} noResultsYet={noResultsYet} />
+                          <PensiveMessage isProgress={isProgress} kilos={remainingKgs} progress={progress} noResultsYet={noResultsYet} />
                         )
                   }
         </LightTypography>

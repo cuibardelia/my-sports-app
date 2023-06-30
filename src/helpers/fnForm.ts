@@ -71,7 +71,6 @@ export const trainerInputs: FieldType[] = [
     labelText: 'Birth Date',
   },
   // TODO: dropdown, enum
-  // TODO: correct birthday calendar
   // FIXME: date conversion
 ];
 

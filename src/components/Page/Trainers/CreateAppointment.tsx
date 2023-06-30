@@ -20,6 +20,7 @@ import SessionsGrid from '../../Grid/SessionsGrid';
 import { getProtectedHeaders } from '../../../helpers/fnRequest';
 import ConfirmActionModal from '../../Modal/Presentational/ConfirmActionModal';
 import { FeaturePaths } from '../../../helpers/fnPaths';
+import { StyledStepContainer } from './CreateSession';
 
 const steps = ['When?', 'What?', 'Who?'];
 
@@ -126,12 +127,14 @@ const CreateAppointment: React.FC = () => {
             {renderStepContent(activeStep)}
           </StepsContainer>
           <ConfirmActionModal open={!!successMessage} onClose={onSavedConfirmationClose} message={successMessage} title="Appointment saved" />
-          <CreateSessionButton
-            activeStep={activeStep}
-            handleBack={handleBack}
-            handleNext={handleNext}
-            handleSave={handleSave}
-          />
+          <StyledStepContainer>
+            <CreateSessionButton
+              activeStep={activeStep}
+              handleBack={handleBack}
+              handleNext={handleNext}
+              handleSave={handleSave}
+            />
+          </StyledStepContainer>
         </form>
       </FormProvider>
     </PageContainer>

@@ -14,7 +14,7 @@ interface IAchieversList {
 }
 
 const AchieversList: React.FC<IAchieversList> = ({ winners }) => (
-  <StyledList sx={{ padding: 1 }}>
+  <StyledList>
     {winners?.map((achiever, index) => (
       <StyledListItem key={`${index}-${achiever.username}`}>
         <ListItemAvatar>

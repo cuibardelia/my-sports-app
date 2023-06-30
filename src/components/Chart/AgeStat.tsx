@@ -28,6 +28,7 @@ const AgeStat = () => {
   if (!data) {
     return null;
   }
+
   return (
     <GenericPieChart data={data} />
   );

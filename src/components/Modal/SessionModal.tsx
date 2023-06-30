@@ -33,11 +33,6 @@ const SessionModal: React.FC<ISessionModal> = ({ handleClose, session, handleExe
     return null;
   }
 
-  // TODO
-  // const handleDelete = () => {
-  //
-  // }
-
   return (
     <Dialog open={!!session} onClose={handleClose}>
       <StyledDialogTitle>{session.name}</StyledDialogTitle>

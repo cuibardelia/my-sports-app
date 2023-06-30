@@ -57,6 +57,14 @@ const MenuSectionTitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
+const MenuLink = styled(Link)({
+  textDecoration: 'none',
+});
+
+const AvatarList = styled(List)({
+  padding: '0 8px',
+});
+
 const Sidebar = () => {
   const { user } = useAuthContext();
   const list = getSideMenu(user.userType);
@@ -110,8 +118,8 @@ const Sidebar = () => {
           ))}
         </List>
         <Divider />
-        <Link to={link} style={{ textDecoration: 'none' }}>
-          <List>
+        <MenuLink to={link}>
+          <AvatarList>
             <ListItem>
               <MenuSectionTitle variant="subtitle1" gutterBottom>
                 {buddiesName}
@@ -128,8 +136,8 @@ const Sidebar = () => {
                 </HoverAvatar>
               )}
             </ListItem>
-          </List>
-        </Link>
+          </AvatarList>
+        </MenuLink>
       </StyledDrawer>
     </Root>
   );

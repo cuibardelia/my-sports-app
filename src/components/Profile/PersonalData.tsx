@@ -16,6 +16,7 @@ import { ProfileFieldsBasic, ProfileFieldsGoal, profileSettings } from '../../he
 import { Input } from '../Form/Input';
 import { FieldPicker } from '../Form/FieldPicker';
 import DefaultButton from '../Button/DefaultButton';
+import { maxRegistrationDate } from '../Form/DateField';
 
 const StyledDivider = styled(Divider)(({ theme }) => ({
   backgroundColor: theme.palette.primary.dark,
@@ -29,7 +30,7 @@ const PersonalData: React.FC<IPersonalData> = ({ handleSuccess }) => {
   const { user, token } = useAuthContext();
   const client = user as IClient;
 
-  const bd = client.dateOfBirth;
+  const bd = client.dateOfBirth || maxRegistrationDate;
 
   const methods = useForm<ProfileSettingsFormData>({
     resolver: yupResolver(profileSettings),

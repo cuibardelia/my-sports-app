@@ -27,6 +27,14 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
+export const SmallContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+`;
+
 export const StepsContainer = styled(Container)(() => ({
   height: '66vh',
   width: '66vw',
