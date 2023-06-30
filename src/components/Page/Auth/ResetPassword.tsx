@@ -29,7 +29,6 @@ const ResetPassword: React.FC = () => {
     return <Navigate to={destination} />;
   }
 
-  // FIXME: type
   async function handleSubmit(formData) {
     await axios.put(`${process.env.AUTH_API}/reset-password/${resetToken}`, JSON.stringify(formData), {
       headers: cType,
@@ -38,7 +37,6 @@ const ResetPassword: React.FC = () => {
     }).catch((error) => {
       setServerError(error.message);
     });
-    // TODO: modal for success + redirect
   }
 
   return (

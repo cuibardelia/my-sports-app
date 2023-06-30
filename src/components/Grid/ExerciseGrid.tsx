@@ -8,7 +8,6 @@ import ExerciseCard from '../ExerciseCard/ExerciseCard';
 import { IExerciseGrid } from '../../Providers/ExercisesContext';
 import NoData from '../Empty/NoData';
 
-// TODO: styling, responsiveness - need content container
 const GridContainer = styled(Container)({
   margin: '20px 0',
   maxHeight: '100%',
@@ -45,7 +44,6 @@ const ExerciseGrid: React.FC<IExerciseGrid> = ({ items, allowsMultiplePick = fal
     return <NoData message="No favorites yet" />;
   }
 
-  // FIXME: no style props
   return (
     <OuterContainer>
       <Pagination

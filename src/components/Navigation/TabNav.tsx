@@ -6,7 +6,6 @@ import { styled } from '@mui/material/styles';
 import { SelectedOption } from '../../Providers/ExercisesContext';
 import theme from '../../theme';
 
-// FIXME: types
 type NavigableTabs = SelectedOption | string;
 
 interface ITabs {

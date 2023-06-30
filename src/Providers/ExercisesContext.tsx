@@ -68,7 +68,6 @@ export const ExercisesProvider: React.FunctionComponent<{
     }
   }, [user]);
 
-  // TODO: Redux
   useEffect(() => {
     switch (activeOption) {
       case SelectedOption.CAT:
@@ -83,7 +82,6 @@ export const ExercisesProvider: React.FunctionComponent<{
         setItems(getFormattedTargets(specialCategories));
         break;
       case SelectedOption.LOAD:
-        // TODO: spinner
         setItems([]);
         break;
       default:
@@ -94,7 +92,6 @@ export const ExercisesProvider: React.FunctionComponent<{
     }
   }, [activeOption]);
 
-  // todo: spinner
   const setSelectedOption = (option: SelectedOption) => {
     setActiveOption(option);
   };

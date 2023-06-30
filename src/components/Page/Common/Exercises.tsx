@@ -22,7 +22,6 @@ const Exercises: React.FC = () => {
   const { user } = useAuthContext();
   const [tabIndex, setTabIndex] = useState<number>(0);
 
-  // TODO: Token reset on client side
   const handleClick = (option) => {
     setSelectedOption(option);
     setTabIndex(getOptionIndex(option));
@@ -31,7 +30,6 @@ const Exercises: React.FC = () => {
   useEffect(() => {
     if (activeOption === SelectedOption.FAV) {
       setSelectedOption(SelectedOption.LOAD);
-      // TODO: this is obnoxious
       setTimeout(() => {
         setSelectedOption(SelectedOption.FAV);
       }, 1000);

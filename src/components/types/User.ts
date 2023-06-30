@@ -63,7 +63,6 @@ export interface IClient extends ICommonUser {
     value: number;
   }[],
   favoriteTrainers: string[];
-  // FIXME
   _id?: string;
 }
 

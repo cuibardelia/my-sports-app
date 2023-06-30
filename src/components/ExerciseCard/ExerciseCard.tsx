@@ -14,7 +14,6 @@ import { Exercise } from '../types/Exercise';
 import ExerciseImage, { StyledImg } from '../Card/ExerciseImage';
 
 type CardExercisePropType = {
-  // FIXME: type
   e: any;
   name: string;
   allowsPick?: boolean;
@@ -34,7 +33,6 @@ const ExerciseCard: React.FC<CardExercisePropType> = ({
     if (isCategory) {
       setSelectedOption(e.name);
     } else {
-      // FIXME: open modal
       setModalDetail(e);
     }
   };
@@ -47,7 +45,6 @@ const ExerciseCard: React.FC<CardExercisePropType> = ({
   const hasFavoriteIcon = !(isCategory || allowsPick);
   const isFavorite = hasFavoriteIcon && isAmongFavorites(e, user);
 
-  // TODO: change color
   return (
     <StyledCard onClick={handleClick}>
       {

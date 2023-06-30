@@ -84,7 +84,6 @@ const CheeringMessage: React.FC = () => {
   const progress = getProgress(remainingKgs, initialWeight, goalWeight);
   const statsMessage = getStatsMessage(isProgress, isLossObjective, noResultsYet);
 
-  // FIXME: LAST ONE HAS DATE ACHIEVED
   if ((isLossObjective && currentWeight <= goalWeight) || (!isLossObjective && currentWeight >= goalWeight)) {
     objectiveAttained = true;
   }

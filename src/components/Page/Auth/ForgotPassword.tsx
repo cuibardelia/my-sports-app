@@ -34,7 +34,6 @@ const ForgotPassword: React.FC<IAuth> = ({ userType }) => {
       headers: getAuthHeaders(userType),
     })
       .then((response) => {
-      // TODO: show modal - response
         console.log(response);
       })
       .catch((error) => {

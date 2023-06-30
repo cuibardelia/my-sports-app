@@ -6,7 +6,6 @@ import { NotFoundPageContainer } from '../PageContainer.css';
 import { useAuthContext } from '../../Providers/AuthContext';
 import { getDefaultRoute } from '../../helpers/fnPaths';
 
-// TODO: theme + styled
 const NotFoundMessage = styled('main')`
   color: #5B4FD8; 
   font-size: 24px;
@@ -37,7 +36,6 @@ const WrongPage: React.FC<IWrongPage> = ({ message, buttonMessage }) => {
 
   const handleGoToMain = () => {
     const mainRoute = user ? getDefaultRoute(user.userType) : '/';
-    // TODO: CSS not loading? Theme
     navigate(mainRoute);
   };
 

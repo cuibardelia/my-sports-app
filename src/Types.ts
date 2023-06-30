@@ -24,7 +24,6 @@ export const optionMappingKeys: (keyof typeof OptionMapping)[] = Object.keys(Opt
 
 // ------------- AUTH -------------
 
-// TODO: add trainers for SPECIAL EXERCISES - HEALTH
 export const specialtiesList = ['HIIT', 'Pilates', 'Body Pump', 'Zumba', 'Circuit Training', 'TRX', 'Body Combat', 'Core', 'Rebounder'];
 
 // ------------- FORM -------------

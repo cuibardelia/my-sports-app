@@ -24,7 +24,6 @@ export const DateTimeInput: React.FC<IDateInput> = ({ name, label }) => {
 
   const currentDate = dayjs();
 
-  // TODO: theme
   return (
     <Controller
       control={control}

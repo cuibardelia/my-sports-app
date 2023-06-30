@@ -8,7 +8,6 @@ import {
 } from '../components/types/User';
 import { TargetArea } from '../components/types/Exercise';
 
-// TODO: reuse, replace
 export const getUserAPI = (userType: UserType): string => (process.env.GET_USERS_API.replace('REPLACE', userType));
 
 const getFormattedTrainer = (data: ITrainerAPIData): Partial<ITrainer> => ({
@@ -37,7 +36,6 @@ const getFormattedCommonValues = (data: ICommonAPIData): Partial<ICommonUser> =>
   userType: data.userType,
 });
 
-// TODO: don't like this, think of options
 const getParticularValues = (userData: ICommonAPIData, userType: UserType) => {
   if (userType === UserType.CLIENT) {
     const clientData = userData as IClient;

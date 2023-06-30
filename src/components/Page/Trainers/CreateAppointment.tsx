@@ -29,7 +29,6 @@ const CreateAppointment: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [startDate, setStartDate] = useState(dayjs());
   const [endDate, setEndDate] = useState(dayjs());
-  // FIXME: default
   const [room, setRoom] = useState('Green Room');
   const [selectedClients, setSelectedClients] = useState([]);
   const [session, setSession] = useState('');
@@ -57,7 +56,6 @@ const CreateAppointment: React.FC = () => {
 
   const handleSave = () => {
     if (!selectedClients.length || !session) {
-      // TODO: add modal
       return;
     }
     const body = {
@@ -97,8 +95,7 @@ const CreateAppointment: React.FC = () => {
     setSuccessMessage('');
     navigate(`../${FeaturePaths.APPOINTMENTS}`);
   };
-  // FIXME: check if time slot is alrady taken for that ROom
-  // FIXME: multiple sesssion should not be possible
+
   const renderStepContent = (step) => {
     switch (step) {
       case 0:

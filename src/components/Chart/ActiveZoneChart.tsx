@@ -31,31 +31,29 @@ const activeMinutes = [
   },
 ];
 
-const ActiveZoneChart: React.FC = () =>
-// TODO: calculate domain based on max
-  (
-    <ChartArea>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={activeMinutes}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="dateTime" />
-          <YAxis domain={[0, 60]} />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="fatBurnActiveZoneMinutes" stackId="a" fill="#8884d8" />
-          <Bar dataKey="cardioActiveZoneMinutes" stackId="a" fill="#82ca9d" />
-          <Bar dataKey="peakActiveZoneMinutes" fill="#ffc658" />
-        </BarChart>
-      </ResponsiveContainer>
-    </ChartArea>
-  );
+const ActiveZoneChart: React.FC = () => (
+  <ChartArea>
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        data={activeMinutes}
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="dateTime" />
+        <YAxis domain={[0, 60]} />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="fatBurnActiveZoneMinutes" stackId="a" fill="#8884d8" />
+        <Bar dataKey="cardioActiveZoneMinutes" stackId="a" fill="#82ca9d" />
+        <Bar dataKey="peakActiveZoneMinutes" fill="#ffc658" />
+      </BarChart>
+    </ResponsiveContainer>
+  </ChartArea>
+);
 
 export default ActiveZoneChart;

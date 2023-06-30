@@ -17,7 +17,6 @@ const SCard = styled(Card)(({ theme }) => ({
   background: `linear-gradient(45deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.lightFormat})`,
 }));
 
-// FIXME: no multiple Pick
 const SessionCard: React.FC<ISessionCard> = ({ session, allowsPick = false }) => {
   const [isPicked, setIsPicked] = useState<boolean>(false);
 

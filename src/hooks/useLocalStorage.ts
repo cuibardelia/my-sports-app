@@ -10,7 +10,6 @@ const retrieveFromStorage = (key) => {
   if (window?.localStorage) {
     const val = window.localStorage.getItem(key);
 
-    // FIXME
     if (val && val !== 'undefined') {
       return JSON.parse(val);
     }

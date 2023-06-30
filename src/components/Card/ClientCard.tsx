@@ -31,7 +31,6 @@ interface IClientCard {
   allowsPick?: boolean,
 }
 
-// TODO: use formatted
 const ClientCard: React.FC<IClientCard> = ({ buddy, allowsPick = false }) => {
   const [isPicked, setIsPicked] = useState<boolean>(false);
 

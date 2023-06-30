@@ -39,7 +39,6 @@ const ClientCard: React.FC<{ user: IUser }> = ({ user }) => {
     picUrl, currentWeight, goalWeight, height,
   } = user as IClient;
 
-  // TODO: success modal
   return (
     <CardContainer>
       { picUrl ? (

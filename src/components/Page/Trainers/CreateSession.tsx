@@ -30,15 +30,12 @@ export const StyledStepContainer = styled(Box)`
 
 const steps = ['Choose a name', 'Select exercises', 'Add notes and difficulty'];
 
-// FIXME: types
 const CreateSession: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [name, setName] = useState('');
   const [selectedExercises, setSelectedExercises] = useState([]);
   const [notes, setNotes] = useState('');
-  // FIXME
   // const [calories, setCalories] = useState('');
-  // FIXME: DIfficulty scale in UI
   const [difficulty, setDifficulty] = useState('Easy');
   const [exercise, setExercise] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');

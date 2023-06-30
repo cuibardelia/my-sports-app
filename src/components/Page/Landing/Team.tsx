@@ -42,7 +42,6 @@ const Team = () => {
   };
 
   useEffect(() => {
-    // TODO: custom hook
     axios.get('http://localhost:5000/api/auth/get-trainers', { headers: { 'Content-type': 'application/json' } })
       .then((response) => {
         const avatars = response.data.users

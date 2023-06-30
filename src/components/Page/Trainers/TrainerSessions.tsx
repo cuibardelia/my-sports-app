@@ -49,7 +49,6 @@ const TrainerSessions: React.FC = () => {
     navigate('new-session');
   };
 
-  // TODO: delete session plans
   return (
     <PageContainer>
       <NoTabsContentContainer>

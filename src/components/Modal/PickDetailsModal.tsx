@@ -4,7 +4,6 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-// FIXME: types
 interface IPickModal {
   exercise: any;
   handleExercise: (e, s, r) => void;

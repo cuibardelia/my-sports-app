@@ -42,31 +42,29 @@ const activeSteps = [
   },
 ];
 
-const StepsChart: React.FC = () =>
-  // TODO: calculate domain based on max
-  (
-    <ChartArea>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          width={600}
-          height={600}
-          data={activeSteps}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="dateTime" />
-          <YAxis dataKey="value" domain={[20, 10000]} />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="value" fill="#8884d8" />
-        </BarChart>
-      </ResponsiveContainer>
-    </ChartArea>
-  );
+const StepsChart: React.FC = () => (
+  <ChartArea>
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart
+        width={600}
+        height={600}
+        data={activeSteps}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="dateTime" />
+        <YAxis dataKey="value" domain={[20, 10000]} />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="value" fill="#8884d8" />
+      </BarChart>
+    </ResponsiveContainer>
+  </ChartArea>
+);
 
 export default StepsChart;

@@ -41,7 +41,6 @@ function PrivateRoute({ userType }) {
     default:
       if (isAuthenticated) {
         return (
-        // TODO: NOT auhtorized + button
           <Navigate to={getDefaultRoute(user.userType)} />
         );
       }

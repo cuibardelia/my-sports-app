@@ -27,7 +27,6 @@ interface LatestAchiever {
   weightStatus: string;
 }
 
-// TODO REFACTOR
 const DashboardCard = () => {
   const { user, token } = useAuthContext();
   const [topUsers, setTopUsers] = useState<TopClient[]>([]);
@@ -41,7 +40,6 @@ const DashboardCard = () => {
   };
 
   useEffect(() => {
-    // FIXME: env
     axios.get('http://localhost:5000/api/user/get-winners', options)
       .then((response) => {
         setTopUsers(response.data.topClients);

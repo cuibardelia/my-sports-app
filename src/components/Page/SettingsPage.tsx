@@ -29,7 +29,6 @@ const SettingsPage = () => {
   const { resetUser } = useAuthContext();
   const [selectedOption, setSelectedOption] = useState('Personal Data');
   const [tabIndex, setTabIndex] = useState<number>(0);
-  // FIXME: types for all states
   const [savedSuccessfully, setSavedSuccessfully] = useState<boolean>(false);
 
   const handleSuccess = (data: IClient) => {
@@ -37,7 +36,6 @@ const SettingsPage = () => {
     resetUser(data);
   };
 
-  // TODO: custom hook fot tabs
   const handleMenuClick = (item: string) => {
     setSelectedOption(item);
     setTabIndex(settingsList.indexOf(item));

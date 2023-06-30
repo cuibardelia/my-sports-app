@@ -42,9 +42,6 @@ const PersonalData: React.FC<IPersonalData> = ({ handleSuccess }) => {
     },
   });
 
-  // TODO: is maintaining logic
-  // TODO: message new objective?
-  // FIXME: block second set of fields
   const onSubmit = (formData: ProfileSettingsFormData) => {
     axios.put(`${process.env.CLIENT_API}/update-settings`, JSON.stringify(formData), { headers: getProtectedHeaders(token) })
       .then((response) => {

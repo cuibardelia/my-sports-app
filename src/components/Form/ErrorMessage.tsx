@@ -19,7 +19,7 @@ const ErrorText = styled(Typography)(({ theme }) => ({
 }));
 
 interface IErrorMessage {
-  message: any // fixme
+  message: any
 }
 
 export const ErrorMessage: React.FC<IErrorMessage> = ({ message }) => (

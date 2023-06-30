@@ -26,7 +26,6 @@ export const useProtectedCallback = (api: string, dataKey: string, callback) => 
 };
 
 export const useProtectedCall = (api: string, dataKey: string) => {
-  // FIXME: type = default value
   const [data, setData] = useState([]);
   const callAPI = useProtectedCallback(api, dataKey, setData);
 

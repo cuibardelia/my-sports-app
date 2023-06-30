@@ -42,7 +42,6 @@ const ClientsGrid: React.FC<IClientsGrid> = ({
   	return <NoData message="No clients yet" />;
   }
 
-  // FIXME: no style props
   return (
     <GridContainer>
       { totalPages > 1 && (

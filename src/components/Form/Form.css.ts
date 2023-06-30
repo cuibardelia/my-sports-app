@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-// TODO: 1. types
-// TODO: cannot do without rem
-// TODO: Mobile design
 export const Button = styled.button`
   background-color: #4CAF50;
   color: white;
@@ -17,7 +14,7 @@ export const Button = styled.button`
     background-color: #45a049;
   }
 `;
-// TODO: must create a common components file
+
 const Card = styled.div` 
   width: max-content;
   padding: 80px;

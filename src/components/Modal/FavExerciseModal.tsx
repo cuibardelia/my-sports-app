@@ -28,7 +28,6 @@ const FavExerciseModal: React.FC<ModalProps> = ({ exercise }) => {
 
   const handleFavoritesAction = () => {
     const body = isFavorite ? { id: exercise.id } : exercise;
-    // TODO: custom hook
     axios.post(getFavActionApi(user.userType, isFavorite), body, {
       headers: getProtectedHeaders(token),
     })

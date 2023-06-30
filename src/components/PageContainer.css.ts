@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-// FIXME: containers & Font
 export const PageContainer = styled.div`
   width: 100vw;
   padding: 0 50px 50px 280px;

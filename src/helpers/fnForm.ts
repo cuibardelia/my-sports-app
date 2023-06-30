@@ -70,8 +70,6 @@ export const trainerInputs: FieldType[] = [
     type: 'date',
     labelText: 'Birth Date',
   },
-  // TODO: dropdown, enum
-  // FIXME: date conversion
 ];
 
 export const getRegisterFields = (userType: UserType): FieldType[] => (

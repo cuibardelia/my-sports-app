@@ -6,7 +6,6 @@ interface IFieldPicker {
   input: FieldType;
 }
 
-// TODO: gender
 export const FieldPicker: React.FC<IFieldPicker> = ({ input }) => {
   switch (input.type) {
     case 'date':

@@ -3,9 +3,6 @@ import { createContext, useContext } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { IUser } from '../components/types/User';
 
-// FIXME: linting & IDE
-// TODO: error boundary
-
 const tokenStorageKey = 'token';
 const userStorageKey = 'user';
 

@@ -23,7 +23,6 @@ interface IAdminContext {
   errorMessage: string;
   setErrorMessage: any;
 }
-// FIXME - any
 
 export const AdminContext = createContext<IAdminContext | null>(null);
 

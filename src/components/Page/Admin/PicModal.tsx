@@ -11,7 +11,6 @@ import {
 import { styled } from '@mui/system';
 import UploadPic from '../Common/UploadPic';
 
-// TODO: remove my Card, no longer needed :(
 const StyledCard = styled(Card)({
   maxWidth: 400,
 });
